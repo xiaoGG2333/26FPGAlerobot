@@ -1,0 +1,459 @@
+{
+  "schema": "so101_encoder_snapshot_v1",
+  "captured_utc": "2026-10-10T09:11:46.976464+00:00",
+  "port": "COM16",
+  "model": {
+    "tx_m": [
+      0.0612,
+      0.02943,
+      0.02798,
+      0.13504,
+      0.0593
+    ],
+    "tz_m": [
+      0.0598,
+      0.05504,
+      0.1127,
+      0.00519,
+      0.00996
+    ],
+    "axes": [
+      "z",
+      "y",
+      "y",
+      "y",
+      "x"
+    ],
+    "q_min_rad": [
+      -1.91986,
+      -1.74533,
+      -1.69,
+      -1.65806,
+      -2.74385
+    ],
+    "q_max_rad": [
+      1.91986,
+      1.74533,
+      1.69,
+      1.65806,
+      2.84121
+    ],
+    "geometry_verified_against_physical_arm": false
+  },
+  "model_fingerprint": "1ad9b57001252b0dd1a15acbf4759ce1b3b10c995a3d871288ca2123a7c8d9e7",
+  "joint_order": [
+    "shoulder_pan",
+    "shoulder_lift",
+    "elbow_flex",
+    "wrist_flex",
+    "wrist_roll"
+  ],
+  "position_space": "Present_Position_after_existing_homing_offset",
+  "limits": [
+    [
+      725,
+      3458
+    ],
+    [
+      815,
+      3208
+    ],
+    [
+      862,
+      3078
+    ],
+    [
+      846,
+      3215
+    ],
+    [
+      147,
+      3996
+    ],
+    [
+      1975,
+      3567
+    ]
+  ],
+  "homing_offsets": [
+    -1429,
+    -1868,
+    -551,
+    1828,
+    -773,
+    1727
+  ],
+  "physical_alignment_verified": false,
+  "motion_commands_sent": false,
+  "samples": [
+    [
+      {
+        "id": 1,
+        "raw_pos": 2024,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.0,
+        "temp": 32,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      },
+      {
+        "id": 2,
+        "raw_pos": 2055,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.1,
+        "temp": 32,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      },
+      {
+        "id": 3,
+        "raw_pos": 2044,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.1,
+        "temp": 34,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      },
+      {
+        "id": 4,
+        "raw_pos": 1992,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.1,
+        "temp": 32,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      },
+      {
+        "id": 5,
+        "raw_pos": 2048,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.1,
+        "temp": 32,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      },
+      {
+        "id": 6,
+        "raw_pos": 2032,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.2,
+        "temp": 34,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      }
+    ],
+    [
+      {
+        "id": 1,
+        "raw_pos": 2024,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.0,
+        "temp": 32,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      },
+      {
+        "id": 2,
+        "raw_pos": 2055,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.1,
+        "temp": 32,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      },
+      {
+        "id": 3,
+        "raw_pos": 2044,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.1,
+        "temp": 34,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      },
+      {
+        "id": 4,
+        "raw_pos": 1992,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.0,
+        "temp": 32,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      },
+      {
+        "id": 5,
+        "raw_pos": 2048,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.1,
+        "temp": 32,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      },
+      {
+        "id": 6,
+        "raw_pos": 2032,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.2,
+        "temp": 34,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      }
+    ],
+    [
+      {
+        "id": 1,
+        "raw_pos": 2024,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.0,
+        "temp": 32,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      },
+      {
+        "id": 2,
+        "raw_pos": 2055,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.1,
+        "temp": 32,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      },
+      {
+        "id": 3,
+        "raw_pos": 2044,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.1,
+        "temp": 34,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      },
+      {
+        "id": 4,
+        "raw_pos": 1992,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.1,
+        "temp": 32,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      },
+      {
+        "id": 5,
+        "raw_pos": 2048,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.2,
+        "temp": 32,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      },
+      {
+        "id": 6,
+        "raw_pos": 2032,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.2,
+        "temp": 34,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      }
+    ],
+    [
+      {
+        "id": 1,
+        "raw_pos": 2024,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.0,
+        "temp": 32,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      },
+      {
+        "id": 2,
+        "raw_pos": 2055,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.1,
+        "temp": 32,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      },
+      {
+        "id": 3,
+        "raw_pos": 2044,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.1,
+        "temp": 34,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      },
+      {
+        "id": 4,
+        "raw_pos": 1992,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.0,
+        "temp": 32,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      },
+      {
+        "id": 5,
+        "raw_pos": 2048,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.1,
+        "temp": 32,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      },
+      {
+        "id": 6,
+        "raw_pos": 2032,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.2,
+        "temp": 34,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      }
+    ],
+    [
+      {
+        "id": 1,
+        "raw_pos": 2024,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.0,
+        "temp": 32,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      },
+      {
+        "id": 2,
+        "raw_pos": 2055,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.1,
+        "temp": 32,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      },
+      {
+        "id": 3,
+        "raw_pos": 2044,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.1,
+        "temp": 34,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      },
+      {
+        "id": 4,
+        "raw_pos": 1992,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.0,
+        "temp": 32,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      },
+      {
+        "id": 5,
+        "raw_pos": 2048,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.1,
+        "temp": 32,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      },
+      {
+        "id": 6,
+        "raw_pos": 2032,
+        "speed": 0,
+        "load": 0,
+        "voltage": 12.2,
+        "temp": 34,
+        "moving": 0,
+        "current_raw": 0,
+        "torque": 0
+      }
+    ]
+  ],
+  "hello": [
+    "POSE1 READY RK7020 RIGHT_ARM ARM_CONTROL_V1 AUTOCAL_BRIDGE_V1 ATOMIC_HOLD BUS_TRACE_V1 SO101_135MM LIMITED_DRIVE_V1 MANUAL_OUT_HOLD_V2 TRACKING_DIAG_V1 BUTTONS_INPUT_V1 STICK_INPUT_V1 COORDINATED_MANUAL_V1 OFFICIAL_R12254604_V1 MANUAL_REFERENCE_20261009_V1 MOTOR_STAGE_DIAG_V1 JOG_WRIST_20DEG_V1 TORQUE_SETTLE_150MS_V1"
+  ],
+  "calcheck": [
+    "SERVO1 ID=1 CAL_MATCH min=725 max=3458 offset=-1429",
+    "SERVO1 ID=2 CAL_MATCH min=815 max=3208 offset=-1868",
+    "SERVO1 ID=3 CAL_MATCH min=862 max=3078 offset=-551",
+    "SERVO1 ID=4 CAL_MATCH min=846 max=3215 offset=1828",
+    "SERVO1 ID=5 CAL_MATCH min=147 max=3996 offset=-773",
+    "SERVO1 ID=6 CAL_MATCH min=1975 max=3567 offset=1727",
+    "SERVO1 CALCHECK PASS (EEPROM matches; physical alignment unverified)",
+    "SERVO1 END"
+  ],
+  "encoder_counts_median": [
+    2024,
+    2055,
+    2044,
+    1992,
+    2048,
+    2032
+  ],
+  "encoder_counts_spread": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

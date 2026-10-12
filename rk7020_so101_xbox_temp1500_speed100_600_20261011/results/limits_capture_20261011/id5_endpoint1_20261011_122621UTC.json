@@ -1,0 +1,63 @@
+{
+  "schema": "single_servo_encoder_capture_v1",
+  "captured_utc": "2026-10-11T12:26:21.188928+00:00",
+  "port": "COM16",
+  "id": 5,
+  "endpoint_label": "FIRST_ENDPOINT_USER_POSITIONED",
+  "commands_sent": [
+    "SERVO1 READ 5",
+    "SERVO1 READ 5",
+    "SERVO1 READ 5",
+    "SERVO1 READ 5",
+    "SERVO1 READ 5"
+  ],
+  "samples": [
+    {
+      "utc": "2026-10-11T12:26:21.222057+00:00",
+      "response": [
+        "SERVO1 ID=5 OK raw_pos=3966 speed=0 load=0 voltage=12.3 temp=31 moving=0 current_raw=0 torque=0",
+        "SERVO1 END"
+      ],
+      "raw_pos": 3966
+    },
+    {
+      "utc": "2026-10-11T12:26:21.348497+00:00",
+      "response": [
+        "SERVO1 ID=5 OK raw_pos=3966 speed=0 load=0 voltage=12.3 temp=31 moving=0 current_raw=0 torque=0",
+        "SERVO1 END"
+      ],
+      "raw_pos": 3966
+    },
+    {
+      "utc": "2026-10-11T12:26:21.476208+00:00",
+      "response": [
+        "SERVO1 ID=5 OK raw_pos=3966 speed=0 load=0 voltage=12.2 temp=31 moving=0 current_raw=0 torque=0",
+        "SERVO1 END"
+      ],
+      "raw_pos": 3966
+    },
+    {
+      "utc": "2026-10-11T12:26:21.605176+00:00",
+      "response": [
+        "SERVO1 ID=5 OK raw_pos=3966 speed=0 load=0 voltage=12.3 temp=31 moving=0 current_raw=0 torque=0",
+        "SERVO1 END"
+      ],
+      "raw_pos": 3966
+    },
+    {
+      "utc": "2026-10-11T12:26:21.733101+00:00",
+      "response": [
+        "SERVO1 ID=5 OK raw_pos=3966 speed=0 load=0 voltage=12.3 temp=31 moving=0 current_raw=0 torque=0",
+        "SERVO1 END"
+      ],
+      "raw_pos": 3966
+    }
+  ],
+  "motion_commands_sent": false,
+  "torque_commands_sent": false,
+  "eeprom_write_sent": false,
+  "status": "PASS",
+  "median_count": 3966,
+  "min_count": 3966,
+  "max_count": 3966
+}

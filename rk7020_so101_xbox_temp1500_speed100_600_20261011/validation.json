@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "speed_parameter_min": 100,
+  "speed_parameter_max": 600,
+  "temperature_threshold_c": 55,
+  "temperature_duration_ms": 1500,
+  "temperature_duration_comparison": ">",
+  "temperature_test": "PASS: exact 1500ms accepted, 1501ms stops; reset and independent axes",
+  "native_fault_and_speed_tests": "PASS",
+  "native_encoder_roundtrips": 12363,
+  "host_tests": 34,
+  "arm_build": "PASS",
+  "bootgen": "PASS",
+  "physical_test": "NOT_RUN",
+  "unchanged_files_verified": [
+    "firmware/servo_mapping.h",
+    "host/right_mapping.json",
+    "host/model_calibration.py",
+    "firmware/motor_control.c",
+    "firmware/ik_iteration.c",
+    "host/xbox_input.py"
+  ],
+  "host_logic_unchanged_except_version_token": true,
+  "boot_sha256": "04424092cc6669ee75185a001311b6720ea53b3b2383241d6c5574281d862b78"
+}

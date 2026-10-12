@@ -1,0 +1,71 @@
+{
+  "schema": "so101_mapping_review_v1",
+  "offline_only": true,
+  "motor_commands_sent": false,
+  "arithmetic_status": "PASS",
+  "host_firmware_parameters_identical": true,
+  "encoder_round_trips_checked": 12627,
+  "angle_samples_checked": 50005,
+  "max_angle_round_trip_error_deg": 0.04395909752405231,
+  "invalid_target_does_not_partially_update": true,
+  "physical_mapping_status": "NOT_FULLY_VERIFIED",
+  "zero_precision_verified": false,
+  "geometry_verified": false,
+  "note": "Qualitative direction evidence supports signs. Arithmetic checks cannot prove physical zeros, geometry or holding ability.",
+  "sources": {
+    "outputs\\rk7020_so101_torque_settle_20261009\\firmware\\servo_mapping.h": "c6478d781f25bde10c464703293f139dfca908de539163e1633a915766e4004c",
+    "outputs\\rk7020_so101_finish_guard_20261010\\host\\right_mapping.json": "99a6659851677329c5d7cd7a3278c180cec274fa5c8c89748a5bc02a6c04da01"
+  },
+  "joints": [
+    {
+      "id": 1,
+      "name": "shoulder_pan",
+      "zero": 2121,
+      "sign": -1,
+      "reference_zero_rounding_error_counts": 0.0,
+      "positive_10deg_target_count": 2007,
+      "physical_zero_verified": false,
+      "direction_evidence": "results/manual_base_direction_review_20261009_01.json"
+    },
+    {
+      "id": 2,
+      "name": "shoulder_lift",
+      "zero": 2156,
+      "sign": 1,
+      "reference_zero_rounding_error_counts": 0.3607746868283357,
+      "positive_10deg_target_count": 2270,
+      "physical_zero_verified": false,
+      "direction_evidence": "results/manual_shoulder_direction_review_20261009_01.json"
+    },
+    {
+      "id": 3,
+      "name": "elbow_flex",
+      "zero": 1893,
+      "sign": 1,
+      "reference_zero_rounding_error_counts": -0.3186419728781402,
+      "positive_10deg_target_count": 2007,
+      "physical_zero_verified": false,
+      "direction_evidence": "results/manual_elbow_direction_review_20261009_01.json"
+    },
+    {
+      "id": 4,
+      "name": "wrist_flex",
+      "zero": 1986,
+      "sign": 1,
+      "reference_zero_rounding_error_counts": 0.4379299822753637,
+      "positive_10deg_target_count": 2100,
+      "physical_zero_verified": false,
+      "direction_evidence": "results/manual_wrist_direction_review_20261009_01.json"
+    },
+    {
+      "id": 5,
+      "name": "wrist_roll",
+      "zero": 2037,
+      "sign": -1,
+      "reference_zero_rounding_error_counts": 0.0,
+      "positive_10deg_target_count": 1923,
+      "physical_zero_verified": false,
+      "direction_evidence": "results/manual_roll_direction_review_20261009_01.json"
+    }
+  ]
+}

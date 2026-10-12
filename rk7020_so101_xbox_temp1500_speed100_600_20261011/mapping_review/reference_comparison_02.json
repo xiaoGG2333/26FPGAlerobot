@@ -1,0 +1,55 @@
+{
+  "samples_stable": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "mapping_changed": false,
+  "physical_precision_verified": false,
+  "operator_confirmed_full_reference": true,
+  "joints": [
+    {
+      "id": 1,
+      "count": 2024,
+      "old_reference": 2121,
+      "model_deg": 8.525390625,
+      "reference_deg": 0.0,
+      "new_zero_candidate": 2024.0
+    },
+    {
+      "id": 2,
+      "count": 2055,
+      "old_reference": 1997,
+      "model_deg": -8.876953125,
+      "reference_deg": -13.942900662290478,
+      "new_zero_candidate": 2213.6392253131717
+    },
+    {
+      "id": 3,
+      "count": 2044,
+      "old_reference": 2077,
+      "model_deg": 13.271484375,
+      "reference_deg": 16.1438693578525,
+      "new_zero_candidate": 1860.3186419728781
+    },
+    {
+      "id": 4,
+      "count": 1992,
+      "old_reference": 2069,
+      "model_deg": 0.52734375,
+      "reference_deg": 7.33341181484841,
+      "new_zero_candidate": 1908.5620700177246
+    },
+    {
+      "id": 5,
+      "count": 2048,
+      "old_reference": 2037,
+      "model_deg": -0.966796875,
+      "reference_deg": 0.0,
+      "new_zero_candidate": 2048.0
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+the_ROM_image:
+{
+ [bootloader] fsbl_uart1.elf
+ rk7020_uart1.bit
+ ik_uart1_servo.elf
+}

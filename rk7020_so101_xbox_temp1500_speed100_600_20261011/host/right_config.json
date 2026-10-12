@@ -1,0 +1,10 @@
+{
+  "arm": "SO101 right, model angles only; calibration not applied",
+  "position_scale": 1.0,
+  "rotation_scale": 1.0,
+  "axis_matrix": [[1,0,0],[0,1,0],[0,0,1]],
+  "workspace_min": [0.12,-0.30,0.03],
+  "workspace_max": [0.45,0.30,0.45],
+  "max_translation_m_s": 0.02,
+  "max_rotation_rad_s": 0.15
+}

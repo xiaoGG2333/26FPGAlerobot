@@ -1,0 +1,44 @@
+{
+  "current_counts": [
+    2045,
+    2052,
+    2014,
+    1987,
+    2049,
+    2032
+  ],
+  "previous_counts": [
+    2024,
+    2055,
+    2044,
+    1992,
+    2048,
+    2032
+  ],
+  "within_capture_spread_counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "repeat_delta_counts": [
+    21,
+    -3,
+    -30,
+    -5,
+    1,
+    0
+  ],
+  "repeat_delta_encoder_deg": [
+    1.845703125,
+    -0.263671875,
+    -2.63671875,
+    -0.439453125,
+    0.087890625,
+    0.0
+  ],
+  "motion_commands_sent": false,
+  "mapping_changed": false
+}

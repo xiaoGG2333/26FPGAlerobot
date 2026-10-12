@@ -1,0 +1,45 @@
+C:\Users\24957\Documents\Codex\2026-09-19\d-vivadoprojects-lerobot-lerobot-component\work\arm_drive_harness.c: In function 'XUartPs_Send':
+C:\Users\24957\Documents\Codex\2026-09-19\d-vivadoprojects-lerobot-lerobot-component\work\arm_drive_harness.c:34:9: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+   34 |         if(difference>4)difference=4;if(difference<-4)difference=-4;
+      |         ^~
+C:\Users\24957\Documents\Codex\2026-09-19\d-vivadoprojects-lerobot-lerobot-component\work\arm_drive_harness.c:34:38: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+   34 |         if(difference>4)difference=4;if(difference<-4)difference=-4;
+      |                                      ^~
+[UART] Opening simulated at 115200 8N1
+[UART] Port opened
+[UART] Sending HELLO
+[UART] Sent; waiting for POSE1 READY
+[UART] Received POSE1 READY RK7020 RIGHT_ARM ARM_CONTROL_V1
+[UART] Sending STATE1 0
+[UART] Sent; waiting for STATE1
+[UART] Received STATE1 0 0.199417517 -0.300660253 0.400368989 -0.199417517 0.150330126 0.292110557 0.0466678754 0.236315162 0.150330126 -0.0997087806 0.199417517 0
+[UART] Sending STATE1 0
+[UART] Sent; waiting for STATE1
+[UART] Received STATE1 0 0.199417517 -0.300660253 0.400368989 -0.199417517 0.150330126 0.292110557 0.0466678754 0.236315162 0.150330126 -0.0997087806 0.199417517 0
+RIGHT SO101 | ARM SERVO MOTION ENABLED | REAL FPGA + ARM ITERATION
+seq=1 CONVERGED iter=0 pos=5.37e-09 m rot=0 rad roundtrip=0.0 ms
+q_deg: shoulder_pan=+11.426 shoulder_lift=-17.227 elbow_flex=+22.939 wrist_flex=-11.426 wrist_roll=+8.613
+target_counts (QUEUED ARM TARGET; GRIPPER PREVIEW): ID1=2007 ID2=1818 ID3=2216 ID4=2056 ID5=2137 ID6=2773
+seq=2 CONVERGED iter=2 pos=0.000101 m rot=4.16e-06 rad roundtrip=15.0 ms
+q_deg: shoulder_pan=+11.570 shoulder_lift=-17.294 elbow_flex=+23.025 wrist_flex=-11.480 wrist_roll=+8.721
+target_counts (QUEUED ARM TARGET; GRIPPER PREVIEW): ID1=2005 ID2=1817 ID3=2217 ID4=2057 ID5=2138 ID6=2773
+seq=3 CONVERGED iter=2 pos=0.000103 m rot=3.19e-06 rad roundtrip=0.0 ms
+q_deg: shoulder_pan=+11.677 shoulder_lift=-17.372 elbow_flex=+23.132 wrist_flex=-11.536 wrist_roll=+8.802
+target_counts (QUEUED ARM TARGET; GRIPPER PREVIEW): ID1=2004 ID2=1816 ID3=2218 ID4=2057 ID5=2139 ID6=2773
+seq=4 CONVERGED iter=2 pos=0.000113 m rot=6.05e-06 rad roundtrip=0.0 ms
+q_deg: shoulder_pan=+11.782 shoulder_lift=-17.450 elbow_flex=+23.230 wrist_flex=-11.581 wrist_roll=+8.880
+target_counts (QUEUED ARM TARGET; GRIPPER PREVIEW): ID1=2003 ID2=1815 ID3=2219 ID4=2058 ID5=2140 ID6=2773
+seq=5 CONVERGED iter=2 pos=0.000139 m rot=6.12e-06 rad roundtrip=0.0 ms
+q_deg: shoulder_pan=+11.924 shoulder_lift=-17.545 elbow_flex=+23.357 wrist_flex=-11.649 wrist_roll=+8.987
+target_counts (QUEUED ARM TARGET; GRIPPER PREVIEW): ID1=2001 ID2=1814 ID3=2221 ID4=2059 ID5=2141 ID6=2773
+seq=6 CONVERGED iter=2 pos=0.000102 m rot=3.18e-06 rad roundtrip=0.0 ms
+q_deg: shoulder_pan=+12.028 shoulder_lift=-17.636 elbow_flex=+23.484 wrist_flex=-11.711 wrist_roll=+9.065
+target_counts (QUEUED ARM TARGET; GRIPPER PREVIEW): ID1=2000 ID2=1813 ID3=2222 ID4=2059 ID5=2142 ID6=2773
+seq=7 CONVERGED iter=2 pos=0.000112 m rot=5.99e-06 rad roundtrip=0.0 ms
+q_deg: shoulder_pan=+12.132 shoulder_lift=-17.714 elbow_flex=+23.581 wrist_flex=-11.756 wrist_roll=+9.143
+target_counts (QUEUED ARM TARGET; GRIPPER PREVIEW): ID1=1999 ID2=1812 ID3=2223 ID4=2060 ID5=2143 ID6=2773
+seq=8 CONVERGED iter=2 pos=0.000132 m rot=5.82e-06 rad roundtrip=0.0 ms
+q_deg: shoulder_pan=+12.265 shoulder_lift=-17.804 elbow_flex=+23.703 wrist_flex=-11.821 wrist_roll=+9.243
+target_counts (QUEUED ARM TARGET; GRIPPER PREVIEW): ID1=1997 ID2=1811 ID3=2225 ID4=2061 ID5=2144 ID6=2773
+ARM1 STOP STOPPED active=0 torque_off=1
+PASS: 8 closed-loop targets, synchronized arm writes, measured seed, framing and host cleanup; SIMULATION ONLY

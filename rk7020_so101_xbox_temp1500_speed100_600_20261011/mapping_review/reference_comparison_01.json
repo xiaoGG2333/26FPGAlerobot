@@ -1,0 +1,50 @@
+{
+  "status": "REFERENCE_NOT_REPRODUCED",
+  "all_samples_stable": true,
+  "official_eeprom_matches": true,
+  "motion_commands_sent": false,
+  "mapping_changed": false,
+  "cause": "Undetermined: physical pose repeatability, datum or alignment; not proof of changed encoder offset",
+  "joints": [
+    {
+      "id": 1,
+      "name": "shoulder_pan",
+      "previous_reference_count": 2121,
+      "current_reference_count": 2022,
+      "delta_counts": -99,
+      "delta_model_deg": 8.701171875
+    },
+    {
+      "id": 2,
+      "name": "shoulder_lift",
+      "previous_reference_count": 1997,
+      "current_reference_count": 2054,
+      "delta_counts": 57,
+      "delta_model_deg": 5.009765625
+    },
+    {
+      "id": 3,
+      "name": "elbow_flex",
+      "previous_reference_count": 2077,
+      "current_reference_count": 2044,
+      "delta_counts": -33,
+      "delta_model_deg": -2.900390625
+    },
+    {
+      "id": 4,
+      "name": "wrist_flex",
+      "previous_reference_count": 2069,
+      "current_reference_count": 2153,
+      "delta_counts": 84,
+      "delta_model_deg": 7.3828125
+    },
+    {
+      "id": 5,
+      "name": "wrist_roll",
+      "previous_reference_count": 2037,
+      "current_reference_count": 2048,
+      "delta_counts": 11,
+      "delta_model_deg": -0.966796875
+    }
+  ]
+}

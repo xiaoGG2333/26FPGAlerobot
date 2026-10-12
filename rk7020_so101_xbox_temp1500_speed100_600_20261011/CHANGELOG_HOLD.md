@@ -1,0 +1,1 @@
+20261011: based on limits1000_20261011; add per-axis >55 C continuous >1500 ms temperature filter; current coordinated five-axis speed range 100..600. Existing limits, mapping, IK, input and other fault policy unchanged.

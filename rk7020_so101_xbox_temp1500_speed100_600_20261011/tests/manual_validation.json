@@ -1,0 +1,122 @@
+{
+  "hardware_used": false,
+  "checks": [
+    {
+      "command": [
+        "D:\\Software\\minGW\\mingw64\\bin\\gcc.exe",
+        "-std=c99",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "C:\\Users\\24957\\Documents\\Codex\\2026-09-19\\d-vivadoprojects-lerobot-lerobot-component\\outputs\\rk7020_so101_torque_settle_20261009\\tests\\test_motor_control.c",
+        "C:\\Users\\24957\\Documents\\Codex\\2026-09-19\\d-vivadoprojects-lerobot-lerobot-component\\outputs\\rk7020_so101_torque_settle_20261009\\firmware\\motor_control.c",
+        "C:\\Users\\24957\\Documents\\Codex\\2026-09-19\\d-vivadoprojects-lerobot-lerobot-component\\outputs\\rk7020_so101_torque_settle_20261009\\firmware\\st3215.c",
+        "-lm",
+        "-o",
+        "C:\\Users\\24957\\Documents\\Codex\\2026-09-19\\d-vivadoprojects-lerobot-lerobot-component\\outputs\\rk7020_so101_torque_settle_20261009\\tests\\manual_motor.exe"
+      ],
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "C:\\Users\\24957\\Documents\\Codex\\2026-09-19\\d-vivadoprojects-lerobot-lerobot-component\\outputs\\rk7020_so101_torque_settle_20261009\\tests\\manual_motor.exe"
+      ],
+      "exit_code": 0,
+      "output": "PASS: bounded writes, current goal before enable, all-off preflight, calibration/range/health checks, sequence/busy, completion, stop, deadline, lost feedback, suppressed ack, failed goal readback, failed torque-off reporting\n"
+    },
+    {
+      "command": [
+        "D:\\Software\\minGW\\mingw64\\bin\\gcc.exe",
+        "-std=c99",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "C:\\Users\\24957\\Documents\\Codex\\2026-09-19\\d-vivadoprojects-lerobot-lerobot-component\\outputs\\rk7020_so101_torque_settle_20261009\\tests\\test_st3215.c",
+        "C:\\Users\\24957\\Documents\\Codex\\2026-09-19\\d-vivadoprojects-lerobot-lerobot-component\\outputs\\rk7020_so101_torque_settle_20261009\\firmware\\st3215.c",
+        "-lm",
+        "-o",
+        "C:\\Users\\24957\\Documents\\Codex\\2026-09-19\\d-vivadoprojects-lerobot-lerobot-component\\outputs\\rk7020_so101_torque_settle_20261009\\tests\\manual_st3215.exe"
+      ],
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "C:\\Users\\24957\\Documents\\Codex\\2026-09-19\\d-vivadoprojects-lerobot-lerobot-component\\outputs\\rk7020_so101_torque_settle_20261009\\tests\\manual_st3215.exe"
+      ],
+      "exit_code": 0,
+      "output": "PASS: packet framing, read, timeout, checksum, wrong ID, device error, malformed/truncated, echo, TX error, torque-off readback, suppressed WRITE reply, argument checks\n"
+    },
+    {
+      "command": [
+        "D:\\Software\\minGW\\mingw64\\bin\\gcc.exe",
+        "-std=c99",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "C:\\Users\\24957\\Documents\\Codex\\2026-09-19\\d-vivadoprojects-lerobot-lerobot-component\\outputs\\rk7020_so101_torque_settle_20261009\\tests\\test_coordinated_drive.c",
+        "C:\\Users\\24957\\Documents\\Codex\\2026-09-19\\d-vivadoprojects-lerobot-lerobot-component\\outputs\\rk7020_so101_torque_settle_20261009\\firmware\\arm_control.c",
+        "C:\\Users\\24957\\Documents\\Codex\\2026-09-19\\d-vivadoprojects-lerobot-lerobot-component\\outputs\\rk7020_so101_torque_settle_20261009\\firmware\\st3215.c",
+        "C:\\Users\\24957\\Documents\\Codex\\2026-09-19\\d-vivadoprojects-lerobot-lerobot-component\\outputs\\rk7020_so101_torque_settle_20261009\\firmware\\motor_control.c",
+        "-lm",
+        "-o",
+        "C:\\Users\\24957\\Documents\\Codex\\2026-09-19\\d-vivadoprojects-lerobot-lerobot-component\\outputs\\rk7020_so101_torque_settle_20261009\\tests\\manual_coordinated_drive.exe"
+      ],
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "C:\\Users\\24957\\Documents\\Codex\\2026-09-19\\d-vivadoprojects-lerobot-lerobot-component\\outputs\\rk7020_so101_torque_settle_20261009\\tests\\manual_coordinated_drive.exe"
+      ],
+      "exit_code": 0,
+      "output": "PASS: proportional five-axis stepping; stuck ID3 freezes all axes and reports ID3; torque-off cleanup\n"
+    },
+    {
+      "command": [
+        "D:\\Software\\Anaconda\\python.exe",
+        "C:\\Users\\24957\\Documents\\Codex\\2026-09-19\\d-vivadoprojects-lerobot-lerobot-component\\outputs\\rk7020_so101_torque_settle_20261009\\tests\\test_motor_host.py"
+      ],
+      "exit_code": 0,
+      "output": "MOTOR1 STATE active=0 last_seq=7 id=6 position=2423 target=2423 result=OK torque_off=1\nMOTOR1 END\n[MOVE IN 3 SECONDS] ID6 delta=100 counts (+8.79 encoder deg), speed=50. Ctrl+C cancels.\nMOTOR1 ACCEPTED seq=8 id=6 origin=2423 target=2523\nMOTOR1 DONE seq=8 id=6 result=OK origin=2423 target=2523 position=2521 torque_off=1\nMOTOR1 END\n[MOVE IN 3 SECONDS] ID6 delta=-98 counts (-8.61 encoder deg), speed=50. Ctrl+C cancels.\nMOTOR1 ACCEPTED seq=9 id=6 origin=2423 target=2523\nMOTOR1 DONE seq=9 id=6 result=OK origin=2423 target=2523 position=2521 torque_off=1\nMOTOR1 END\nMOTOR1 STATE active=0 last_seq=7 id=6 position=2423 target=2423 result=OK torque_off=1\nMOTOR1 END\n[MOVE IN 3 SECONDS] ID6 delta=100 counts (+8.79 encoder deg), speed=50. Ctrl+C cancels.\nMOTOR1 ERROR seq=8 LIMIT\nMOTOR1 END\nMOTOR1 STOP ALL_TORQUE_OFF\nMOTOR1 END\nPASS: accepted/completed framing, next sequence, measured return delta, rejected motion stops without retry, no flush\n"
+    },
+    {
+      "command": [
+        "D:\\Software\\Anaconda\\python.exe",
+        "C:\\Users\\24957\\Documents\\Codex\\2026-09-19\\d-vivadoprojects-lerobot-lerobot-component\\outputs\\rk7020_so101_torque_settle_20261009\\tests\\test_stick_input.py"
+      ],
+      "exit_code": 0,
+      "output": "[UART] Opening FAKE at 115200 8N1\n[UART] Port opened\nBoard coordinated stepping: NO; rebuild/deploy firmware for coordinated stepping. Host following-error stop is active.\nUART CONNECTED; MOTION OFF. Enter starts, Ctrl+C cancels/stops. Manual mode: no local travel envelope; model/encoder limits and heartbeat required.\nARM1 READY LIMITED_DRIVE_V1\nRIGHT SO101 | MANUAL NO LOCAL ENVELOPE; MAPPING UNVERIFIED; GRIPPER OFF | REAL FPGA + ARM ITERATION\nSTICK HOLD | TORQUE ON | actual_counts: ID1=2149 ID2=2050 ID3=2017 ID4=1985 ID5=1023\nSTICK HOLD | TORQUE ON | actual_counts: ID1=2149 ID2=2050 ID3=2017 ID4=1985 ID5=1023\nARM1 STOP STOPPED active=0 torque_off=1\nSTICK ONLY: up/down=X +/-; left/right=Y -/+; press stick=Z-; R=Z+. Other buttons, IMU and Home ignored. Ctrl+C stops. Leave stick centered before Enter.\nSTICK RAW h=2500 v=2500 (neutral window 1000..4000)\n[UART] Opening FAKE at 115200 8N1\n[UART] Port opened\nBoard coordinated stepping: NO; rebuild/deploy firmware for coordinated stepping. Host following-error stop is active.\nUART CONNECTED; MOTION OFF. Enter starts, Ctrl+C cancels/stops. Manual mode: no local travel envelope; model/encoder limits and heartbeat required.\nARM1 READY LIMITED_DRIVE_V1\nRIGHT SO101 | MANUAL NO LOCAL ENVELOPE; MAPPING UNVERIFIED; GRIPPER OFF | REAL FPGA + ARM ITERATION\nseq=1 CONVERGED iter=1 pos=1e-05 m rot=1e-06 rad roundtrip=25.0 ms\nq_deg: shoulder_pan=-5.449 shoulder_lift=-17.930 elbow_flex=+26.982 wrist_flex=-5.361 wrist_roll=+90.615\nactual_counts: ID1=2149 ID2=2050 ID3=2017 ID4=1985 ID5=1023\ntarget_counts (QUEUED ARM TARGET; GRIPPER PREVIEW): ID1=2149 ID2=2050 ID3=2017 ID4=1985 ID5=1023 ID6=2773\nSTICK HOLD | TORQUE ON | actual_counts: ID1=2149 ID2=2050 ID3=2017 ID4=1985 ID5=1023\nARM1 STOP STOPPED active=0 torque_off=1\n.......\n----------------------------------------------------------------------\nRan 7 tests in 0.015s\n\nOK\n"
+    },
+    {
+      "command": [
+        "D:\\Software\\Anaconda\\python.exe",
+        "C:\\Users\\24957\\Documents\\Codex\\2026-09-19\\d-vivadoprojects-lerobot-lerobot-component\\outputs\\rk7020_so101_torque_settle_20261009\\tests\\test_official_restore.py"
+      ],
+      "exit_code": 0,
+      "output": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.034s\n\nOK\n"
+    },
+    {
+      "command": [
+        "D:\\Software\\Anaconda\\python.exe",
+        "C:\\Users\\24957\\Documents\\Codex\\2026-09-19\\d-vivadoprojects-lerobot-lerobot-component\\outputs\\rk7020_so101_torque_settle_20261009\\tests\\test_model_identity.py"
+      ],
+      "exit_code": 0,
+      "output": "[UART] Opening FAKE at 115200 8N1\n[UART] Port opened\n...\n----------------------------------------------------------------------\nRan 3 tests in 0.002s\n\nOK\n"
+    },
+    {
+      "command": [
+        "D:\\Software\\Anaconda\\python.exe",
+        "C:\\Users\\24957\\Documents\\Codex\\2026-09-19\\d-vivadoprojects-lerobot-lerobot-component\\outputs\\rk7020_so101_torque_settle_20261009\\tests\\test_teleop_diagnostics.py"
+      ],
+      "exit_code": 0,
+      "output": ".C:\\Users\\24957\\Documents\\Codex\\2026-09-19\\d-vivadoprojects-lerobot-lerobot-component\\outputs\\rk7020_so101_torque_settle_20261009\\host\\diagnose_teleop.py:39: ResourceWarning: unclosed file <_io.TextIOWrapper name='C:\\\\Users\\\\24957\\\\Documents\\\\Codex\\\\2026-09-19\\\\d-vivadoprojects-lerobot-lerobot-component\\\\outputs\\\\rk7020_so101_torque_settle_20261009\\\\results\\\\r_only_check.csv' mode='r' encoding='utf-8'>\n  rows = list(csv.DictReader(path.open(encoding='utf-8')))\nResourceWarning: Enable tracemalloc to get the object allocation traceback\n..\n----------------------------------------------------------------------\nRan 3 tests in 0.024s\n\nOK\n"
+    }
+  ],
+  "mapping_sync_and_reference_reconstruction": "PASS",
+  "status": "PASS"
+}
