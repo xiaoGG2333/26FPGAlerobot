@@ -1,0 +1,12 @@
+{
+  "status": "OPERATOR_ENDPOINTS_CAPTURED",
+  "raw_closed": 2037,
+  "raw_open": 3496,
+  "closed_count": 2047,
+  "open_count": 3486,
+  "margin_counts": 10,
+  "motion_performed": false,
+  "drive_tested": false,
+  "BOOT": "UNCHANGED; requires GRIPPER_LT_RT_20261030_V1",
+  "five_axis_mapping": "UNCHANGED"
+}

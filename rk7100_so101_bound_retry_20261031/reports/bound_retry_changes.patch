@@ -1,0 +1,223 @@
+--- before/firmware/ik_iteration.c
++++ after/firmware/ik_iteration.c
+@@ -106,8 +106,8 @@
+  * configurations without imposing an absolute pitch/yaw target.
+  * ID5 does not affect this model's endpoint position and is commanded directly.
+  */
+-int ik_solve_position_roll(const double xyz[3],float roll,const float initial[5],
+- int max_steps,double tolerance,float damping,ik_step_fn step,void *context,ik_result *out)
++static int position_roll_attempt(const double xyz[3],float roll,const float initial[5],
++ int max_steps,double tolerance,float damping,ik_step_fn step,void *context,ik_result *out,int bound_aware)
+ {
+     if(!out)return 3;
+     memset(out,0,sizeof *out);out->code=3;
+@@ -134,7 +134,20 @@
+         int accepted=0;
+         for(int trial=0;trial<5&&!accepted;trial++){
+             float effective=(float)(out->energy+damping);
+-            if(step(context,out->q,e,-effective,delta)!=0)return out->code=2;
++            unsigned frozen=0;
++            for(int resolve=0;resolve<5;resolve++) {
++                e[5]=(float)frozen;
++                if(step(context,out->q,e,-effective,delta)!=0)return out->code=2;
++                unsigned next=frozen;
++                for(int i=0;i<4;i++) {
++                    if(!isfinite(delta[i]))return out->code=3;
++                    const so101_joint_map *m=&so101_right_joints[i];
++                    if(bound_aware && ((out->q[i]<=m->q_min+1e-6f && delta[i]<-1e-8f)||
++                       (out->q[i]>=m->q_max-1e-6f && delta[i]>1e-8f)))next|=1U<<i;
++                }
++                if(next==frozen)break;
++                frozen=next;
++            }
+             double largest=0;
+             for(int i=0;i<4;i++){if(!isfinite(delta[i]))return out->code=3;if(fabs(delta[i])>largest)largest=fabs(delta[i]);}
+             double scale=largest>.08?.08/largest:1.;
+@@ -156,3 +169,54 @@
+     }
+     return out->code;
+ }
++
++int ik_solve_position_roll(const double xyz[3],float roll,const float initial[5],int max_steps,
++    double tolerance,float damping,ik_step_fn step,void *context,ik_result *out)
++{return position_roll_attempt(xyz,roll,initial,max_steps,tolerance,damping,step,context,out,0);}
++
++/* A fixed shared call budget bounds all initial-seed and fallback work. */
++typedef struct {ik_step_fn step;void *context;unsigned calls;int exhausted;} bounded_step_context;
++static int bounded_step(void *context,const float q[5],const float e[6],float lambda,float delta[5])
++{
++    bounded_step_context *b=(bounded_step_context *)context;
++    if(b->calls>=600U){b->exhausted=1;return 1;}
++    b->calls++;
++    return b->step(b->context,q,e,lambda,delta);
++}
++static double seed_distance(const float q[5],const float actual[5])
++{
++    double distance=0;
++    for(int i=0;i<4;i++){
++        double range=so101_right_joints[i].q_max-so101_right_joints[i].q_min;
++        double difference=(q[i]-actual[i])/range;distance+=difference*difference;
++    }
++    return distance;
++}
++int ik_solve_position_roll_retry(const double xyz[3],float roll,const float initial[5],int max_steps,
++    double tolerance,float damping,ik_step_fn step,void *context,ik_result *out)
++{
++    if(!step)return ik_solve_position_roll(xyz,roll,initial,max_steps,tolerance,damping,step,context,out);
++    bounded_step_context budget={step,context,0,0};
++    int rc=ik_solve_position_roll(xyz,roll,initial,max_steps,tolerance,damping,bounded_step,&budget,out);
++    if(budget.exhausted){out->code=1;return 1;}
++    if(rc!=1)return rc; /* Never retry hardware/numeric/invalid-target errors. */
++    int total=out->iterations,have_best=0;ik_result best=*out;
++    double score=1e300;
++    for(int direction=-1;direction<=1;direction+=2){
++        float seed[5];memcpy(seed,initial,sizeof seed);
++        for(int i=0;i<4;i++)seed[i]=fmaxf(so101_right_joints[i].q_min,fminf(so101_right_joints[i].q_max,seed[i]));
++        const float bias=(float)(direction*PI/18.); /* 10 degrees, computation only. */
++        seed[2]=fmaxf(so101_right_joints[2].q_min,fminf(so101_right_joints[2].q_max,seed[2]+bias));
++        seed[3]=fmaxf(so101_right_joints[3].q_min,fminf(so101_right_joints[3].q_max,seed[3]-bias));
++        if(fabsf(seed[2]-initial[2])+fabsf(seed[3]-initial[3])<1e-5f)continue;
++        ik_result trial;
++        rc=position_roll_attempt(xyz,roll,seed,max_steps<80?max_steps:80,tolerance,damping,bounded_step,&budget,&trial,1);
++        total+=trial.iterations;
++        if(budget.exhausted)break;
++        if(rc==2||rc==3||rc==4){*out=trial;out->iterations=total;return rc;}
++        if(!rc){double d=seed_distance(trial.q,initial);if(!have_best||d<score){best=trial;score=d;have_best=1;}}
++        else if(!have_best&&trial.energy<best.energy)best=trial;
++    }
++    *out=best;out->iterations=total;out->code=have_best?0:1;
++    return out->code;
++}
+--- before/firmware/ik_iteration.h
++++ after/firmware/ik_iteration.h
+@@ -1,7 +1,7 @@
+ #ifndef IK_ITERATION_H
+ #define IK_ITERATION_H
+ /* Port of create_so101_5dof, angle_axis and HWSolver.solve, mask = all ones.
+-   No servo control, line search or joint-limit enforcement. SI units. */
++   Legacy full-pose entry is preserved; position task has bounded LM. SI units. */
+ typedef int (*ik_step_fn)(void *, const float[5], const float[6], float, float[5]);
+ typedef void (*ik_trace_fn)(void *, int, const float[5], double, double, double, float);
+ typedef struct {
+@@ -20,4 +20,6 @@
+  * Matching PL negative-lambda task mode is required. Rotation error reports
+  * ID5 task error, not full end-effector orientation error. */
+ int ik_solve_position_roll(const double[3],float,const float[5],int,double,float,ik_step_fn,void *,ik_result *);
++/* Bounded position task with up to two numerical-only nearby seed retries. */
++int ik_solve_position_roll_retry(const double[3],float,const float[5],int,double,float,ik_step_fn,void *,ik_result *);
+ #endif
+--- before/firmware/pose_uart.inc
++++ after/firmware/pose_uart.inc
+@@ -49,7 +49,7 @@
+     if(n>=1&&!strcmp(tokens[0],"CAL1")){cal_command(tokens,n);return;}
+     if(n==1&&!strcmp(tokens[0],"HELLO")){
+         if(calibration.active)cal_keep(&calibration);
+-        send_text("POSE1 READY RK7020 RIGHT_ARM ARM_CONTROL_V1 AUTOCAL_BRIDGE_V1 ATOMIC_HOLD BUS_TRACE_V1 SO101_135MM LIMITED_DRIVE_V1 MANUAL_OUT_HOLD_V2 TRACKING_DIAG_V1 BUTTONS_INPUT_V1 STICK_INPUT_V1 COORDINATED_MANUAL_V1 OFFICIAL_R12254604_V1 MANUAL_REFERENCE_20261009_V1 MOTOR_STAGE_DIAG_V1 JOG_WRIST_20DEG_V1 TORQUE_SETTLE_150MS_V1 SYNC_TARGET_HOLD_V1 LIMITS600_TEMP1500_20261011_V1 BOARD_RK7100_F_V1 CHIP_THERMAL1_V1 OPT125_SCURVE_20261018_V1 POSITION_ROLL_IK_20261019_V1 GRIPPER_LT_RT_20261030_V1 SERVO_SPEED200_2000_20261031_V1\r\n");return;
++        send_text("POSE1 READY RK7020 RIGHT_ARM ARM_CONTROL_V1 AUTOCAL_BRIDGE_V1 ATOMIC_HOLD BUS_TRACE_V1 SO101_135MM LIMITED_DRIVE_V1 MANUAL_OUT_HOLD_V2 TRACKING_DIAG_V1 BUTTONS_INPUT_V1 STICK_INPUT_V1 COORDINATED_MANUAL_V1 OFFICIAL_R12254604_V1 MANUAL_REFERENCE_20261009_V1 MOTOR_STAGE_DIAG_V1 JOG_WRIST_20DEG_V1 TORQUE_SETTLE_150MS_V1 SYNC_TARGET_HOLD_V1 LIMITS600_TEMP1500_20261011_V1 BOARD_RK7100_F_V1 CHIP_THERMAL1_V1 OPT125_SCURVE_20261018_V1 POSITION_ROLL_IK_20261019_V1 GRIPPER_LT_RT_20261030_V1 SERVO_SPEED200_2000_20261031_V1 BOUND_RETRY_IK_20261031_V1\r\n");return;
+     }
+     if(calibration.active||calibration.fault){cal_error(0,CAL_BUSY);return;}
+     if(n>=1&&!strcmp(tokens[0],"GRIP1")){grip_command(tokens,n);return;}
+@@ -72,7 +72,7 @@
+         servo_command(tokens,n);return;
+     }
+     if(n==1 && !strcmp(tokens[0],"HELLO")){
+-        send_text("POSE1 READY RK7020 RIGHT_ARM ARM_CONTROL_V1 AUTOCAL_BRIDGE_V1 ATOMIC_HOLD BUS_TRACE_V1 SO101_135MM LIMITED_DRIVE_V1 MANUAL_OUT_HOLD_V2 TRACKING_DIAG_V1 BUTTONS_INPUT_V1 STICK_INPUT_V1 COORDINATED_MANUAL_V1 OFFICIAL_R12254604_V1 MANUAL_REFERENCE_20261009_V1 MOTOR_STAGE_DIAG_V1 JOG_WRIST_20DEG_V1 TORQUE_SETTLE_150MS_V1 SYNC_TARGET_HOLD_V1 LIMITS600_TEMP1500_20261011_V1 BOARD_RK7100_F_V1 CHIP_THERMAL1_V1 OPT125_SCURVE_20261018_V1 POSITION_ROLL_IK_20261019_V1 GRIPPER_LT_RT_20261030_V1 SERVO_SPEED200_2000_20261031_V1\r\n");return;
++        send_text("POSE1 READY RK7020 RIGHT_ARM ARM_CONTROL_V1 AUTOCAL_BRIDGE_V1 ATOMIC_HOLD BUS_TRACE_V1 SO101_135MM LIMITED_DRIVE_V1 MANUAL_OUT_HOLD_V2 TRACKING_DIAG_V1 BUTTONS_INPUT_V1 STICK_INPUT_V1 COORDINATED_MANUAL_V1 OFFICIAL_R12254604_V1 MANUAL_REFERENCE_20261009_V1 MOTOR_STAGE_DIAG_V1 JOG_WRIST_20DEG_V1 TORQUE_SETTLE_150MS_V1 SYNC_TARGET_HOLD_V1 LIMITS600_TEMP1500_20261011_V1 BOARD_RK7100_F_V1 CHIP_THERMAL1_V1 OPT125_SCURVE_20261018_V1 POSITION_ROLL_IK_20261019_V1 GRIPPER_LT_RT_20261030_V1 SERVO_SPEED200_2000_20261031_V1 BOUND_RETRY_IK_20261031_V1\r\n");return;
+     }
+     unsigned long seq=0,core;
+     if(n<2 || !pose_uint(tokens[1],&seq)){pose_error(0,"SEQUENCE");return;}
+@@ -112,7 +112,7 @@
+        Keep frame shape and endpoint/servo fault policies unchanged. */
+     double xyz[3]={v[0],v[1],v[2]};
+     ik_result result;int selected=(int)core;
+-    int code=ik_solve_position_roll(xyz,v[3],pose_q,200,1e-8,.01f,arm_step,&selected,&result);
++    int code=ik_solve_position_roll_retry(xyz,v[3],pose_q,200,1e-8,.01f,arm_step,&selected,&result);
+     if(code==0)for(int i=0;i<5;++i)if(result.q[i]<so101_right_joints[i].q_min||result.q[i]>so101_right_joints[i].q_max)code=4;
+     if(code==0){int preview[5];if(so101_q_to_counts(result.q,preview)!=0)code=4;}
+     if(code==0 && !chip_motion_allowed()){chip_thermal_emit(seq);if(arm.active)arm_fault(&arm,ARM_CHIP_THERMAL);pose_error(seq,"CHIP_THERMAL_HOLD");return;}
+@@ -131,7 +131,7 @@
+ static void pose_server(void)
+ {
+     char line[256];unsigned int used=0;int discard=0;u8 ch;
+-    send_text("POSE1 READY RK7020 RIGHT_ARM ARM_CONTROL_V1 AUTOCAL_BRIDGE_V1 ATOMIC_HOLD BUS_TRACE_V1 SO101_135MM LIMITED_DRIVE_V1 MANUAL_OUT_HOLD_V2 TRACKING_DIAG_V1 BUTTONS_INPUT_V1 STICK_INPUT_V1 COORDINATED_MANUAL_V1 OFFICIAL_R12254604_V1 MANUAL_REFERENCE_20261009_V1 MOTOR_STAGE_DIAG_V1 JOG_WRIST_20DEG_V1 TORQUE_SETTLE_150MS_V1 SYNC_TARGET_HOLD_V1 LIMITS600_TEMP1500_20261011_V1 BOARD_RK7100_F_V1 CHIP_THERMAL1_V1 OPT125_SCURVE_20261018_V1 POSITION_ROLL_IK_20261019_V1 GRIPPER_LT_RT_20261030_V1 SERVO_SPEED200_2000_20261031_V1\r\n");
++    send_text("POSE1 READY RK7020 RIGHT_ARM ARM_CONTROL_V1 AUTOCAL_BRIDGE_V1 ATOMIC_HOLD BUS_TRACE_V1 SO101_135MM LIMITED_DRIVE_V1 MANUAL_OUT_HOLD_V2 TRACKING_DIAG_V1 BUTTONS_INPUT_V1 STICK_INPUT_V1 COORDINATED_MANUAL_V1 OFFICIAL_R12254604_V1 MANUAL_REFERENCE_20261009_V1 MOTOR_STAGE_DIAG_V1 JOG_WRIST_20DEG_V1 TORQUE_SETTLE_150MS_V1 SYNC_TARGET_HOLD_V1 LIMITS600_TEMP1500_20261011_V1 BOARD_RK7100_F_V1 CHIP_THERMAL1_V1 OPT125_SCURVE_20261018_V1 POSITION_ROLL_IK_20261019_V1 GRIPPER_LT_RT_20261030_V1 SERVO_SPEED200_2000_20261031_V1 BOUND_RETRY_IK_20261031_V1\r\n");
+     for(;;){
+         chip_thermal_service();
+         cal_service();
+--- before/sources/geometry_regression.cpp
++++ after/sources/geometry_regression.cpp
+@@ -117,6 +117,48 @@
+     return true;
+ }
+ 
++
++static bool bound_mask_regression(){
++ const float q[5]={.2f,-.4f,.5f,.1f,.3f};
++ for(unsigned mask=0;mask<16;mask++){
++  float e[6]={.01f,-.02f,.03f,0,0,(float)mask},d[5];
++  double J[3][5],A[5][6]={};
++  for(int j=0;j<5;j++){
++   float qp[5],qm[5];for(int i=0;i<5;i++)qp[i]=qm[i]=q[i];qp[j]+=.001f;qm[j]-=.001f;
++   double P[3],M[3],R[3][3];ref_fk(qp,P,R);ref_fk(qm,M,R);
++   for(int k=0;k<3;k++)J[k][j]=(j==4||(mask&(1U<<j)))?0:(P[k]-M[k])/(double(qp[j])-qm[j]);
++  }
++  for(int i=0;i<5;i++){
++   for(int j=0;j<5;j++)for(int k=0;k<3;k++)A[i][j]+=J[k][i]*J[k][j];
++   A[i][i]+=.01+(i==4?1:0);
++   for(int k=0;k<3;k++)A[i][5]+=J[k][i]*e[k];
++  }
++  for(int i=0;i<5;i++){
++   double v=A[i][i];for(int j=i;j<6;j++)A[i][j]/=v;
++   for(int k=0;k<5;k++)if(k!=i){double f=A[k][i];for(int j=i;j<6;j++)A[k][j]-=f*A[i][j];}
++  }
++  if(production_hw(0,q,e,-.01f,d))return false;
++  for(int i=0;i<5;i++)if(!near(d[i],A[i][5],3e-6,"active mask reduced LM"))return false;
++  for(int i=0;i<4;i++)if(mask&(1U<<i))if(!near(d[i],0,1e-8,"frozen direction zero"))return false;
++ }
++ puts("ACTIVE MASK PASS all16 constrained normal-equation cases");return true;
++}
++
++
++static bool retry_hardware_regression(){
++ {double xyz[3]={0.18591956486130806,0.14313863188247419,0.025836083871495656};float seed[5]={0.691883031f,-2.02178668f,-0.0777612369f,0.451941409f,-1.93406462f};ik_result out;production_calls=0;
++ int rc=ik_solve_position_roll_retry(xyz,-1.55499835f,seed,200,1e-8,.01f,production_hw,0,&out);
++ printf("RETRY HW case=0 rc=%d iter=%d calls=%d error=%.9g\n",rc,out.iterations,production_calls,out.position_error);
++ if(rc||out.position_error>=sqrt(2e-8)||production_calls>600)return false;
++ }
++ {double xyz[3]={0.10252188693030187,0.089838827774129257,0.095112058557260293};float seed[5]={1.37017067f,-2.02178668f,1.59122956f,1.29888367f,-0.298403683f};ik_result out;production_calls=0;
++ int rc=ik_solve_position_roll_retry(xyz,0.37824076f,seed,200,1e-8,.01f,production_hw,0,&out);
++ printf("RETRY HW case=1 rc=%d iter=%d calls=%d error=%.9g\n",rc,out.iterations,production_calls,out.position_error);
++ if(rc||out.position_error>=sqrt(2e-8)||production_calls>600)return false;
++ }
++ return true;
++}
++
+ int main(){
+     bool ok=true;
+     const float cases[4][5]={{0,0,0,0,0},{.1f,-.2f,.3f,-.1f,.15f},{-.25f,.2f,-.35f,.15f,-.2f},{.8f,-.6f,1.f,-.7f,.9f}};
+@@ -151,5 +193,7 @@
+     ok=converge(cases[2],cases[0])&&ok;
+     ok=production_regression()&&ok;
+     ok=position_roll_regression()&&ok;
++    ok=bound_mask_regression()&&ok;
++    ok=retry_hardware_regression()&&ok;
+     return ok?0:1;
+ }
+--- before/sources/lm_solver_so101.hpp
++++ after/sources/lm_solver_so101.hpp
+@@ -518,6 +518,15 @@
+             #pragma HLS UNROLL
+             J[3][j] = (j==4) ? T(1) : T(0);
+             J[4][j] = T(0); J[5][j] = T(0);
++            // Position-task e5 is reserved for the PS active-bound bitmask.
++            // Legacy positive-lambda full-pose behavior and AXI layout stay intact.
++            unsigned frozen=(error[5]>=T(0)&&error[5]<=T(15)) ? (unsigned)error[5] : 0U;
++            if(j<4 && (frozen & (1U<<j))) {
++                for(int k=0;k<MAX_M;k++) {
++                    #pragma HLS UNROLL
++                    J[k][j]=T(0);
++                }
++            }
+         }
+     }
+ 

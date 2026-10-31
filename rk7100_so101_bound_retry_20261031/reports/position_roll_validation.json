@@ -1,0 +1,90 @@
+{
+  "status": "BUILD_AND_OFFLINE_VALIDATED",
+  "on_board": "NOT_RUN",
+  "motion_performed": false,
+  "task": "XYZ position + direct ID5; pitch and yaw free",
+  "preference": "local warm start, damped minimum-norm increments; no global closest-solution guarantee",
+  "clock_mhz": 125,
+  "setup_wns_ns": 0.586,
+  "hold_whs_ns": 0.041,
+  "AXI_register_ABI": "UNCHANGED",
+  "original_full_pose_self_test": "UNCHANGED/PASS",
+  "host_tests": 28,
+  "HLS_C_simulation": "PASS",
+  "HLS_RTL_cosimulation": "PASS",
+  "native_tests": [
+    {
+      "name": "curve",
+      "status": "PASS",
+      "output": "PASS continuous five-axis limits, synchronized endpoint, C2 replan, rejected goal transaction, 200 random motions\n"
+    },
+    {
+      "name": "control",
+      "status": "PASS",
+      "output": "PASS S-curve controller, final goal hold/torque, watchdog/comms/range freeze, resume, unchanged servo temperature filter, STOP/startup off\n"
+    },
+    {
+      "name": "chip",
+      "status": "PASS",
+      "output": "PASS chip >60C strict >1500ms, transient filter, <55C recovery, sensor/OT immediate fault, timer wrap\n"
+    },
+    {
+      "name": "adaptive",
+      "status": "PASS",
+      "output": "PASS adaptive damping convergence, monotonic acceptance, uphill retry rejection/unchanged seed, zero-error no-step\n"
+    }
+  ],
+  "log_reference_replay": {
+    "status": "PASS",
+    "backend": "independent finite-difference task Jacobian; not physical hardware",
+    "cases": [
+      {
+        "old_status": "CONVERGED",
+        "new_code": 0,
+        "count": 526
+      },
+      {
+        "old_status": "JOINT_LIMIT",
+        "new_code": 0,
+        "count": 171
+      },
+      {
+        "old_status": "JOINT_LIMIT",
+        "new_code": 1,
+        "count": 69
+      },
+      {
+        "old_status": "MAX_ITER",
+        "new_code": 0,
+        "count": 193
+      },
+      {
+        "old_status": "MAX_ITER",
+        "new_code": 1,
+        "count": 10
+      }
+    ],
+    "success_iterations_min": 2,
+    "success_iterations_max": 16,
+    "motion_performed": false
+  },
+  "new_boot_sha256": "abbbca249a0b6b636d11530ce882e2e8b47dc4081d2a83e6220806ba6a687b41",
+  "source_changes": [
+    "firmware/ik_iteration.c",
+    "firmware/ik_iteration.h",
+    "firmware/pose_uart.inc",
+    "host/right_joycon.py",
+    "sources/geometry_regression.cpp",
+    "sources/lm_solver_so101.hpp"
+  ],
+  "protected_files_unchanged": {
+    "firmware/arm_control.c": "622e919277edb306316833edbf9069af1e800fbbfb3dd8feb168cf81a7123e58",
+    "firmware/online_curve.h": "5627278cd44d9fff4a7ab2ffa1991f2588b973de15017049fe1eb8fe0ab6e25c",
+    "firmware/servo_mapping.h": "a4ff1cd3ae77e3d724a2975be9b6509ceaa3287c39538c210826aa0ba77d6e49",
+    "firmware/motor_control.c": "2d654e45d198e7f602210833bb02e30f13df5acc38e45e1c1ef5874b8d548d98",
+    "firmware/st3215.c": "d7a47456696e874dae36d0c1b4b9acee92480c2a1b0016d2fdcb6088d39a1829",
+    "firmware/chip_thermal.inc": "7d405a49636fe791c98005f233e68cfa2cee711f061a603ee8448d5a755f3b37",
+    "host/right_mapping.json": "d53a575beb426ee24603af4051926d775688662136bc6db5582685c321c5edc7",
+    "host/xbox_input.py": "8698280ec7e7a5c9afd18e69425a58c78c6918f20e4c1c7a786fe0bde3ddd892"
+  }
+}

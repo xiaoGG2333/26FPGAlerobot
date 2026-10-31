@@ -1,0 +1,68 @@
+{
+  "build_status": "PASS",
+  "on_board_status": "NOT_RUN",
+  "motion_performed": false,
+  "clock_mhz": 125,
+  "resources": {
+    "Slice LUTs": {
+      "used": 30411,
+      "total": 277400,
+      "percent": 10.96
+    },
+    "Slice Registers": {
+      "used": 37227,
+      "total": 554800,
+      "percent": 6.71
+    },
+    "Block RAM Tile": {
+      "used": 4,
+      "total": 755,
+      "percent": 0.53
+    },
+    "DSPs": {
+      "used": 190,
+      "total": 2020,
+      "percent": 9.41
+    }
+  },
+  "setup_wns_ns": 0.482,
+  "hold_whs_ns": 0.034,
+  "partition": "PS full iteration and trajectory; PL single float LM step",
+  "iteration_timing_added": false,
+  "tests": {
+    "native": [
+      {
+        "name": "curve",
+        "code": 0,
+        "output": "PASS continuous five-axis limits, synchronized endpoint, C2 replan, rejected goal transaction, 200 random motions\n"
+      },
+      {
+        "name": "control",
+        "code": 0,
+        "output": "PASS S-curve controller, final goal hold/torque, watchdog/comms/range freeze, resume, unchanged servo temperature filter, STOP/startup off\n"
+      },
+      {
+        "name": "chip",
+        "code": 0,
+        "output": "PASS chip >60C strict >1500ms, transient filter, <55C recovery, sensor/OT immediate fault, timer wrap\n"
+      },
+      {
+        "name": "adaptive",
+        "code": 0,
+        "output": "PASS adaptive damping convergence, monotonic acceptance, uphill retry rejection/unchanged seed, zero-error no-step\n"
+      }
+    ],
+    "active_host": 56,
+    "legacy_host": "existing failures compared with baseline; no new failures",
+    "geometry_checks": 180,
+    "legacy_full_iterations": 2,
+    "production_adaptive_iterations": 3,
+    "rtl_cosim": "PASS",
+    "autonomous_thermal_and_xadc": "PASS",
+    "AXI_register_compatibility": "PASS"
+  },
+  "chip_policy": ">60C continuous >1500ms, <55C recovery plus explicit resume; abnormal-only periodic push; diagnostic THERMAL1 available",
+  "trajectory": "PS online common-duration bounded quintic Bezier, C2 replans; not Ruckig time-optimal",
+  "old_boot_sha256": "2d49f0216821ccb87af5d0fe404f38957a3ea8a48b5db7f610c5a35ccaebfcd0",
+  "new_boot_sha256": "a840bddddd532734c03032f05b6436927bad994945f42e3e6c857262a93f38e0"
+}

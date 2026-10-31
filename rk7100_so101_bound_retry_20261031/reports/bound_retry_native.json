@@ -1,0 +1,200 @@
+{
+  "backend": "native finite-difference Jacobian reference; not board execution",
+  "cases": 1878,
+  "transitions": [
+    {
+      "group": "historical",
+      "old_code": 0,
+      "new_code": 0,
+      "count": 890
+    },
+    {
+      "group": "historical",
+      "old_code": 1,
+      "new_code": 1,
+      "count": 79
+    },
+    {
+      "group": "latest_log_approx_seed",
+      "old_code": 0,
+      "new_code": 0,
+      "count": 357
+    },
+    {
+      "group": "latest_log_approx_seed",
+      "old_code": 1,
+      "new_code": 1,
+      "count": 302
+    },
+    {
+      "group": "reachable_synthetic",
+      "old_code": 0,
+      "new_code": 0,
+      "count": 238
+    },
+    {
+      "group": "reachable_synthetic",
+      "old_code": 1,
+      "new_code": 0,
+      "count": 7
+    },
+    {
+      "group": "reachable_synthetic",
+      "old_code": 1,
+      "new_code": 1,
+      "count": 5
+    }
+  ],
+  "improved": [
+    {
+      "case": 1637,
+      "group": "reachable_synthetic",
+      "xyz": [
+        0.18591956486130806,
+        0.1431386318824742,
+        0.025836083871495656
+      ],
+      "roll": -1.5549983456184233,
+      "seed": [
+        0.6918830310004498,
+        -2.02178667843,
+        -0.077761236890731,
+        0.45194140926290105,
+        -1.9340646202146492
+      ],
+      "old_code": 1,
+      "new_code": 0,
+      "new_error": 1.7267274971360008e-07,
+      "new_iterations": 132
+    },
+    {
+      "case": 1681,
+      "group": "reachable_synthetic",
+      "xyz": [
+        0.10252188693030187,
+        0.08983882777412926,
+        0.09511205855726029
+      ],
+      "roll": 0.3782407603922491,
+      "seed": [
+        1.3701706656842891,
+        -2.02178667843,
+        1.5912295553189761,
+        1.298883671607938,
+        -0.29840368277237683
+      ],
+      "old_code": 1,
+      "new_code": 0,
+      "new_error": 0.00011671593064302577,
+      "new_iterations": 242
+    },
+    {
+      "case": 1697,
+      "group": "reachable_synthetic",
+      "xyz": [
+        0.11562645907055726,
+        -0.03457936048488462,
+        0.0493896550323289
+      ],
+      "roll": -0.4264109975922996,
+      "seed": [
+        -0.355036507798542,
+        -2.02178667843,
+        1.5393146991690478,
+        1.112731221371897,
+        -0.1104748030119751
+      ],
+      "old_code": 1,
+      "new_code": 0,
+      "new_error": 0.00010652044245603812,
+      "new_iterations": 234
+    },
+    {
+      "case": 1760,
+      "group": "reachable_synthetic",
+      "xyz": [
+        0.20290121042906578,
+        -0.25868708445645944,
+        0.041677281593331617
+      ],
+      "roll": -2.9010827157791406,
+      "seed": [
+        1.45267980613,
+        1.0986250728993854,
+        -0.3423599516934289,
+        0.14168322401248912,
+        -2.6622016620005327
+      ],
+      "old_code": 1,
+      "new_code": 0,
+      "new_error": 9.335379115317802e-07,
+      "new_iterations": 320
+    },
+    {
+      "case": 1796,
+      "group": "reachable_synthetic",
+      "xyz": [
+        0.006326644960539401,
+        0.0195753778882763,
+        0.40733448230723
+      ],
+      "roll": 0.9168991230778518,
+      "seed": [
+        1.45267980613,
+        -0.9046830697873575,
+        -0.44916628482887444,
+        -0.6550830600343838,
+        0.6687715663192672
+      ],
+      "old_code": 1,
+      "new_code": 0,
+      "new_error": 7.154912393338439e-06,
+      "new_iterations": 183
+    },
+    {
+      "case": 1824,
+      "group": "reachable_synthetic",
+      "xyz": [
+        0.02785389510723564,
+        -0.027825979167341218,
+        0.09272460151555585
+      ],
+      "roll": -2.2069352663645416,
+      "seed": [
+        0.6941935848643095,
+        1.2506309920107126,
+        1.79475752183,
+        -0.01097637950480379,
+        -1.5271727231131753
+      ],
+      "old_code": 1,
+      "new_code": 0,
+      "new_error": 3.5815976423073325e-05,
+      "new_iterations": 234
+    },
+    {
+      "case": 1826,
+      "group": "reachable_synthetic",
+      "xyz": [
+        0.18815946753004167,
+        -0.16342325767013854,
+        0.2676394726482165
+      ],
+      "roll": -2.019114692708786,
+      "seed": [
+        -1.0298145347122027,
+        0.17831784513770343,
+        1.79475752183,
+        1.81623325286,
+        -1.542649511372348
+      ],
+      "old_code": 1,
+      "new_code": 0,
+      "new_error": 3.0083134374942873e-07,
+      "new_iterations": 291
+    }
+  ],
+  "regressed": [],
+  "guard_tests": "PASS hardware abort, invalid roll no calls, bounded failed retries",
+  "motion_performed": false
+}

@@ -1,0 +1,31 @@
+{
+  "status": "PASS_BUILD_AND_OFFLINE_TESTS",
+  "board_execution": "NOT_RUN",
+  "motion_performed": false,
+  "solver_order": "original LM first; then up to two nearby seeds with active-bound reduced LM",
+  "retry_seed_degrees": [
+    -10,
+    10
+  ],
+  "retry_iteration_limit_each": 80,
+  "shared_hardware_call_budget": 600,
+  "native_cases": 1878,
+  "native_improved": 7,
+  "native_regressed": 0,
+  "c_simulation": "PASS including all16 masks and two retry cases",
+  "rtl_cosimulation": "PASS",
+  "clock_mhz": 125,
+  "setup_wns_ns": 0.416,
+  "hold_whs_ns": 0.056,
+  "changed_production_files": [
+    "firmware/ik_iteration.c",
+    "firmware/ik_iteration.h",
+    "firmware/pose_uart.inc",
+    "sources/lm_solver_so101.hpp"
+  ],
+  "preserved": "all servo/trajectory/encoder/thermal/gripper/host files hash verified",
+  "host_checks": {
+    "tests/test_ik_failure_continue.py": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.108s\n\nOK\n",
+    "tests/test_gripper_host.py": "PASS LT close, RT open, both/release HOLD, trigger deadzone, no stick/pose interference\nPASS unverified calibration rejection, independent command protocol and communication-fault propagation without STOP\nPASS end-to-end trigger commands while five axes idle, both/release hold and global STOP on exit\n"
+  }
+}

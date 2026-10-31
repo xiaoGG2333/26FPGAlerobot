@@ -1,0 +1,325 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
+| Date         : Sat Oct 31 20:21:22 2026
+| Host         : Zouyucen233 running 64-bit major release  (build 9200)
+| Command      : report_timing_summary -file D:/VivadoProjects/RK7020_So_101/build_bound_retry/hardware_export/timing.rpt
+| Design       : design_1_wrapper
+| Device       : 7z100-ffg900
+| Speed File   : -2  PRODUCTION 1.12 2019-11-22
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Summary Report
+
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+  Ignore I/O Paths                           :  No
+  Timing Early Launch at Borrowing Latches   :  No
+  Borrow Time for Max Delay Exceptions       :  Yes
+  Merge Timing Exceptions                    :  Yes
+  Inter-SLR Compensation                     :  Conservative
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+------------------------------------------------------------------------------------------------
+| Report Methodology
+| ------------------
+------------------------------------------------------------------------------------------------
+
+No report available as report_methodology has not been run prior. Run report_methodology on the current design for the summary of methodology violations.
+
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock (0)
+2. checking constant_clock (0)
+3. checking pulse_width_clock (0)
+4. checking unconstrained_internal_endpoints (0)
+5. checking no_input_delay (1)
+6. checking no_output_delay (1)
+7. checking multiple_clock (0)
+8. checking generated_clocks (0)
+9. checking loops (0)
+10. checking partial_input_delay (0)
+11. checking partial_output_delay (0)
+12. checking latch_loops (0)
+
+1. checking no_clock (0)
+------------------------
+ There are 0 register/latch pins with no clock.
+
+
+2. checking constant_clock (0)
+------------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock (0)
+---------------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints (0)
+------------------------------------------------
+ There are 0 pins that are not constrained for maximum delay.
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay (1)
+------------------------------
+ There are 0 input ports with no input delay specified.
+
+ There is 1 input port with no input delay but user has a false path constraint. (MEDIUM)
+
+
+6. checking no_output_delay (1)
+-------------------------------
+ There are 0 ports with no output delay specified.
+
+ There is 1 port with no output delay but user has a false path constraint (MEDIUM)
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock (0)
+------------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks (0)
+--------------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops (0)
+---------------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay (0)
+------------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay (0)
+-------------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops (0)
+----------------------------
+ There are 0 combinational latch loops in the design through latch input
+
+
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+      0.416        0.000                      0                69912        0.056        0.000                      0                69912        3.232        0.000                       0                 38269  
+
+
+All user specified timing constraints are met.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+Clock       Waveform(ns)         Period(ns)      Frequency(MHz)
+-----       ------------         ----------      --------------
+clk_fpga_0  {0.000 4.000}        8.000           125.000         
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+clk_fpga_0          0.416        0.000                      0                69912        0.056        0.000                      0                69912        3.232        0.000                       0                 38269  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Timing Details
+| --------------
+------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  clk_fpga_0
+  To Clock:  clk_fpga_0
+
+Setup :            0  Failing Endpoints,  Worst Slack        0.416ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.056ns,  Total Violation        0.000ns
+PW    :            0  Failing Endpoints,  Worst Slack        3.232ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.416ns  (required time - arrival time)
+  Source:                 design_1_i/xf_solver_lm_so101_1/inst/grp_lm_solve_step_so101_float_s_fu_360/ap_CS_fsm_reg[2]/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            design_1_i/xf_solver_lm_so101_1/inst/grp_lm_solve_step_so101_float_s_fu_360/faddfsub_32ns_32ns_32_7_full_dsp_1_U196/din0_buf1_reg[0]/D
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            8.000ns  (clk_fpga_0 rise@8.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        7.120ns  (logic 0.266ns (3.736%)  route 6.854ns (96.264%))
+  Logic Levels:           1  (LUT5=1)
+  Clock Path Skew:        -0.372ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.588ns = ( 10.588 - 8.000 ) 
+    Source Clock Delay      (SCD):    3.112ns
+    Clock Pessimism Removal (CPR):    0.152ns
+  Clock Uncertainty:      0.125ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.240ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  design_1_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.393     1.393    design_1_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.093     1.486 r  design_1_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=38421, routed)       1.626     3.112    design_1_i/xf_solver_lm_so101_1/inst/grp_lm_solve_step_so101_float_s_fu_360/ap_clk
+    SLICE_X41Y263        FDRE                                         r  design_1_i/xf_solver_lm_so101_1/inst/grp_lm_solve_step_so101_float_s_fu_360/ap_CS_fsm_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X41Y263        FDRE (Prop_fdre_C_Q)         0.223     3.335 r  design_1_i/xf_solver_lm_so101_1/inst/grp_lm_solve_step_so101_float_s_fu_360/ap_CS_fsm_reg[2]/Q
+                         net (fo=2489, routed)        6.854    10.189    design_1_i/xf_solver_lm_so101_1/inst/grp_lm_solve_step_so101_float_s_fu_360/grp_compute_fk_jacobian_so101_float_s_fu_415/grp_compute_fk_jacobian_so101_float_Pipeline_compute_jacobian_cols_fu_550/din1_buf1_reg[31]_4[0]
+    SLICE_X99Y244        LUT5 (Prop_lut5_I1_O)        0.043    10.232 r  design_1_i/xf_solver_lm_so101_1/inst/grp_lm_solve_step_so101_float_s_fu_360/grp_compute_fk_jacobian_so101_float_s_fu_415/grp_compute_fk_jacobian_so101_float_Pipeline_compute_jacobian_cols_fu_550/din0_buf1[0]_i_1__10/O
+                         net (fo=1, routed)           0.000    10.232    design_1_i/xf_solver_lm_so101_1/inst/grp_lm_solve_step_so101_float_s_fu_360/faddfsub_32ns_32ns_32_7_full_dsp_1_U196/grp_fu_559_p0[0]
+    SLICE_X99Y244        FDRE                                         r  design_1_i/xf_solver_lm_so101_1/inst/grp_lm_solve_step_so101_float_s_fu_360/faddfsub_32ns_32ns_32_7_full_dsp_1_U196/din0_buf1_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                      8.000     8.000 r  
+    PS7_X0Y0             PS7                          0.000     8.000 r  design_1_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           1.294     9.294    design_1_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.083     9.377 r  design_1_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=38421, routed)       1.211    10.588    design_1_i/xf_solver_lm_so101_1/inst/grp_lm_solve_step_so101_float_s_fu_360/faddfsub_32ns_32ns_32_7_full_dsp_1_U196/ap_clk
+    SLICE_X99Y244        FDRE                                         r  design_1_i/xf_solver_lm_so101_1/inst/grp_lm_solve_step_so101_float_s_fu_360/faddfsub_32ns_32ns_32_7_full_dsp_1_U196/din0_buf1_reg[0]/C
+                         clock pessimism              0.152    10.740    
+                         clock uncertainty           -0.125    10.615    
+    SLICE_X99Y244        FDRE (Setup_fdre_C_D)        0.034    10.649    design_1_i/xf_solver_lm_so101_1/inst/grp_lm_solve_step_so101_float_s_fu_360/faddfsub_32ns_32ns_32_7_full_dsp_1_U196/din0_buf1_reg[0]
+  -------------------------------------------------------------------
+                         required time                         10.649    
+                         arrival time                         -10.232    
+  -------------------------------------------------------------------
+                         slack                                  0.416    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.056ns  (arrival time - required time)
+  Source:                 design_1_i/xf_solver_lm_so101_1/inst/grp_lm_solve_step_so101_float_s_fu_360/grp_compute_fk_jacobian_so101_float_s_fu_415/grp_compute_fk_jacobian_so101_float_Pipeline_compute_jacobian_cols_fu_550/select_ln467_1_reg_969_reg[31]/C
+                            (rising edge-triggered cell FDRE clocked by clk_fpga_0  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            design_1_i/xf_solver_lm_so101_1/inst/grp_lm_solve_step_so101_float_s_fu_360/grp_compute_fk_jacobian_so101_float_s_fu_415/grp_compute_fk_jacobian_so101_float_Pipeline_compute_jacobian_cols_fu_550/select_ln467_1_reg_969_pp0_iter17_reg_reg[31]_srl9/D
+                            (rising edge-triggered cell SRL16E clocked by clk_fpga_0  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             clk_fpga_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_fpga_0 rise@0.000ns - clk_fpga_0 rise@0.000ns)
+  Data Path Delay:        0.185ns  (logic 0.091ns (49.282%)  route 0.094ns (50.718%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.011ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.774ns
+    Source Clock Delay      (SCD):    1.482ns
+    Clock Pessimism Removal (CPR):    0.281ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  design_1_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.763     0.763    design_1_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.789 r  design_1_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=38421, routed)       0.693     1.482    design_1_i/xf_solver_lm_so101_1/inst/grp_lm_solve_step_so101_float_s_fu_360/grp_compute_fk_jacobian_so101_float_s_fu_415/grp_compute_fk_jacobian_so101_float_Pipeline_compute_jacobian_cols_fu_550/ap_clk
+    SLICE_X89Y266        FDRE                                         r  design_1_i/xf_solver_lm_so101_1/inst/grp_lm_solve_step_so101_float_s_fu_360/grp_compute_fk_jacobian_so101_float_s_fu_415/grp_compute_fk_jacobian_so101_float_Pipeline_compute_jacobian_cols_fu_550/select_ln467_1_reg_969_reg[31]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X89Y266        FDRE (Prop_fdre_C_Q)         0.091     1.573 r  design_1_i/xf_solver_lm_so101_1/inst/grp_lm_solve_step_so101_float_s_fu_360/grp_compute_fk_jacobian_so101_float_s_fu_415/grp_compute_fk_jacobian_so101_float_Pipeline_compute_jacobian_cols_fu_550/select_ln467_1_reg_969_reg[31]/Q
+                         net (fo=1, routed)           0.094     1.667    design_1_i/xf_solver_lm_so101_1/inst/grp_lm_solve_step_so101_float_s_fu_360/grp_compute_fk_jacobian_so101_float_s_fu_415/grp_compute_fk_jacobian_so101_float_Pipeline_compute_jacobian_cols_fu_550/select_ln467_1_reg_969[31]
+    SLICE_X88Y266        SRL16E                                       r  design_1_i/xf_solver_lm_so101_1/inst/grp_lm_solve_step_so101_float_s_fu_360/grp_compute_fk_jacobian_so101_float_s_fu_415/grp_compute_fk_jacobian_so101_float_Pipeline_compute_jacobian_cols_fu_550/select_ln467_1_reg_969_pp0_iter17_reg_reg[31]_srl9/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_fpga_0 rise edge)
+                                                      0.000     0.000 r  
+    PS7_X0Y0             PS7                          0.000     0.000 r  design_1_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]
+                         net (fo=1, routed)           0.808     0.808    design_1_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.030     0.838 r  design_1_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O
+                         net (fo=38421, routed)       0.936     1.774    design_1_i/xf_solver_lm_so101_1/inst/grp_lm_solve_step_so101_float_s_fu_360/grp_compute_fk_jacobian_so101_float_s_fu_415/grp_compute_fk_jacobian_so101_float_Pipeline_compute_jacobian_cols_fu_550/ap_clk
+    SLICE_X88Y266        SRL16E                                       r  design_1_i/xf_solver_lm_so101_1/inst/grp_lm_solve_step_so101_float_s_fu_360/grp_compute_fk_jacobian_so101_float_s_fu_415/grp_compute_fk_jacobian_so101_float_Pipeline_compute_jacobian_cols_fu_550/select_ln467_1_reg_969_pp0_iter17_reg_reg[31]_srl9/CLK
+                         clock pessimism             -0.281     1.493    
+    SLICE_X88Y266        SRL16E (Hold_srl16e_CLK_D)
+                                                      0.118     1.611    design_1_i/xf_solver_lm_so101_1/inst/grp_lm_solve_step_so101_float_s_fu_360/grp_compute_fk_jacobian_so101_float_s_fu_415/grp_compute_fk_jacobian_so101_float_Pipeline_compute_jacobian_cols_fu_550/select_ln467_1_reg_969_pp0_iter17_reg_reg[31]_srl9
+  -------------------------------------------------------------------
+                         required time                         -1.611    
+                         arrival time                           1.667    
+  -------------------------------------------------------------------
+                         slack                                  0.056    
+
+
+
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         clk_fpga_0
+Waveform(ns):       { 0.000 4.000 }
+Period(ns):         8.000
+Sources:            { design_1_i/processing_system7_0/inst/PS7_i/FCLKCLK[0] }
+
+Check Type        Corner  Lib Pin     Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location      Pin
+Min Period        n/a     XADC/DCLK   n/a            4.000         8.000       4.000      XADC_X0Y0     design_1_i/chip_thermal_0/inst/adc/DCLK
+Low Pulse Width   Slow    RAMD32/CLK  n/a            0.768         4.000       3.232      SLICE_X6Y178  design_1_i/xf_solver_lm_so101_0/inst/delta_U/ram_reg_0_7_0_0/DP/CLK
+High Pulse Width  Slow    RAMD32/CLK  n/a            0.768         4.000       3.232      SLICE_X6Y178  design_1_i/xf_solver_lm_so101_0/inst/delta_U/ram_reg_0_7_0_0/DP/CLK
+
+
+

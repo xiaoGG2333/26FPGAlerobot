@@ -1,0 +1,5 @@
+ID6 endpoints captured from operator-positioned closed/open poses: 2037/3496. Five identical samples each, torque=0, moving=0.
+Control endpoints use 10-count inward margin: closed=2047, open=3486. LT closes, RT opens.
+Only host/gripper_config.json changed. Existing gripper BOOT and all control code unchanged. No motion test performed.
+Use matching GRIPPER_LT_RT_20261030_V1 BOOT. Add --gripper-control only when ready to enable motion through the normal Enter flow.
+This is positional endpoint calibration, not force calibration or a completed gripping test.

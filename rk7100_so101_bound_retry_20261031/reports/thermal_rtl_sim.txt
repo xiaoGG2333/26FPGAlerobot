@@ -1,0 +1,17 @@
+
+****** xsim v2024.2 (64-bit)
+  **** SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
+  **** IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+  **** SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+  **** Start of session at: Sun Oct 18 22:18:49 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/thermal_test/xsim_script.tcl
+# xsim {thermal_test} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+PASS autonomous PWM/threshold/hysteresis/stale/sensor/OT/tach RTL
+$finish called at time : 1007180 ns : File "D:/VivadoProjects/RK7020_So_101/tests/tb_chip_thermal.v" Line 26
+exit
+INFO: [Common 17-206] Exiting xsim at Sun Oct 18 22:18:53 2026...

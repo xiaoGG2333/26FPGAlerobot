@@ -1,0 +1,25 @@
+{
+  "status": "PASS_OFFLINE",
+  "production_files_changed": [
+    "host/right_joycon.py",
+    "host/right_config.json"
+  ],
+  "xbox_max_translation_m_s": 0.2,
+  "default_translation_m_s": 0.02,
+  "firmware_PL_mapping_trajectory_thermal": "UNCHANGED",
+  "hardware_motion": false,
+  "checks": {
+    "tests/test_ik_failure_continue.py": {
+      "exit_code": 0,
+      "output": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.058s\n\nOK\n"
+    },
+    "tests/run_position_roll_host_checks.py": {
+      "exit_code": 0,
+      "output": "............................\n----------------------------------------------------------------------\nRan 28 tests in 0.026s\n\nOK\n\n"
+    },
+    "tests/test_gripper_host.py": {
+      "exit_code": 0,
+      "output": "PASS LT close, RT open, both/release HOLD, trigger deadzone, no stick/pose interference\nPASS unverified calibration rejection, independent command protocol and communication-fault propagation without STOP\nPASS end-to-end trigger commands while five axes idle, both/release hold and global STOP on exit\n"
+    }
+  }
+}

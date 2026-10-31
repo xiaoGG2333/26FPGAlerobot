@@ -1,0 +1,33 @@
+{
+  "status": "COMPILED_AND_OFFLINE_TESTED",
+  "on_board": "NOT_RUN",
+  "motion_performed": false,
+  "calibration": "REQUIRED; defaults unverified with empty endpoints",
+  "mapping": "LT close, RT open, both/release one-shot actual-position hold",
+  "ID6_torque_policy": "startup failure off; normal comms/watchdog freeze and retain torque; explicit stop/exit and servo >55C/>1500ms off",
+  "existing_source_changes": [
+    "host/right_joycon.py",
+    "host/xbox_input.py",
+    "firmware/arm_uart.inc",
+    "firmware/pose_uart.inc"
+  ],
+  "protected_unchanged_sha256": {
+    "firmware/arm_control.c": "622e919277edb306316833edbf9069af1e800fbbfb3dd8feb168cf81a7123e58",
+    "firmware/ik_iteration.c": "cbbe9877a13211f1861de3508df87b8ce5db0b71941390b8e86852d2a0cbb48d",
+    "firmware/servo_mapping.h": "a4ff1cd3ae77e3d724a2975be9b6509ceaa3287c39538c210826aa0ba77d6e49",
+    "firmware/online_curve.h": "5627278cd44d9fff4a7ab2ffa1991f2588b973de15017049fe1eb8fe0ab6e25c",
+    "firmware/st3215.c": "d7a47456696e874dae36d0c1b4b9acee92480c2a1b0016d2fdcb6088d39a1829",
+    "firmware/chip_thermal.inc": "7d405a49636fe791c98005f233e68cfa2cee711f061a603ee8448d5a755f3b37",
+    "sources/lm_solver_so101.hpp": "9e89b110864c90f154e9cf74d7bf261920f69554b1bb10542f531e3823213a6f",
+    "host/right_config.json": "aa9f202ccb85f2531c4fd59f2f445b57a166478c25d08c670222053cc0085292"
+  },
+  "PL_bitstream": "BYTE_IDENTICAL",
+  "existing_host_tests": 28,
+  "new_tests": [
+    "ID6 native controller and integration mock tests: startup, caps, directional reversal, actual HOLD, EEPROM bounds read-only, raw/soft bounds, comms/watchdog freeze, explicit resume, temperature filter, torque-off cleanup",
+    "Xbox trigger normalization, both/release/deadzone, no arm pose interference",
+    "Unverified calibration refusal and independent UART fault propagation",
+    "End-to-end LT then both/release with stationary five axes and STOP on exit"
+  ],
+  "new_boot_sha256": "78cb30d74273ee1d279d1fb7688675c873409232990ae7a9f7a6583125fe3cfb"
+}

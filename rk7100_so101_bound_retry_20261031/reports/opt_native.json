@@ -1,0 +1,22 @@
+[
+  {
+    "name": "curve",
+    "code": 0,
+    "output": "PASS continuous five-axis limits, synchronized endpoint, C2 replan, rejected goal transaction, 200 random motions\n"
+  },
+  {
+    "name": "control",
+    "code": 0,
+    "output": "PASS S-curve controller, final goal hold/torque, watchdog/comms/range freeze, resume, unchanged servo temperature filter, STOP/startup off\n"
+  },
+  {
+    "name": "chip",
+    "code": 0,
+    "output": "PASS chip >60C strict >1500ms, transient filter, <55C recovery, sensor/OT immediate fault, timer wrap\n"
+  },
+  {
+    "name": "adaptive",
+    "code": 0,
+    "output": "PASS adaptive damping convergence, monotonic acceptance, uphill retry rejection/unchanged seed, zero-error no-step\n"
+  }
+]

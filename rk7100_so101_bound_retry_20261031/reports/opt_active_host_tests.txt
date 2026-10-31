@@ -1,0 +1,175 @@
+XBOX: /dev/input/event9 Xbox Wireless Controller right_axes=rxry
+Left: up/down=X +/-; left/right=Y -/+. Right: up/down=Z +/-; left=CW/right=CCW viewed from jaw tip. Other controls ignored. Ctrl+C stops.
+XBOX: /dev/input/event9 Microsoft Xbox Series S|X Controller right_axes=rxry
+Left: up/down=X +/-; left/right=Y -/+. Right: up/down=Z +/-; left=CW/right=CCW viewed from jaw tip. Other controls ignored. Ctrl+C stops.
+[UART] Opening FAKE at 115200 8N1
+[UART] Port opened
+Board coordinated goal control: YES
+UART CONNECTED; MOTION OFF. Enter starts, Ctrl+C cancels/stops. Manual mode: no local travel envelope; model/encoder limits and heartbeat required.
+ARM1 READY LIMITED_DRIVE_V1
+RELEASE_FINISH_TARGET_V2 STOP_EVENT_GUARD_V1: neutral input finishes the last valid goal; Ctrl+C cancels/stops.
+RIGHT SO101 | MANUAL NO LOCAL ENVELOPE; MAPPING UNVERIFIED; GRIPPER OFF | REAL FPGA + ARM ITERATION
+seq=1 CONVERGED iter=1 pos=1e-05 m rot=1e-06 rad roundtrip=25.0 ms
+q_deg: shoulder_pan=-5.449 shoulder_lift=-17.930 elbow_flex=+26.982 wrist_flex=-5.361 wrist_roll=+90.615
+actual_counts: ID1=2149 ID2=2050 ID3=2017 ID4=1985 ID5=1023
+target_counts (QUEUED ARM TARGET; GRIPPER PREVIEW): ID1=2149 ID2=2050 ID3=2017 ID4=1985 ID5=1023 ID6=2773
+ARM1 STOP STOPPED active=0 torque_off=1
+[UART] Opening FAKE at 115200 8N1
+[UART] Port opened
+Board coordinated goal control: NO; rebuild/deploy firmware for coordinated stepping. Host following-error stop is active.
+UART CONNECTED; MOTION OFF. Enter starts, Ctrl+C cancels/stops. Manual mode: no local travel envelope; model/encoder limits and heartbeat required.
+ARM1 READY LIMITED_DRIVE_V1
+RELEASE_FINISH_TARGET_V2 STOP_EVENT_GUARD_V1: neutral input finishes the last valid goal; Ctrl+C cancels/stops.
+RIGHT SO101 | MANUAL NO LOCAL ENVELOPE; MAPPING UNVERIFIED; GRIPPER OFF | REAL FPGA + ARM ITERATION
+ARM1 STOP STOPPED active=0 torque_off=1
+[UART] Opening FAKE at 115200 8N1
+[UART] Port opened
+Board coordinated goal control: YES
+UART CONNECTED; MOTION OFF. Enter starts, Ctrl+C cancels/stops. Manual mode: no local travel envelope; model/encoder limits and heartbeat required.
+ARM1 READY LIMITED_DRIVE_V1
+RELEASE_FINISH_TARGET_V2 STOP_EVENT_GUARD_V1: neutral input finishes the last valid goal; Ctrl+C cancels/stops.
+RIGHT SO101 | MANUAL NO LOCAL ENVELOPE; MAPPING UNVERIFIED; GRIPPER OFF | REAL FPGA + ARM ITERATION
+seq=1 CONVERGED iter=1 pos=1e-05 m rot=1e-06 rad roundtrip=25.0 ms
+q_deg: shoulder_pan=-5.449 shoulder_lift=-17.930 elbow_flex=+26.982 wrist_flex=-5.361 wrist_roll=+90.615
+actual_counts: ID1=2149 ID2=2090 ID3=2017 ID4=1985 ID5=1023
+target_counts (QUEUED ARM TARGET; GRIPPER PREVIEW): ID1=2149 ID2=2090 ID3=2017 ID4=1985 ID5=1023 ID6=2773
+ARM1 STOP STOPPED active=0 torque_off=1
+[UART] Opening FAKE at 115200 8N1
+[UART] Port opened
+Board coordinated goal control: YES
+UART CONNECTED; MOTION OFF. Enter starts, Ctrl+C cancels/stops. Manual mode: no local travel envelope; model/encoder limits and heartbeat required.
+ARM1 READY LIMITED_DRIVE_V1
+RELEASE_FINISH_TARGET_V2 STOP_EVENT_GUARD_V1: neutral input finishes the last valid goal; Ctrl+C cancels/stops.
+RIGHT SO101 | MANUAL NO LOCAL ENVELOPE; MAPPING UNVERIFIED; GRIPPER OFF | REAL FPGA + ARM ITERATION
+seq=1 CONVERGED iter=1 pos=1e-05 m rot=1e-06 rad roundtrip=25.0 ms
+q_deg: shoulder_pan=-5.449 shoulder_lift=-17.930 elbow_flex=+26.982 wrist_flex=-5.361 wrist_roll=+90.615
+QUEUED GOAL GAP: ID2 goal=2090 actual=2050 gap=+40 counts; board synchronized goals active; no-progress shutdown disabled.
+actual_counts: ID1=2149 ID2=2050 ID3=2017 ID4=1985 ID5=1023
+target_counts (QUEUED ARM TARGET; GRIPPER PREVIEW): ID1=2149 ID2=2090 ID3=2017 ID4=1985 ID5=1023 ID6=2773
+ARM1 STOP STOPPED active=0 torque_off=1
+[UART] Opening FAKE at 115200 8N1
+[UART] Port opened
+Board coordinated goal control: YES
+UART CONNECTED; MOTION OFF. Enter starts, Ctrl+C cancels/stops. Manual mode: no local travel envelope; model/encoder limits and heartbeat required.
+ARM1 READY LIMITED_DRIVE_V1
+RELEASE_FINISH_TARGET_V2 STOP_EVENT_GUARD_V1: neutral input finishes the last valid goal; Ctrl+C cancels/stops.
+RIGHT SO101 | MANUAL NO LOCAL ENVELOPE; MAPPING UNVERIFIED; GRIPPER OFF | REAL FPGA + ARM ITERATION
+ARM1 STOP STOPPED active=0 torque_off=1
+[UART] Opening FAKE at 115200 8N1
+[UART] Port opened
+Board coordinated goal control: YES
+UART CONNECTED; MOTION OFF. Enter starts, Ctrl+C cancels/stops. Manual mode: no local travel envelope; model/encoder limits and heartbeat required.
+ARM1 READY LIMITED_DRIVE_V1
+RELEASE_FINISH_TARGET_V2 STOP_EVENT_GUARD_V1: neutral input finishes the last valid goal; Ctrl+C cancels/stops.
+RIGHT SO101 | MANUAL NO LOCAL ENVELOPE; MAPPING UNVERIFIED; GRIPPER OFF | REAL FPGA + ARM ITERATION
+seq=1 CONVERGED iter=1 pos=1e-05 m rot=1e-06 rad roundtrip=25.0 ms
+q_deg: shoulder_pan=-5.449 shoulder_lift=-17.930 elbow_flex=+26.982 wrist_flex=-5.361 wrist_roll=+90.615
+QUEUED GOAL GAP: ID2 goal=2006 actual=2050 gap=-44 counts; board synchronized goals active; no-progress shutdown disabled.
+actual_counts: ID1=2149 ID2=2050 ID3=2017 ID4=1985 ID5=1023
+target_counts (QUEUED ARM TARGET; GRIPPER PREVIEW): ID1=2149 ID2=2006 ID3=2017 ID4=1985 ID5=1023 ID6=2773
+ARM1 STOP STOPPED active=0 torque_off=1
+[UART] Opening FAKE at 115200 8N1
+[UART] Port opened
+Board coordinated goal control: NO; rebuild/deploy firmware for coordinated stepping. Host following-error stop is active.
+UART CONNECTED; MOTION OFF. Enter starts, Ctrl+C cancels/stops. Manual mode: no local travel envelope; model/encoder limits and heartbeat required.
+ARM1 READY LIMITED_DRIVE_V1
+RELEASE_FINISH_TARGET_V2 STOP_EVENT_GUARD_V1: neutral input finishes the last valid goal; Ctrl+C cancels/stops.
+RIGHT SO101 | MANUAL NO LOCAL ENVELOPE; MAPPING UNVERIFIED; GRIPPER OFF | REAL FPGA + ARM ITERATION
+seq=1 CONVERGED iter=1 pos=1e-05 m rot=1e-06 rad roundtrip=25.0 ms
+q_deg: shoulder_pan=-5.449 shoulder_lift=-17.930 elbow_flex=+26.982 wrist_flex=-5.361 wrist_roll=+90.615
+actual_counts: ID1=2149 ID2=2050 ID3=2017 ID4=1985 ID5=1023
+target_counts (QUEUED ARM TARGET; GRIPPER PREVIEW): ID1=2149 ID2=2006 ID3=2017 ID4=1985 ID5=1023 ID6=2773
+ARM1 STOP STOPPED active=0 torque_off=1
+[UART] Opening FAKE at 115200 8N1
+[UART] Port opened
+Board coordinated goal control: YES
+UART CONNECTED; MOTION OFF. Enter starts, Ctrl+C cancels/stops. Manual mode: no local travel envelope; model/encoder limits and heartbeat required.
+ARM1 READY LIMITED_DRIVE_V1
+RELEASE_FINISH_TARGET_V2 STOP_EVENT_GUARD_V1: neutral input finishes the last valid goal; Ctrl+C cancels/stops.
+RIGHT SO101 | MANUAL NO LOCAL ENVELOPE; MAPPING UNVERIFIED; GRIPPER OFF | REAL FPGA + ARM ITERATION
+CONTROL FROZEN; torque-off not requested: controller removed
+CONTROL RESUMED from measured pose
+ARM1 STOP STOPPED active=0 torque_off=1
+[UART] Opening FAKE at 115200 8N1
+[UART] Port opened
+ARM1 STOP STOPPED active=0 torque_off=1
+[UART] Opening FAKE at 115200 8N1
+[UART] Port opened
+Board coordinated goal control: NO; rebuild/deploy firmware for coordinated stepping. Host following-error stop is active.
+UART CONNECTED; MOTION OFF. Enter starts, Ctrl+C cancels/stops. Manual mode: no local travel envelope; model/encoder limits and heartbeat required.
+[UART] Opening FAKE at 115200 8N1
+[UART] Port opened
+Board coordinated goal control: NO; rebuild/deploy firmware for coordinated stepping. Host following-error stop is active.
+UART CONNECTED; MOTION OFF. Enter starts, Ctrl+C cancels/stops. Manual mode: no local travel envelope; model/encoder limits and heartbeat required.
+ARM1 READY LIMITED_DRIVE_V1
+RELEASE_FINISH_TARGET_V2 STOP_EVENT_GUARD_V1: neutral input finishes the last valid goal; Ctrl+C cancels/stops.
+RIGHT SO101 | MANUAL NO LOCAL ENVELOPE; MAPPING UNVERIFIED; GRIPPER OFF | REAL FPGA + ARM ITERATION
+ARM1 STOP STOPPED active=0 torque_off=1
+[UART] Opening FAKE at 115200 8N1
+[UART] Port opened
+Board coordinated goal control: NO; rebuild/deploy firmware for coordinated stepping. Host following-error stop is active.
+UART CONNECTED; MOTION OFF. Enter starts, Ctrl+C cancels/stops. Manual mode: no local travel envelope; model/encoder limits and heartbeat required.
+ARM1 READY LIMITED_DRIVE_V1
+RELEASE_FINISH_TARGET_V2 STOP_EVENT_GUARD_V1: neutral input finishes the last valid goal; Ctrl+C cancels/stops.
+RIGHT SO101 | MANUAL NO LOCAL ENVELOPE; MAPPING UNVERIFIED; GRIPPER OFF | REAL FPGA + ARM ITERATION
+LeRobot ERROR: rejected; last verified goal retained; input accumulation discarded.
+seq=1 JOINT_LIMIT iter=1 pos=1e-05 m rot=1e-06 rad roundtrip=25.0 ms
+candidate_q_deg (FAILED): shoulder_pan=-5.449 shoulder_lift=-17.930 elbow_flex=+26.982 wrist_flex=-5.361 wrist_roll=+90.615
+actual_counts (REJECTED): ID1=2149 ID2=2050 ID3=2017 ID4=1985 ID5=1023
+LeRobot ERROR: rejected; last verified goal retained; input accumulation discarded.
+actual_counts (REJECTED): ID1=2149 ID2=2050 ID3=2017 ID4=1985 ID5=1023
+ARM1 STOP STOPPED active=0 torque_off=1
+[UART] Opening FAKE at 115200 8N1
+[UART] Port opened
+[UART] Opening FAKE at 115200 8N1
+[UART] Port opened
+ARM1 READY LIMITED_DRIVE_V1
+RELEASE_FINISH_TARGET_V2 STOP_EVENT_GUARD_V1: neutral input finishes the last valid goal; Ctrl+C cancels/stops.
+RIGHT SO101 | LIMITED TRIAL +/-56 COUNTS; MAPPING UNVERIFIED; GRIPPER OFF | REAL FPGA + ARM ITERATION
+ARM1 STOP STOPPED active=0 torque_off=1
+[UART] Opening FAKE at 115200 8N1
+[UART] Port opened
+ARM1 READY LIMITED_DRIVE_V1
+RELEASE_FINISH_TARGET_V2 STOP_EVENT_GUARD_V1: neutral input finishes the last valid goal; Ctrl+C cancels/stops.
+RIGHT SO101 | LIMITED TRIAL +/-56 COUNTS; MAPPING UNVERIFIED; GRIPPER OFF | REAL FPGA + ARM ITERATION
+seq=1 CONVERGED iter=1 pos=1e-05 m rot=1e-06 rad roundtrip=25.0 ms
+q_deg: shoulder_pan=-5.449 shoulder_lift=-17.930 elbow_flex=+26.982 wrist_flex=-5.361 wrist_roll=+90.615
+actual_counts: ID1=2149 ID2=2050 ID3=2017 ID4=1985 ID5=1023
+target_counts (QUEUED ARM TARGET; GRIPPER PREVIEW): ID1=2149 ID2=2050 ID3=2017 ID4=1985 ID5=1023 ID6=2773
+ARM1 STOP STOPPED active=0 torque_off=1
+TEMP WINDOW ID4 T=150: monitoring <=1.5 s
+TEMP WINDOW ID3 T=150: monitoring <=1.5 s
+TEMP WINDOW ID3 T=46: monitoring <=1.5 s
+TEMP WINDOW ID3 T=70: monitoring <=1.5 s
+TEMP WINDOW ID3 recovered T=33 after 0.107s; continuing
+TEMP WINDOW ID4 T=150: monitoring <=1.5 s
+TEMP WINDOW ID4 recovered T=33 after 0.107s; continuing
+TEMP WINDOW ID4 T=150: monitoring <=1.5 s
+TEMP WINDOW ID3 T=150: monitoring <=1.5 s
+TEMP WINDOW ID4 T=70: monitoring <=1.5 s
+TEMP WINDOW ID3 recovered T=33 after 0.080s; continuing
+[UART] Opening FAKE at 115200 8N1
+[UART] Port opened
+Board coordinated goal control: NO; rebuild/deploy firmware for coordinated stepping. Host following-error stop is active.
+UART CONNECTED; MOTION OFF. Enter starts, Ctrl+C cancels/stops. Manual mode: no local travel envelope; model/encoder limits and heartbeat required.
+ARM1 READY LIMITED_DRIVE_V1
+RELEASE_FINISH_TARGET_V2 STOP_EVENT_GUARD_V1: neutral input finishes the last valid goal; Ctrl+C cancels/stops.
+RIGHT SO101 | MANUAL NO LOCAL ENVELOPE; MAPPING UNVERIFIED; GRIPPER OFF | REAL FPGA + ARM ITERATION
+seq=1 CONVERGED iter=1 pos=1e-05 m rot=1e-06 rad roundtrip=25.0 ms
+q_deg: shoulder_pan=-5.449 shoulder_lift=-17.930 elbow_flex=+26.982 wrist_flex=-5.361 wrist_roll=+90.615
+actual_counts: ID1=2149 ID2=2050 ID3=2017 ID4=1985 ID5=1023
+target_counts (QUEUED ARM TARGET; GRIPPER PREVIEW): ID1=2149 ID2=2050 ID3=2130 ID4=1985 ID5=1023 ID6=2773
+ARM1 STOP STOPPED active=0 torque_off=1
+[UART] Opening FAKE at 115200 8N1
+[UART] Port opened
+Board coordinated goal control: NO; rebuild/deploy firmware for coordinated stepping. Host following-error stop is active.
+[UART] Opening FAKE at 115200 8N1
+[UART] Port opened
+Board coordinated goal control: NO; rebuild/deploy firmware for coordinated stepping. Host following-error stop is active.
+[UART] Opening FAKE at 115200 8N1
+[UART] Port opened
+........................................................
+----------------------------------------------------------------------
+Ran 56 tests in 0.270s
+
+OK
