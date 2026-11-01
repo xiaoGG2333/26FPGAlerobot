@@ -1,0 +1,17 @@
+UART1 coordinated manual build
+D:\Software\vivado2025.2\2025.2\Vitis\gnu\aarch32\nt\gcc-arm-none-eabi\bin\arm-none-eabi-gcc.exe -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -DSDT -O0 -g3 -Wall -Wextra -Werror -ID:\VivadoProjects\RK7020_So_101\repro_2025_2\build\ws\platform\export\platform\sw\standalone_ps7_cortexa9_0\include -specs=D:\VivadoProjects\RK7020_So_101\repro_2025_2\build\ws\platform\export\platform\sw\standalone_ps7_cortexa9_0\Xilinx.spec D:\VivadoProjects\RK7020_So_101\repro_2025_2\firmware\main.c D:\VivadoProjects\RK7020_So_101\repro_2025_2\firmware\ik_iteration.c D:\VivadoProjects\RK7020_So_101\repro_2025_2\firmware\st3215.c D:\VivadoProjects\RK7020_So_101\repro_2025_2\firmware\motor_control.c D:\VivadoProjects\RK7020_So_101\repro_2025_2\firmware\arm_control.c D:\VivadoProjects\RK7020_So_101\repro_2025_2\firmware\cal_bridge.c -o D:\VivadoProjects\RK7020_So_101\repro_2025_2\board\boot\ik_uart1_servo.elf -Wl,-T,D:\VivadoProjects\RK7020_So_101\repro_2025_2\firmware\lscript.ld -LD:\VivadoProjects\RK7020_So_101\repro_2025_2\build\ws\platform\export\platform\sw\standalone_ps7_cortexa9_0\lib -Wl,--start-group -lxilstandalone -lxiltimer -lxil -lgcc -lc -lm -Wl,--end-group
+
+D:\Software\vivado2025.2\2025.2\Vitis\gnu\aarch32\nt\gcc-arm-none-eabi\bin\arm-none-eabi-gcc.exe -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -DSDT -O0 -g3 -Os -ID:\VivadoProjects\RK7020_So_101\repro_2025_2\board\boot\fsbl_source -ID:\VivadoProjects\RK7020_So_101\repro_2025_2\build\ws\platform\zynq_fsbl\zynq_fsbl_bsp\include -specs=D:\VivadoProjects\RK7020_So_101\repro_2025_2\build\ws\platform\zynq_fsbl\zynq_fsbl_bsp\Xilinx.spec D:\VivadoProjects\RK7020_So_101\repro_2025_2\board\boot\fsbl_source\fsbl_hooks.c D:\VivadoProjects\RK7020_So_101\repro_2025_2\board\boot\fsbl_source\image_mover.c D:\VivadoProjects\RK7020_So_101\repro_2025_2\board\boot\fsbl_source\main.c D:\VivadoProjects\RK7020_So_101\repro_2025_2\board\boot\fsbl_source\md5.c D:\VivadoProjects\RK7020_So_101\repro_2025_2\board\boot\fsbl_source\nand.c D:\VivadoProjects\RK7020_So_101\repro_2025_2\board\boot\fsbl_source\nor.c D:\VivadoProjects\RK7020_So_101\repro_2025_2\board\boot\fsbl_source\pcap.c D:\VivadoProjects\RK7020_So_101\repro_2025_2\board\boot\fsbl_source\ps7_init.c D:\VivadoProjects\RK7020_So_101\repro_2025_2\board\boot\fsbl_source\qspi.c D:\VivadoProjects\RK7020_So_101\repro_2025_2\board\boot\fsbl_source\rsa.c D:\VivadoProjects\RK7020_So_101\repro_2025_2\board\boot\fsbl_source\sd.c D:\VivadoProjects\RK7020_So_101\repro_2025_2\board\boot\fsbl_source\fsbl_handoff.S -o D:\VivadoProjects\RK7020_So_101\repro_2025_2\board\boot\fsbl_uart1.elf -Wl,--gc-sections -n -Wl,-T,D:\VivadoProjects\RK7020_So_101\repro_2025_2\board\boot\fsbl_source\lscript.ld -LD:\VivadoProjects\RK7020_So_101\repro_2025_2\build\ws\platform\zynq_fsbl\zynq_fsbl_bsp\lib -Wl,--start-group -lxiltimer -lxilffs -lxilrsa -lxil -lxilstandalone -lgcc -lc -Wl,--end-group
+
+D:\Software\vivado2025.2\2025.2\Vitis\bin\bootgen.bat -arch zynq -image boot.bif -o BOOT.BIN -w on
+
+
+****** Bootgen v2025.2
+  **** Build date : Oct 23 2025-12:54:55
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+
+[INFO]   : Bootimage generated successfully
+
+

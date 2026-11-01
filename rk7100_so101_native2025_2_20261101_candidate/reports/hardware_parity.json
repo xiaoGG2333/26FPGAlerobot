@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "checks": {
+    "ps_configuration": true,
+    "external_ports": true,
+    "interface_parameters": true,
+    "signal_connections": true,
+    "bus_connections": true,
+    "address_map": true
+  }
+}

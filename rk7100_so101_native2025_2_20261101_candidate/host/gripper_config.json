@@ -1,0 +1,17 @@
+{
+  "verified": true,
+  "closed_count": 2047,
+  "open_count": 3486,
+  "rate_counts_s": 100,
+  "servo_speed": 50,
+  "torque_cap": 200,
+  "calibration": {
+    "method": "operator-positioned endpoints, read-only five samples per endpoint",
+    "raw_closed_count": 2037,
+    "raw_open_count": 3496,
+    "inward_margin_counts": 10,
+    "closed_snapshot": "D:\\VivadoProjects\\RK7020_So_101\\results\\gripper_calibration\\closed_snapshot_20261030T102419Z.json",
+    "open_snapshot": "D:\\VivadoProjects\\RK7020_So_101\\results\\gripper_calibration\\open_snapshot_20261030T102525Z.json",
+    "motion_tested": false
+  }
+}

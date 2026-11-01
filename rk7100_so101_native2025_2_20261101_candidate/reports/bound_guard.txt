@@ -1,0 +1,1 @@
+PASS zero-step success, invalid ID5 no calls, hardware fault terminal, exactly two distinct legal seeds, shared600-call budget

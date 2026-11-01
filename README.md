@@ -1,46 +1,53 @@
 # 26FPGAlerobot
 
-基于 RK-ZYNQ7100-F 与 SO101 右臂的裸机 ARM 迭代控制和 FPGA 单步逆解工程。
+RK-ZYNQ7100-F（xc7z100ffg900-2）与 SO101 右臂的 FPGA 逆运动学硬件加速工程。ARM 负责完整迭代、轨迹及舵机控制，双 PL IP 负责单步求解，PL 时钟 125 MHz。
 
-## 最新版本
+## 最新 2025.2 候选版本
 
-当前目录：[rk7100_so101_bound_retry_20261031](rk7100_so101_bound_retry_20261031/BOUND_RETRY_GUIDE.md)。
+目录：[rk7100_so101_native2025_2_20261101_candidate](rk7100_so101_native2025_2_20261101_candidate/)。
 
-- RK-ZYNQ7100-F，xc7z100ffg900-2，双逆解 IP，125 MHz；ARM 负责迭代与轨迹，PL 负责单步求解。
-- XYZ 位置优先加 ID5 转角，末端俯仰自由；ID6 夹爪独立控制。
-- 先运行原 LM；失败后最多两组附近初值，备用求解启用活动限位，约束朝限位外的关节并重新计算其他关节增量。
-- 两组备用初值采用肘部±10°、腕俯仰反向偏移；每组最多80次迭代，共享600次硬件调用预算。初值仅用于计算。
-- Xbox 平移配置上限5 cm/s，默认2 cm/s；正常轨迹下发的五轴速度参数200～2000计数/秒；左推Y+，右推Y−。
-- 舵机轨迹、编码器映射、夹爪、温控和故障扭矩策略沿用上一版。
+- 使用 Vivado/Vitis 2025.2，从源码创建 HLS IP、Vivado 工程、位流/XSA、平台/BSP、FSBL 和 ARM 应用，生成配套 BOOT.BIN。
+- 保留 XYZ 位置优先加 ID5、自由俯仰、限位感知与附近初值重试；保留五轴协调、编码器映射、夹爪、温控和扭矩策略。
+- 修复主机协议兼容性：HELLO 包含 `BOUND_RETRY_IK_20261031_V1` 时，接受累计最多360次迭代（200+80+80）；旧固件仍检查200。避免合法重试结果被误判为 `Invalid result`。
+- Xbox 平移配置上限5 cm/s；正常五轴速度参数200～2000计数/秒；左推Y+、右推Y−；LT关闭夹爪、RT打开夹爪。
 
-## 验证范围
+## 构建与运行
+
+先阅读[迁移及验收指南](rk7100_so101_native2025_2_20261101_candidate/migration_guide.md)。
+
+Windows 安装匹配的 Vivado/Vitis 2025.2、Zynq-7000器件支持和许可证，使用Python 3。将新版本目录复制到短路径（例如 `D:/fpga2025`，根路径不超过44字符且不含空格），配置 `config/toolchain.json`，运行：
+
+```text
+python scripts/build_all.py
+```
+
+工程不依赖旧版XPR或预先存在的BSP。固定保留的 `Vitis_Libraries_2024.2` 是数学库源代码，不代表使用2024.2工具。Ubuntu主机依赖见 `host/requirements.txt` 和 `config/host_requirements_lock.txt`，沿用独立venv。
+
+候选启动文件：[board/boot/BOOT.BIN](rk7100_so101_native2025_2_20261101_candidate/board/boot/BOOT.BIN)。使用同一目录的配套位流与固件；不要混用不同发布版本。主机协议修复本身无需再次更换BOOT。
+
+## 验证与限制
 
 | 检查 | 结果 |
 |---|---|
-| 1878个离线目标对照 | 原成功目标无退化；救回7个合成可达目标 |
-| 最新实测日志回放 | 失败分组未改变；日志初值为编码器近似重建 |
-| HLS C仿真与RTL协同仿真 | 通过；覆盖16种限位掩码和备用求解案例 |
-| Vivado实现 | 125 MHz时序通过；WNS 0.416 ns，WHS 0.056 ns |
-| ARM编译及原控制回归 | 通过 |
-| Ubuntu同步和离线测试 | 通过，沿用已有venv，无新增运行依赖 |
-| 本版实板运动与SD更新 | 未执行，不能用旧版实测替代本版验收 |
+| 2025.2 HLS C仿真及649笔RTL协同仿真 | 通过 |
+| 1878个软件逆解对比 | 无新增退化；不等于真实板端速度或精度测量 |
+| 29项主机协议、夹爪与失败处理回归 | 通过 |
+| 新增累计迭代协议测试 | Windows、Ubuntu通过 |
+| 轨迹、阻尼、风扇及温控回归 | 通过 |
+| 125 MHz最终实现 | WNS +0.382 ns，WHS +0.024 ns |
+| FPGA资源 | LUT 11.79%，FF 6.90%，DSP 9.41%，BRAM 0.53% |
+| 新平台/BSP、ARM编译、BOOT打包 | 通过 |
+| Ubuntu包同步与协议修复同步 | 已完成，未自动启动运动 |
+| 完整实机验收 | 尚未完成，不以旧版本或零散运行日志代替 |
 
-限位感知与初值重试不是全局完备求解器，不能使几何不可达目标变得可达。首次成功不执行备用求解；失败时可能增加计算耗时。`MAX_ITER`仍表示未找到合格解，不是不可达证明。
+`MAX_ITER`表示本次未求得合格解，不是几何不可达的全局证明。正常拒绝目标保留上次接受目标与扭矩；格式、序号及非有限数值检查仍保留。模型与实物的绝对精度需要独立验证。
 
-## 部署与构建
+[构建验证报告](rk7100_so101_native2025_2_20261101_candidate/reports/migration_validation.json)｜[源码与适配校验](rk7100_so101_native2025_2_20261101_candidate/reports/runtime_parity.json)｜[寄存器兼容性](rk7100_so101_native2025_2_20261101_candidate/reports/register_abi.json)
 
-请先阅读[新版指南](rk7100_so101_bound_retry_20261031/BOUND_RETRY_GUIDE.md)。本版改动PL，必须配套更新 `boot/BOOT.BIN`，不能混用旧位流和新ARM程序。上电后HELLO应包含 `BOUND_RETRY_IK_20261031_V1`。
+## 旧版与文件完整性
 
-发布目录包含源码、主机脚本、测试、校准参考、验证报告和配套BOOT/bit/HWH/XSA/ELF。完整重建需要外部AMD Vivado/Vitis 2024.2、匹配的应用与FSBL平台BSP。脚本和配置保留原本机默认路径，需要按安装位置调整；不是无需外部依赖的一键重建环境。
+保留 [2024.2 bounded-retry版本](rk7100_so101_bound_retry_20261031/BOUND_RETRY_GUIDE.md) 作为原样对照和回退；本次没有删除或覆盖该目录。2025.2候选版本通过完整实机验收后，再作为后续正式工作基线。
 
-[重建脚本](rk7100_so101_bound_retry_20261031/scripts/build_bound_retry_all.py)｜[原生回归](rk7100_so101_bound_retry_20261031/tests/run_bound_retry_comparison.py)｜[验证报告](rk7100_so101_bound_retry_20261031/reports/bound_retry_validation.json)｜[变更差异](rk7100_so101_bound_retry_20261031/reports/bound_retry_changes.patch)
+新目录的发布文件按 `manifests/release_sha256.json` 校验；主机兼容性适配单独记录在 `manifests/migration_compatibility_sha256.json`，ARM/PL与舵机逻辑未因此修改。Git关闭自动换行转换以保持文件字节。构建缓存、虚拟环境和SSH凭据不上传。
 
-## 版本与文件完整性
-
-沿用原仓库规则：当前分支只保留最新独立包及进度文档；旧独立包可从Git历史恢复。包内必要的参考快照和历史报告用于回归和溯源，不表示它们是当前部署版本。继承文档中的旧参数以新版指南与本次验证报告为准。
-
-原包文件保持不变，260项SHA256校验通过。Git关闭自动换行转换以保留哈希；不提交本地构建缓存、Python虚拟环境或SSH密钥。未新加开源许可证，第三方声明照原文件保留。
-
-原始压缩包SHA256：`6e23a3f97437419a099d3808c0fe4990c6fb2b2cf03a613a9ef7e51c57461dd1`。
-
-项目进度与历史见[移植及修改进度.md](移植及修改进度.md)。
+保留原有第三方许可证声明，本次不替上游或项目重新指定许可证。协作及历史见[移植及修改进度.md](移植及修改进度.md)。

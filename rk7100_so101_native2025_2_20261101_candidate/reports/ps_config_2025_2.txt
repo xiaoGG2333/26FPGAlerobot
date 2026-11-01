@@ -1,0 +1,3 @@
+Vivado 2025.2
+part=xc7z100ffg900-2
+fclk0=125

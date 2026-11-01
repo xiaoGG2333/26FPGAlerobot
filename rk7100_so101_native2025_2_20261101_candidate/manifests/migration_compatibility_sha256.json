@@ -1,0 +1,6 @@
+{
+  "host/right_joycon.py": {
+    "sha256": "fcbeec5a371c64c2e54f5f76e574652c73f2d9a17e62e4dcaf00840e76664fba",
+    "reason": "Capability-negotiated accumulated iteration bound: old firmware200, bound-retry firmware360; no solver or motor policy changes"
+  }
+}

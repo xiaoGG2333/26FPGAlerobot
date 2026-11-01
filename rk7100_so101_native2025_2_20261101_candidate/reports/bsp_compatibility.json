@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "timer_configuration_equal": true,
+  "cpu_clock_hz": "666666687",
+  "old_bsp_reused": false,
+  "platform_generated_by": "Vitis 2025.2"
+}

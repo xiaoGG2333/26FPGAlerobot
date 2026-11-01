@@ -1,0 +1,20 @@
+{
+  "runtime_changes": [
+    "host/right_joycon.py: result iteration validation matches cumulative retry iterations, capability negotiated; ARM/PL and servo policies unchanged"
+  ],
+  "build_changes": [
+    "2025.2 absolute tool entry points from central configuration",
+    "fresh project and platform creation",
+    "PS configuration extracted from latest built BD",
+    "relative source paths generated at build time",
+    "old build entries disabled in migration copy",
+    "Compact build/v/ik and build/ws paths for Windows",
+    "Read-only C_EXT_RESET_HIGH assignment removed; polarity propagated from unchanged PS reset metadata",
+    "XADC analog stimulus preserved as source fixture",
+    "Baseline PS parameters, ports, wiring and address map verified equal"
+  ],
+  "test_fixture_changes": [],
+  "physical_validation": "NOT_RUN",
+  "old_project": "read only, except new isolated child directory",
+  "test_entry": "tests/run_position_roll_host_checks.py provides existing protocol-aware fixtures"
+}

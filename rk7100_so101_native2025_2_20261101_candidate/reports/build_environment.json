@@ -1,0 +1,8 @@
+{
+  "os": "Windows-11-10.0.26200-SP0",
+  "orchestration_python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "orchestration_executable": "C:\\Users\\24957\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+  "amd_tools": "config/toolchain.json",
+  "host_environment": "Ubuntu virtualenv maintained separately; migration does not modify the VM",
+  "board_execution": "NOT_RUN"
+}

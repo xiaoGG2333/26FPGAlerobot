@@ -1,0 +1,30 @@
+{
+  "checks": [
+    {
+      "name": "bound_guard_compile",
+      "exit_code": 0
+    },
+    {
+      "name": "bound_guard",
+      "exit_code": 0
+    },
+    {
+      "name": "bound_comparison",
+      "exit_code": 0
+    },
+    {
+      "name": "host_protocol",
+      "exit_code": 0
+    },
+    {
+      "name": "gripper_host",
+      "exit_code": 0
+    },
+    {
+      "name": "failure_continue",
+      "exit_code": 0
+    }
+  ],
+  "hardware_used": false,
+  "status": "PASS"
+}

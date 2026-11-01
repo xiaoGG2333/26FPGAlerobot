@@ -1,0 +1,75 @@
+{
+  "status": "BUILD_AND_OFFLINE_VALIDATED",
+  "board_execution": "NOT_RUN",
+  "motion_performed": false,
+  "formal_baseline_switched": false,
+  "runtime_source_files_unchanged": 62,
+  "third_party_source_files_unchanged": 45,
+  "new_timing": {
+    "wns_ns": 0.382,
+    "whs_ns": 0.024,
+    "clock_mhz": 125
+  },
+  "new_resources": {
+    "Slice LUTs": {
+      "used": 32718.0,
+      "available": 277400.0,
+      "percent": 11.79
+    },
+    "Slice Registers": {
+      "used": 38263.0,
+      "available": 554800.0,
+      "percent": 6.9
+    },
+    "Block RAM Tile": {
+      "used": 4.0,
+      "available": 755.0,
+      "percent": 0.53
+    },
+    "DSPs": {
+      "used": 190.0,
+      "available": 2020.0,
+      "percent": 9.41
+    }
+  },
+  "baseline_timing": {
+    "wns_ns": 0.416,
+    "whs_ns": 0.056,
+    "clock_mhz": 125
+  },
+  "baseline_resources": {
+    "Slice LUTs": {
+      "used": 30732.0,
+      "available": 277400.0,
+      "percent": 11.08
+    },
+    "Slice Registers": {
+      "used": 37519.0,
+      "available": 554800.0,
+      "percent": 6.76
+    },
+    "Block RAM Tile": {
+      "used": 4.0,
+      "available": 755.0,
+      "percent": 0.53
+    },
+    "DSPs": {
+      "used": 190.0,
+      "available": 2020.0,
+      "percent": 9.41
+    }
+  },
+  "validation": {
+    "hls_csim": "PASS",
+    "hls_rtl_cosim_transactions": 649,
+    "native_ik_cases": 1878,
+    "new_regressions": 0,
+    "host_protocol_tests": 29,
+    "gripper_and_failure_tests": "PASS",
+    "trajectory_control_chip_damping": "PASS",
+    "fan_and_xadc_rtl": "PASS",
+    "register_definitions_equal": 61
+  },
+  "candidate_boot": "board/boot/BOOT.BIN",
+  "host_protocol_compatibility_fix": "HELLO capability selects result iteration limit200/360"
+}

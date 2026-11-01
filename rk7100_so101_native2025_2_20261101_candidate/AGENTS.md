@@ -1,0 +1,1 @@
+Independent 2025.2 migration. Do not write to the parent legacy project. Preserve firmware, sources, host, RTL, calibration and behavior. Only build/platform compatibility changes are authorized. No motion in build validation. Verify manifests/baseline_runtime_sha256.json.

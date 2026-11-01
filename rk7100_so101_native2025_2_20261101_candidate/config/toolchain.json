@@ -1,0 +1,8 @@
+{
+  "amd_root": "D:/Software/vivado2025.2/2025.2",
+  "required_version": "2025.2",
+  "part": "xc7z100ffg900-2",
+  "clock_ns": 8,
+  "jobs": 4,
+  "native_gcc": "D:/Software/minGW/mingw64/bin/gcc.exe"
+}

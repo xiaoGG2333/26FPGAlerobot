@@ -1,0 +1,51 @@
+{
+  "backend": "native finite-difference Jacobian reference; not board execution",
+  "cases": 1878,
+  "transitions": [
+    {
+      "group": "historical",
+      "old_code": 0,
+      "new_code": 0,
+      "count": 890
+    },
+    {
+      "group": "historical",
+      "old_code": 1,
+      "new_code": 1,
+      "count": 79
+    },
+    {
+      "group": "latest_log_approx_seed",
+      "old_code": 0,
+      "new_code": 0,
+      "count": 357
+    },
+    {
+      "group": "latest_log_approx_seed",
+      "old_code": 1,
+      "new_code": 1,
+      "count": 302
+    },
+    {
+      "group": "reachable_synthetic",
+      "old_code": 0,
+      "new_code": 0,
+      "count": 238
+    },
+    {
+      "group": "reachable_synthetic",
+      "old_code": 1,
+      "new_code": 0,
+      "count": 7
+    },
+    {
+      "group": "reachable_synthetic",
+      "old_code": 1,
+      "new_code": 1,
+      "count": 5
+    }
+  ],
+  "guard_tests": "PASS hardware abort, invalid roll no calls, bounded failed retries",
+  "motion_performed": false
+}
+IMPROVED 7 REGRESSED 0

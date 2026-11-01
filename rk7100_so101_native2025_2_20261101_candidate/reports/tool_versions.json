@@ -1,0 +1,17 @@
+{
+  "vivado": {
+    "path": "D:\\Software\\vivado2025.2\\2025.2\\Vivado\\bin\\vivado.bat",
+    "version_output": "vivado v2025.2 (64-bit)\nTool Version Limit: 2025.11\nSW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025\nIP Build 6300035 on Fri Nov 14 10:48:45 MST 2025\nSharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025\nCopyright 1986-2022 Xilinx, Inc. All Rights Reserved.\nCopyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.\n",
+    "exit_code": 1
+  },
+  "hls": {
+    "path": "D:\\Software\\vivado2025.2\\2025.2\\Vitis\\bin\\v++.bat",
+    "version_output": "\n****** v++ v2025.2 (64-bit)\n  **** SW Build 6295257 on 2025-11-13-08:29:27\n  **** Start of session at: Sun Nov  1 15:37:52 2026\n    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.\n    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.\n\n",
+    "exit_code": 0
+  },
+  "vitis": {
+    "path": "D:\\Software\\vivado2025.2\\2025.2\\Vitis\\bin\\vitis.bat",
+    "version_output": "\n****** Xilinx Vitis Development Environment\n****** Vitis v2025.2 (64-bit)\n****** SW Build 6295257 on 2025-11-13-08:29:30\n    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.\n    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.\n\n",
+    "exit_code": 1
+  }
+}

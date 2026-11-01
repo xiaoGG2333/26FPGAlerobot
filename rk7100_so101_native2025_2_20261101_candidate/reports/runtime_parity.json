@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "protected_files": 63,
+  "changed": [],
+  "documented_compatibility_adaptations": [
+    "host/right_joycon.py"
+  ]
+}

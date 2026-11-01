@@ -1,0 +1,3 @@
+PASS LT close, RT open, both/release HOLD, trigger deadzone, no stick/pose interference
+PASS unverified calibration rejection, independent command protocol and communication-fault propagation without STOP
+PASS end-to-end trigger commands while five axes idle, both/release hold and global STOP on exit
