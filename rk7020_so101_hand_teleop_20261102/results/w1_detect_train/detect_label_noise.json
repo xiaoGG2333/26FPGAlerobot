@@ -1,0 +1,26 @@
+{
+ "weights": "..\\results\\w1_detect_train\\softargmax_cropfix\\detect_fp32.pt",
+ "train_error": {
+  "n": 4454,
+  "median_px": 4.76,
+  "p90_px": 53.2,
+  "frac_gt_8px": 0.358
+ },
+ "val_error": {
+  "n": 564,
+  "median_px": 5.02,
+  "p90_px": 59.41,
+  "frac_gt_8px": 0.408
+ },
+ "dup_pairs": {
+  "n_pairs_same_user": 977,
+  "n_closest": 97,
+  "img_diff_median_closest": 0.55,
+  "gt_diff_px_median_closest": 11.39,
+  "pred_diff_px_median_closest": 15.82,
+  "gt_diff_px_p90_closest": 72.85,
+  "pred_diff_px_p90_closest": 51.41,
+  "share_closest_where_gt_jumps_gt8px": 0.701,
+  "share_closest_where_pred_jumps_gt8px": 0.773
+ }
+}

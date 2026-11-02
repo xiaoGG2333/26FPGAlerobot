@@ -1,0 +1,101 @@
+{
+ "head": "softargmax",
+ "epochs": 40,
+ "batch": 64,
+ "lr": 0.003,
+ "workers": 2,
+ "uv_weight": 2.0,
+ "uv_beta": 0.02,
+ "hm_weight": 1.0,
+ "hm_sigma": 1.0,
+ "hm_loss": "mse",
+ "keep_center": true,
+ "img_root": "D:\\C_O_D_E\\2026\\FPGA_AMD\\model\\data\\cache256",
+ "zoom_min": 0.6,
+ "neg_extra": {
+  "n": 93,
+  "weight": 5,
+  "root": "data\\recorded_neg\\frames",
+  "clips": [
+   "L1_open_light",
+   "robot_arm1",
+   "robot_arm2"
+  ],
+  "n_hagrid_no_gesture": 1839,
+  "neg_pool": 2304
+ },
+ "oob_neg": {
+  "ratio": 0.0,
+  "n_eligible": 0,
+  "n_slots": 0
+ },
+ "n_train": 6235,
+ "n_val": 982,
+ "macs_M@144": 21.06,
+ "params_K": 27.9,
+ "qat": null,
+ "device": "cuda",
+ "torch": "2.11.0+cu128",
+ "python": "3.10.22",
+ "started_at": "2026-10-15 20:38:57"
+}
+ep 01 loss 1.4094 conf 0.5536 uv 0.3480 | val median 30.19px (n=445) [0.5min]
+  -> 保存 ..\results\w1_detect_zoom\_zoom60.pt
+ep 02 loss 1.1558 conf 0.5257 uv 0.3024 | val median 28.27px (n=450) [0.7min]
+  -> 保存 ..\results\w1_detect_zoom\_zoom60.pt
+ep 03 loss 1.0733 conf 0.4989 uv 0.2812 | val median 26.04px (n=454) [0.9min]
+  -> 保存 ..\results\w1_detect_zoom\_zoom60.pt
+ep 04 loss 1.0002 conf 0.4804 uv 0.2558 | val median 25.20px (n=545) [1.1min]
+  -> 保存 ..\results\w1_detect_zoom\_zoom60.pt
+ep 05 loss 0.9312 conf 0.4373 uv 0.2440 | val median 24.25px (n=487) [1.3min]
+  -> 保存 ..\results\w1_detect_zoom\_zoom60.pt
+ep 06 loss 0.8886 conf 0.4244 uv 0.2291 | val median 17.75px (n=554) [1.5min]
+  -> 保存 ..\results\w1_detect_zoom\_zoom60.pt
+ep 07 loss 0.8415 conf 0.4043 uv 0.2160 | val median 13.61px (n=534) [1.7min]
+  -> 保存 ..\results\w1_detect_zoom\_zoom60.pt
+ep 08 loss 0.7798 conf 0.3660 uv 0.2046 | val median 13.20px (n=485) [1.9min]
+  -> 保存 ..\results\w1_detect_zoom\_zoom60.pt
+ep 09 loss 0.7724 conf 0.3655 uv 0.2015 | val median 9.65px (n=500) [2.1min]
+  -> 保存 ..\results\w1_detect_zoom\_zoom60.pt
+ep 10 loss 0.7357 conf 0.3374 uv 0.1974 | val median 12.52px (n=515) [2.3min]
+ep 11 loss 0.7240 conf 0.3365 uv 0.1921 | val median 7.96px (n=539) [2.5min]
+  -> 保存 ..\results\w1_detect_zoom\_zoom60.pt
+ep 12 loss 0.6776 conf 0.3075 uv 0.1833 | val median 7.34px (n=452) [2.7min]
+  -> 保存 ..\results\w1_detect_zoom\_zoom60.pt
+ep 13 loss 0.6653 conf 0.2998 uv 0.1811 | val median 9.34px (n=529) [2.9min]
+ep 14 loss 0.6513 conf 0.2968 uv 0.1757 | val median 7.86px (n=534) [3.1min]
+ep 15 loss 0.6318 conf 0.2751 uv 0.1769 | val median 7.55px (n=474) [3.3min]
+ep 16 loss 0.6297 conf 0.2742 uv 0.1763 | val median 6.72px (n=481) [3.5min]
+  -> 保存 ..\results\w1_detect_zoom\_zoom60.pt
+ep 17 loss 0.6158 conf 0.2672 uv 0.1729 | val median 6.69px (n=477) [3.7min]
+  -> 保存 ..\results\w1_detect_zoom\_zoom60.pt
+ep 18 loss 0.5771 conf 0.2454 uv 0.1645 | val median 7.32px (n=551) [3.9min]
+ep 19 loss 0.5809 conf 0.2420 uv 0.1681 | val median 6.09px (n=519) [4.1min]
+  -> 保存 ..\results\w1_detect_zoom\_zoom60.pt
+ep 20 loss 0.5704 conf 0.2429 uv 0.1625 | val median 6.16px (n=490) [4.3min]
+ep 21 loss 0.5601 conf 0.2352 uv 0.1612 | val median 6.27px (n=530) [4.5min]
+ep 22 loss 0.5524 conf 0.2269 uv 0.1615 | val median 5.61px (n=471) [4.7min]
+  -> 保存 ..\results\w1_detect_zoom\_zoom60.pt
+ep 23 loss 0.5448 conf 0.2223 uv 0.1600 | val median 5.88px (n=516) [4.9min]
+ep 24 loss 0.5368 conf 0.2122 uv 0.1611 | val median 5.83px (n=523) [5.1min]
+ep 25 loss 0.5312 conf 0.2158 uv 0.1565 | val median 5.54px (n=504) [5.3min]
+  -> 保存 ..\results\w1_detect_zoom\_zoom60.pt
+ep 26 loss 0.5162 conf 0.2072 uv 0.1533 | val median 4.98px (n=484) [5.5min]
+  -> 保存 ..\results\w1_detect_zoom\_zoom60.pt
+ep 27 loss 0.5305 conf 0.2144 uv 0.1568 | val median 5.07px (n=507) [5.7min]
+ep 28 loss 0.5237 conf 0.2111 uv 0.1550 | val median 5.22px (n=511) [5.9min]
+ep 29 loss 0.5091 conf 0.2017 uv 0.1525 | val median 5.27px (n=521) [6.1min]
+ep 30 loss 0.4995 conf 0.2035 uv 0.1468 | val median 5.12px (n=527) [6.3min]
+ep 31 loss 0.5043 conf 0.1968 uv 0.1526 | val median 4.91px (n=518) [6.5min]
+  -> 保存 ..\results\w1_detect_zoom\_zoom60.pt
+ep 32 loss 0.4908 conf 0.1964 uv 0.1460 | val median 5.00px (n=534) [6.8min]
+ep 33 loss 0.4842 conf 0.1914 uv 0.1452 | val median 5.28px (n=529) [7.0min]
+ep 34 loss 0.4968 conf 0.1900 uv 0.1522 | val median 4.93px (n=510) [7.3min]
+ep 35 loss 0.4881 conf 0.1923 uv 0.1468 | val median 4.84px (n=513) [7.6min]
+  -> 保存 ..\results\w1_detect_zoom\_zoom60.pt
+ep 36 loss 0.4850 conf 0.1883 uv 0.1472 | val median 4.95px (n=521) [7.9min]
+ep 37 loss 0.4837 conf 0.1848 uv 0.1483 | val median 4.86px (n=518) [8.2min]
+ep 38 loss 0.4758 conf 0.1838 uv 0.1448 | val median 4.99px (n=523) [8.5min]
+ep 39 loss 0.4792 conf 0.1845 uv 0.1462 | val median 4.92px (n=518) [8.8min]
+ep 40 loss 0.4856 conf 0.1891 uv 0.1471 | val median 4.97px (n=519) [9.1min]
+完成, best val median = 4.84 px (epoch 35)

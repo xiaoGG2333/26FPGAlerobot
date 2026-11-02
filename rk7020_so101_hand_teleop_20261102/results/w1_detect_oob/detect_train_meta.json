@@ -1,0 +1,52 @@
+{
+ "head": "softargmax",
+ "epochs": 15,
+ "batch": 64,
+ "lr": 0.0003,
+ "workers": 2,
+ "uv_weight": 2.0,
+ "uv_beta": 0.02,
+ "hm_weight": 1.0,
+ "hm_sigma": 1.0,
+ "hm_loss": "mse",
+ "keep_center": true,
+ "img_root": "D:\\C_O_D_E\\2026\\FPGA_AMD\\model\\data\\cache256",
+ "neg_extra": {
+  "n": 93,
+  "weight": 5,
+  "root": "data\\recorded_neg\\frames",
+  "clips": [
+   "L1_open_light",
+   "robot_arm1",
+   "robot_arm2"
+  ],
+  "n_hagrid_no_gesture": 1839,
+  "neg_pool": 2304
+ },
+ "oob_neg": {
+  "ratio": 0.0,
+  "n_eligible": 0,
+  "n_slots": 0,
+  "feasible": 0,
+  "fallback": 0
+ },
+ "n_train": 6235,
+ "n_val": 982,
+ "macs_M@144": 21.06,
+ "params_K": 27.2,
+ "qat": {
+  "from": "frozen\\detect_fp32.pt",
+  "mode": "sym",
+  "calib_batches": 16,
+  "ste": true,
+  "act_snr_min": 16.08
+ },
+ "device": "cuda",
+ "torch": "2.11.0+cu128",
+ "python": "3.10.22",
+ "started_at": "2026-10-15 19:54:57",
+ "finished_at": "2026-10-15 19:58:00",
+ "total_sec": 183.1,
+ "best_epoch": 8,
+ "best_val_median_px": 5.479893684387207
+}

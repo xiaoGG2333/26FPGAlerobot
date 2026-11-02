@@ -1,0 +1,65 @@
+{
+ "classify": {
+  "onnx": "classify_int8_ort_convonly.onnx",
+  "val_acc": 0.912,
+  "per_class_recall": {
+   "fist": 0.8764,
+   "palm": 0.9148,
+   "other": 0.9312
+  },
+  "other_motion_rate": 0.0688,
+  "confusion": {
+   "fist": {
+    "fist": 227,
+    "palm": 10,
+    "other": 22
+   },
+   "palm": {
+    "fist": 4,
+    "palm": 279,
+    "other": 22
+   },
+   "other": {
+    "fist": 10,
+    "palm": 20,
+    "other": 406
+   }
+  }
+ },
+ "detect": {
+  "onnx": "detect_int8_ort_convonly.onnx",
+  "n_pos": 564,
+  "median_px": 5.237,
+  "p90_px": 53.49,
+  "n_accepted": 536,
+  "recall@0.5": 0.9504,
+  "median_all_px": 5.629,
+  "jitter_px": 4.969,
+  "negatives": {
+   "L1_open_light": {
+    "n": 41,
+    "conf_median": 0.0217,
+    "conf_max": 0.1229,
+    "fire@0.5": 0.0
+   },
+   "robot_arm1": {
+    "n": 33,
+    "conf_median": 0.0057,
+    "conf_max": 0.0276,
+    "fire@0.5": 0.0
+   },
+   "robot_arm2": {
+    "n": 19,
+    "conf_median": 0.0045,
+    "conf_max": 0.0193,
+    "fire@0.5": 0.0
+   },
+   "hagrid_no_gesture": {
+    "n": 325,
+    "conf_median": 0.0705,
+    "conf_max": 0.9927,
+    "fire@0.5": 0.1754
+   }
+  }
+ }
+}

@@ -1,0 +1,95 @@
+{
+ "head": "softargmax",
+ "epochs": 40,
+ "batch": 64,
+ "lr": 0.003,
+ "workers": 2,
+ "uv_weight": 2.0,
+ "uv_beta": 0.02,
+ "hm_weight": 1.0,
+ "hm_sigma": 1.0,
+ "hm_loss": "mse",
+ "keep_center": true,
+ "img_root": "D:\\C_O_D_E\\2026\\FPGA_AMD\\model\\data\\cache256",
+ "neg_extra": {
+  "n": 93,
+  "weight": 5,
+  "root": "data\\recorded_neg\\frames",
+  "clips": [
+   "L1_open_light",
+   "robot_arm1",
+   "robot_arm2"
+  ],
+  "n_hagrid_no_gesture": 1839,
+  "neg_pool": 2304
+ },
+ "n_train": 6235,
+ "n_val": 982,
+ "macs_M@144": 21.06,
+ "params_K": 27.9,
+ "device": "cuda",
+ "torch": "2.11.0+cu128",
+ "python": "3.10.22",
+ "started_at": "2026-10-14 23:03:55"
+}
+ep 01 loss 1.4083 conf 0.6013 uv 0.3273 | val median 29.10px (n=386) [0.5min]
+  -> 保存 ..\results\w1_detect_neg\_neg.pt
+ep 02 loss 1.1640 conf 0.5753 uv 0.2829 | val median 28.61px (n=564) [0.8min]
+  -> 保存 ..\results\w1_detect_neg\_neg.pt
+ep 03 loss 1.0570 conf 0.5464 uv 0.2501 | val median 18.43px (n=494) [1.0min]
+  -> 保存 ..\results\w1_detect_neg\_neg.pt
+ep 04 loss 0.9824 conf 0.5043 uv 0.2348 | val median 20.55px (n=562) [1.3min]
+ep 05 loss 0.9263 conf 0.4712 uv 0.2241 | val median 18.43px (n=534) [1.6min]
+ep 06 loss 0.8713 conf 0.4370 uv 0.2144 | val median 15.20px (n=547) [1.8min]
+  -> 保存 ..\results\w1_detect_neg\_neg.pt
+ep 07 loss 0.8061 conf 0.3984 uv 0.2015 | val median 11.32px (n=552) [2.1min]
+  -> 保存 ..\results\w1_detect_neg\_neg.pt
+ep 08 loss 0.7781 conf 0.3856 uv 0.1940 | val median 10.32px (n=533) [2.3min]
+  -> 保存 ..\results\w1_detect_neg\_neg.pt
+ep 09 loss 0.7553 conf 0.3723 uv 0.1892 | val median 9.56px (n=554) [2.6min]
+  -> 保存 ..\results\w1_detect_neg\_neg.pt
+ep 10 loss 0.7236 conf 0.3471 uv 0.1861 | val median 9.34px (n=442) [2.8min]
+  -> 保存 ..\results\w1_detect_neg\_neg.pt
+ep 11 loss 0.7000 conf 0.3361 uv 0.1799 | val median 8.05px (n=549) [3.1min]
+  -> 保存 ..\results\w1_detect_neg\_neg.pt
+ep 12 loss 0.6642 conf 0.3142 uv 0.1733 | val median 6.86px (n=519) [3.3min]
+  -> 保存 ..\results\w1_detect_neg\_neg.pt
+ep 13 loss 0.6640 conf 0.3193 uv 0.1706 | val median 7.77px (n=553) [3.6min]
+ep 14 loss 0.6281 conf 0.2895 uv 0.1678 | val median 6.29px (n=546) [3.8min]
+  -> 保存 ..\results\w1_detect_neg\_neg.pt
+ep 15 loss 0.6206 conf 0.2863 uv 0.1657 | val median 6.66px (n=544) [4.0min]
+ep 16 loss 0.6068 conf 0.2784 uv 0.1628 | val median 6.50px (n=510) [4.3min]
+ep 17 loss 0.5889 conf 0.2690 uv 0.1585 | val median 5.40px (n=558) [4.5min]
+  -> 保存 ..\results\w1_detect_neg\_neg.pt
+ep 18 loss 0.5740 conf 0.2546 uv 0.1584 | val median 6.37px (n=544) [4.8min]
+ep 19 loss 0.5645 conf 0.2521 uv 0.1549 | val median 5.45px (n=552) [5.0min]
+ep 20 loss 0.5515 conf 0.2399 uv 0.1546 | val median 5.49px (n=545) [5.3min]
+ep 21 loss 0.5422 conf 0.2344 uv 0.1526 | val median 5.22px (n=547) [5.5min]
+  -> 保存 ..\results\w1_detect_neg\_neg.pt
+ep 22 loss 0.5293 conf 0.2286 uv 0.1491 | val median 5.05px (n=548) [5.8min]
+  -> 保存 ..\results\w1_detect_neg\_neg.pt
+ep 23 loss 0.5237 conf 0.2211 uv 0.1501 | val median 4.64px (n=532) [6.0min]
+  -> 保存 ..\results\w1_detect_neg\_neg.pt
+ep 24 loss 0.5142 conf 0.2196 uv 0.1461 | val median 4.92px (n=549) [6.2min]
+ep 25 loss 0.5036 conf 0.2091 uv 0.1461 | val median 4.80px (n=535) [6.5min]
+ep 26 loss 0.5037 conf 0.2139 uv 0.1437 | val median 4.52px (n=534) [6.8min]
+  -> 保存 ..\results\w1_detect_neg\_neg.pt
+ep 27 loss 0.4972 conf 0.2051 uv 0.1449 | val median 4.49px (n=528) [7.0min]
+  -> 保存 ..\results\w1_detect_neg\_neg.pt
+ep 28 loss 0.4860 conf 0.1956 uv 0.1441 | val median 4.63px (n=539) [7.2min]
+ep 29 loss 0.4846 conf 0.1942 uv 0.1441 | val median 4.57px (n=550) [7.5min]
+ep 30 loss 0.4798 conf 0.1948 uv 0.1414 | val median 4.66px (n=545) [7.7min]
+ep 31 loss 0.4747 conf 0.1918 uv 0.1403 | val median 4.74px (n=548) [7.9min]
+ep 32 loss 0.4649 conf 0.1800 uv 0.1413 | val median 4.78px (n=544) [8.2min]
+ep 33 loss 0.4707 conf 0.1888 uv 0.1398 | val median 4.58px (n=546) [8.4min]
+ep 34 loss 0.4561 conf 0.1770 uv 0.1384 | val median 4.45px (n=547) [8.6min]
+  -> 保存 ..\results\w1_detect_neg\_neg.pt
+ep 35 loss 0.4594 conf 0.1797 uv 0.1387 | val median 4.52px (n=544) [8.9min]
+ep 36 loss 0.4648 conf 0.1807 uv 0.1409 | val median 4.40px (n=546) [9.1min]
+  -> 保存 ..\results\w1_detect_neg\_neg.pt
+ep 37 loss 0.4639 conf 0.1830 uv 0.1393 | val median 4.45px (n=547) [9.3min]
+ep 38 loss 0.4615 conf 0.1826 uv 0.1383 | val median 4.44px (n=548) [9.6min]
+ep 39 loss 0.4533 conf 0.1723 uv 0.1394 | val median 4.42px (n=547) [9.8min]
+ep 40 loss 0.4465 conf 0.1707 uv 0.1368 | val median 4.37px (n=547) [10.0min]
+  -> 保存 ..\results\w1_detect_neg\_neg.pt
+完成, best val median = 4.37 px (epoch 40)

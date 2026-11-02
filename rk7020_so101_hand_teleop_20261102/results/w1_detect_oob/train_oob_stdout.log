@@ -1,0 +1,90 @@
+{
+ "head": "softargmax",
+ "epochs": 40,
+ "batch": 64,
+ "lr": 0.003,
+ "workers": 2,
+ "uv_weight": 2.0,
+ "uv_beta": 0.02,
+ "hm_weight": 1.0,
+ "hm_sigma": 1.0,
+ "hm_loss": "mse",
+ "keep_center": true,
+ "img_root": "D:\\C_O_D_E\\2026\\FPGA_AMD\\model\\data\\cache256",
+ "neg_extra": {
+  "n": 93,
+  "weight": 5,
+  "root": "data\\recorded_neg\\frames",
+  "clips": [
+   "L1_open_light",
+   "robot_arm1",
+   "robot_arm2"
+  ],
+  "n_hagrid_no_gesture": 1839,
+  "neg_pool": 2304
+ },
+ "oob_neg": {
+  "ratio": 1.0,
+  "n_eligible": 1856,
+  "n_slots": 1856
+ },
+ "n_train": 8091,
+ "n_val": 982,
+ "macs_M@144": 21.06,
+ "params_K": 27.9,
+ "device": "cuda",
+ "torch": "2.11.0+cu128",
+ "python": "3.10.22",
+ "started_at": "2026-10-15 19:33:31"
+}
+ep 01 loss 1.4255 conf 0.6585 uv 0.3205 | val median 26.98px (n=352) [0.8min]
+  -> 保存 ..\results\w1_detect_oob\_oob.pt
+ep 02 loss 1.1847 conf 0.6179 uv 0.2749 | val median 24.28px (n=166) [1.0min]
+  -> 保存 ..\results\w1_detect_oob\_oob.pt
+ep 03 loss 1.0938 conf 0.5866 uv 0.2490 | val median 16.82px (n=362) [1.3min]
+  -> 保存 ..\results\w1_detect_oob\_oob.pt
+ep 04 loss 1.0163 conf 0.5593 uv 0.2250 | val median 6.56px (n=168) [1.5min]
+  -> 保存 ..\results\w1_detect_oob\_oob.pt
+ep 05 loss 0.9666 conf 0.5333 uv 0.2137 | val median 11.98px (n=449) [1.8min]
+ep 06 loss 0.9317 conf 0.5195 uv 0.2039 | val median 12.88px (n=532) [2.0min]
+ep 07 loss 0.9009 conf 0.5058 uv 0.1955 | val median 10.24px (n=464) [2.3min]
+ep 08 loss 0.8699 conf 0.4880 uv 0.1892 | val median 7.81px (n=447) [2.5min]
+ep 09 loss 0.8699 conf 0.4828 uv 0.1919 | val median 8.57px (n=502) [2.8min]
+ep 10 loss 0.8398 conf 0.4712 uv 0.1828 | val median 8.47px (n=387) [3.0min]
+ep 11 loss 0.8326 conf 0.4649 uv 0.1823 | val median 4.93px (n=302) [3.3min]
+  -> 保存 ..\results\w1_detect_oob\_oob.pt
+ep 12 loss 0.8058 conf 0.4557 uv 0.1736 | val median 5.78px (n=483) [3.5min]
+ep 13 loss 0.7846 conf 0.4410 uv 0.1704 | val median 6.44px (n=475) [3.8min]
+ep 14 loss 0.7892 conf 0.4443 uv 0.1711 | val median 5.28px (n=356) [4.0min]
+ep 15 loss 0.7761 conf 0.4349 uv 0.1693 | val median 4.70px (n=365) [4.3min]
+  -> 保存 ..\results\w1_detect_oob\_oob.pt
+ep 16 loss 0.7551 conf 0.4233 uv 0.1646 | val median 5.57px (n=496) [4.5min]
+ep 17 loss 0.7440 conf 0.4120 uv 0.1647 | val median 5.54px (n=399) [4.8min]
+ep 18 loss 0.7429 conf 0.4149 uv 0.1627 | val median 5.51px (n=490) [5.0min]
+ep 19 loss 0.7181 conf 0.3984 uv 0.1585 | val median 5.39px (n=464) [5.3min]
+ep 20 loss 0.7177 conf 0.4013 uv 0.1570 | val median 5.04px (n=351) [5.5min]
+ep 21 loss 0.6927 conf 0.3893 uv 0.1505 | val median 5.46px (n=489) [5.8min]
+ep 22 loss 0.6902 conf 0.3837 uv 0.1520 | val median 5.04px (n=474) [6.0min]
+ep 23 loss 0.6721 conf 0.3735 uv 0.1481 | val median 4.71px (n=429) [6.3min]
+ep 24 loss 0.6714 conf 0.3739 uv 0.1476 | val median 4.18px (n=406) [6.5min]
+  -> 保存 ..\results\w1_detect_oob\_oob.pt
+ep 25 loss 0.6567 conf 0.3664 uv 0.1440 | val median 4.17px (n=422) [6.8min]
+  -> 保存 ..\results\w1_detect_oob\_oob.pt
+ep 26 loss 0.6621 conf 0.3687 uv 0.1456 | val median 4.47px (n=461) [7.0min]
+ep 27 loss 0.6608 conf 0.3641 uv 0.1472 | val median 4.80px (n=479) [7.2min]
+ep 28 loss 0.6385 conf 0.3507 uv 0.1428 | val median 4.67px (n=449) [7.5min]
+ep 29 loss 0.6390 conf 0.3518 uv 0.1425 | val median 4.25px (n=471) [7.7min]
+ep 30 loss 0.6354 conf 0.3527 uv 0.1403 | val median 4.46px (n=456) [8.0min]
+ep 31 loss 0.6342 conf 0.3480 uv 0.1420 | val median 4.60px (n=447) [8.2min]
+ep 32 loss 0.6215 conf 0.3435 uv 0.1380 | val median 4.45px (n=465) [8.5min]
+ep 33 loss 0.6266 conf 0.3446 uv 0.1399 | val median 4.20px (n=444) [8.7min]
+ep 34 loss 0.6343 conf 0.3541 uv 0.1390 | val median 4.28px (n=452) [9.0min]
+ep 35 loss 0.6194 conf 0.3413 uv 0.1380 | val median 4.45px (n=469) [9.2min]
+ep 36 loss 0.6169 conf 0.3371 uv 0.1388 | val median 4.32px (n=437) [9.5min]
+ep 37 loss 0.6179 conf 0.3409 uv 0.1374 | val median 4.14px (n=443) [9.7min]
+  -> 保存 ..\results\w1_detect_oob\_oob.pt
+ep 38 loss 0.6068 conf 0.3364 uv 0.1341 | val median 4.20px (n=459) [10.0min]
+ep 39 loss 0.6106 conf 0.3385 uv 0.1349 | val median 4.07px (n=452) [10.2min]
+  -> 保存 ..\results\w1_detect_oob\_oob.pt
+ep 40 loss 0.6124 conf 0.3338 uv 0.1382 | val median 4.16px (n=461) [10.5min]
+完成, best val median = 4.07 px (epoch 39)

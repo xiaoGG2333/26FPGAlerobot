@@ -1,0 +1,31 @@
+{
+ "video": "D:\\C_O_D_E\\2026\\FPGA_AMD\\results\\w3_pose\\calib_rec.mp4",
+ "video_info": {
+  "W": 1280,
+  "H": 720,
+  "fps": 30.0,
+  "frames": 7100,
+  "infer_seconds": 26.9
+ },
+ "filters": {
+  "min_score": 0.8,
+  "min_hand": 0.08,
+  "max_jump": 0.15
+ },
+ "counts": {
+  "keep": 2,
+  "no_hand": 92,
+  "low_score": 2,
+  "hand_small": 2,
+  "jump": 2
+ },
+ "keep_rate": 0.02,
+ "handedness_dist": {
+  "none": 92,
+  "Left": 1,
+  "Right": 7
+ },
+ "handedness_note": "教师原始输出；镜像自拍视角 swap 未验证（B1 遗留项），下游使用前需核对",
+ "mediapipe_version": "1.1.1",
+ "created": "2026-11-02 00:36:31"
+}

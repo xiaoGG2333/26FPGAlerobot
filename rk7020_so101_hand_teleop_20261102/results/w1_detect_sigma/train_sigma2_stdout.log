@@ -1,0 +1,95 @@
+{
+ "head": "softargmax",
+ "epochs": 40,
+ "batch": 64,
+ "lr": 0.003,
+ "workers": 2,
+ "uv_weight": 2.0,
+ "uv_beta": 0.02,
+ "hm_weight": 1.0,
+ "hm_sigma": 2.0,
+ "hm_loss": "mse",
+ "keep_center": true,
+ "img_root": "D:\\C_O_D_E\\2026\\FPGA_AMD\\model\\data\\cache256",
+ "neg_extra": {
+  "n": 93,
+  "weight": 5,
+  "root": "data\\recorded_neg\\frames",
+  "clips": [
+   "L1_open_light",
+   "robot_arm1",
+   "robot_arm2"
+  ],
+  "n_hagrid_no_gesture": 1839,
+  "neg_pool": 2304
+ },
+ "oob_neg": {
+  "ratio": 0.0,
+  "n_eligible": 0,
+  "n_slots": 0
+ },
+ "n_train": 6235,
+ "n_val": 982,
+ "macs_M@144": 21.06,
+ "params_K": 27.9,
+ "qat": null,
+ "device": "cuda",
+ "torch": "2.11.0+cu128",
+ "python": "3.10.22",
+ "started_at": "2026-10-15 19:58:31"
+}
+ep 01 loss 1.3650 conf 0.5670 uv 0.3222 | val median 29.34px (n=395) [0.5min]
+  -> 保存 ..\results\w1_detect_sigma\_hm2.pt
+ep 02 loss 1.1263 conf 0.5331 uv 0.2830 | val median 27.29px (n=432) [0.7min]
+  -> 保存 ..\results\w1_detect_sigma\_hm2.pt
+ep 03 loss 1.0470 conf 0.5042 uv 0.2641 | val median 18.91px (n=557) [0.9min]
+  -> 保存 ..\results\w1_detect_sigma\_hm2.pt
+ep 04 loss 0.9467 conf 0.4645 uv 0.2351 | val median 20.39px (n=553) [1.1min]
+ep 05 loss 0.8767 conf 0.4232 uv 0.2214 | val median 15.42px (n=396) [1.3min]
+  -> 保存 ..\results\w1_detect_sigma\_hm2.pt
+ep 06 loss 0.8474 conf 0.4087 uv 0.2145 | val median 16.04px (n=538) [1.5min]
+ep 07 loss 0.7912 conf 0.3707 uv 0.2055 | val median 16.17px (n=563) [1.7min]
+ep 08 loss 0.7643 conf 0.3634 uv 0.1960 | val median 12.56px (n=546) [1.8min]
+  -> 保存 ..\results\w1_detect_sigma\_hm2.pt
+ep 09 loss 0.7418 conf 0.3470 uv 0.1931 | val median 9.11px (n=539) [2.0min]
+  -> 保存 ..\results\w1_detect_sigma\_hm2.pt
+ep 10 loss 0.7167 conf 0.3369 uv 0.1855 | val median 9.17px (n=507) [2.2min]
+ep 11 loss 0.6844 conf 0.3107 uv 0.1826 | val median 8.07px (n=539) [2.4min]
+  -> 保存 ..\results\w1_detect_sigma\_hm2.pt
+ep 12 loss 0.6691 conf 0.3052 uv 0.1777 | val median 8.05px (n=508) [2.6min]
+  -> 保存 ..\results\w1_detect_sigma\_hm2.pt
+ep 13 loss 0.6520 conf 0.2953 uv 0.1742 | val median 6.49px (n=535) [2.8min]
+  -> 保存 ..\results\w1_detect_sigma\_hm2.pt
+ep 14 loss 0.6347 conf 0.2807 uv 0.1729 | val median 6.55px (n=525) [3.1min]
+ep 15 loss 0.6049 conf 0.2638 uv 0.1665 | val median 6.23px (n=529) [3.3min]
+  -> 保存 ..\results\w1_detect_sigma\_hm2.pt
+ep 16 loss 0.5878 conf 0.2572 uv 0.1613 | val median 5.64px (n=482) [3.5min]
+  -> 保存 ..\results\w1_detect_sigma\_hm2.pt
+ep 17 loss 0.5887 conf 0.2556 uv 0.1626 | val median 6.74px (n=535) [3.7min]
+ep 18 loss 0.5680 conf 0.2392 uv 0.1604 | val median 5.59px (n=522) [3.9min]
+  -> 保存 ..\results\w1_detect_sigma\_hm2.pt
+ep 19 loss 0.5677 conf 0.2401 uv 0.1599 | val median 5.72px (n=552) [4.1min]
+ep 20 loss 0.5501 conf 0.2272 uv 0.1576 | val median 4.85px (n=438) [4.3min]
+  -> 保存 ..\results\w1_detect_sigma\_hm2.pt
+ep 21 loss 0.5403 conf 0.2213 uv 0.1556 | val median 5.53px (n=529) [4.5min]
+ep 22 loss 0.5257 conf 0.2146 uv 0.1517 | val median 4.44px (n=425) [4.7min]
+  -> 保存 ..\results\w1_detect_sigma\_hm2.pt
+ep 23 loss 0.5240 conf 0.2155 uv 0.1504 | val median 5.69px (n=549) [4.9min]
+ep 24 loss 0.5033 conf 0.1978 uv 0.1490 | val median 4.99px (n=503) [5.1min]
+ep 25 loss 0.4992 conf 0.1994 uv 0.1461 | val median 5.32px (n=514) [5.3min]
+ep 26 loss 0.5119 conf 0.2047 uv 0.1498 | val median 4.67px (n=540) [5.6min]
+ep 27 loss 0.4779 conf 0.1809 uv 0.1447 | val median 5.25px (n=539) [5.8min]
+ep 28 loss 0.4827 conf 0.1857 uv 0.1447 | val median 4.75px (n=536) [6.0min]
+ep 29 loss 0.4743 conf 0.1738 uv 0.1465 | val median 4.98px (n=543) [6.2min]
+ep 30 loss 0.4831 conf 0.1837 uv 0.1459 | val median 4.84px (n=537) [6.4min]
+ep 31 loss 0.4733 conf 0.1778 uv 0.1440 | val median 4.63px (n=529) [6.6min]
+ep 32 loss 0.4604 conf 0.1716 uv 0.1407 | val median 4.74px (n=545) [6.8min]
+ep 33 loss 0.4635 conf 0.1699 uv 0.1431 | val median 4.69px (n=540) [7.0min]
+ep 34 loss 0.4593 conf 0.1673 uv 0.1423 | val median 4.86px (n=537) [7.2min]
+ep 35 loss 0.4575 conf 0.1657 uv 0.1421 | val median 4.74px (n=538) [7.4min]
+ep 36 loss 0.4591 conf 0.1660 uv 0.1428 | val median 4.76px (n=544) [7.6min]
+ep 37 loss 0.4576 conf 0.1664 uv 0.1419 | val median 4.76px (n=536) [7.8min]
+ep 38 loss 0.4475 conf 0.1618 uv 0.1392 | val median 4.79px (n=539) [8.0min]
+ep 39 loss 0.4565 conf 0.1658 uv 0.1416 | val median 4.80px (n=538) [8.3min]
+ep 40 loss 0.4448 conf 0.1600 uv 0.1387 | val median 4.81px (n=538) [8.5min]
+完成, best val median = 4.44 px (epoch 22)

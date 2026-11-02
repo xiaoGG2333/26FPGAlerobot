@@ -1,0 +1,11 @@
+{
+ "frames": 3776,
+ "seconds": 334.86,
+ "fps": 11.3,
+ "ik_ms_avg": 12.017,
+ "ik_ok": 2633,
+ "ik_hold": 1143,
+ "replay": null,
+ "source": "0",
+ "calib": "D:\\C_O_D_E\\2026\\FPGA_AMD\\results\\w3_pose\\calib.json"
+}

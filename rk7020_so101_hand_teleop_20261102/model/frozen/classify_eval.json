@@ -1,0 +1,83 @@
+{
+ "weights": "..\\results\\w2_classify_3cls\\_3cls.pt",
+ "classes": [
+  "fist",
+  "palm",
+  "other"
+ ],
+ "n": 1000,
+ "val_acc": 0.92,
+ "per_class": {
+  "fist": {
+   "support": 259,
+   "recall": 0.9035,
+   "precision": 0.9249
+  },
+  "palm": {
+   "support": 305,
+   "recall": 0.9213,
+   "precision": 0.9243
+  },
+  "other": {
+   "support": 436,
+   "recall": 0.9289,
+   "precision": 0.9142
+  }
+ },
+ "confusion": {
+  "fist": {
+   "fist": 234,
+   "palm": 5,
+   "other": 20
+  },
+  "palm": {
+   "fist": 6,
+   "palm": 281,
+   "other": 18
+  },
+  "other": {
+   "fist": 13,
+   "palm": 18,
+   "other": 405
+  }
+ },
+ "other_motion_rate": 0.0711,
+ "other_by_source": {
+  "like": {
+   "n": 28,
+   "to_fist": 2,
+   "to_palm": 0,
+   "motion_rate": 0.0714
+  },
+  "ok": {
+   "n": 23,
+   "to_fist": 1,
+   "to_palm": 8,
+   "motion_rate": 0.3913
+  },
+  "peace": {
+   "n": 29,
+   "to_fist": 6,
+   "to_palm": 5,
+   "motion_rate": 0.3793
+  },
+  "no_gesture": {
+   "n": 325,
+   "to_fist": 4,
+   "to_palm": 5,
+   "motion_rate": 0.0277
+  },
+  "recorded_bg": {
+   "n": 31,
+   "to_fist": 0,
+   "to_palm": 0,
+   "motion_rate": 0.0
+  }
+ },
+ "gates": {
+  "acc_ge_90": true,
+  "other_motion_le_5pct": false,
+  "palm_recall_ge_90": true,
+  "fist_recall_ge_90": true
+ }
+}
