@@ -1,0 +1,4 @@
+interface:
+  display_name: "Zynq SO101 工程验证"
+  short_description: "构建与版本配套核验、机械臂分层诊断及逆解优化回归，区分仿真和实物证据"
+  default_prompt: "使用 $zynq-so101-validation 检查当前工程和日志，给出有证据的结论与验证边界。"

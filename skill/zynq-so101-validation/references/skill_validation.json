@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-01",
+  "skill_format": "PASS quick_validate.py",
+  "relative_markdown_links": "PASS",
+  "evidence_file_count": 11,
+  "evidence_integrity": "MATCH",
+  "script_tests": "PASS 2 tests: integrity, tamper, missing, invalid JSON, path escape, empty index, validation-level preservation",
+  "skill_behavior_independent_field_test": "NOT_RUN",
+  "functional_tests_rerun": false,
+  "hardware_accessed": false,
+  "project_runtime_changed": false,
+  "conversation_records": "curated summaries only; full raw export remains a separate submission item",
+  "gesture_recognition": "future extension, not verified"
+}

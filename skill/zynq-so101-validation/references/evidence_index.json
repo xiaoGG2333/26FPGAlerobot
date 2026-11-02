@@ -1,0 +1,91 @@
+{
+  "schema": "so101_skill_evidence_v1",
+  "captured_date": "2026-11-01",
+  "files": [
+    {
+      "path": "BOUND_RETRY_GUIDE.md",
+      "sha256": "82d535abccf9ad4f1884447a6a2a37fd303f5ceb877e922c7ea78c7fd057b8ff"
+    },
+    {
+      "path": "firmware/servo_mapping.h",
+      "sha256": "a4ff1cd3ae77e3d724a2975be9b6509ceaa3287c39538c210826aa0ba77d6e49"
+    },
+    {
+      "path": "firmware/ik_iteration.c",
+      "sha256": "e533f9fd9500c85a29badcf22bb440ea10957f97ba323239ac9967e14442ac52"
+    },
+    {
+      "path": "firmware/pose_uart.inc",
+      "sha256": "8ce7c35bec37dc8d82813f9e3d35bf138e8e42a0bd9e1cd8417d2a4d9d3486bd"
+    },
+    {
+      "path": "sources/lm_solver_so101.hpp",
+      "sha256": "c2b4b481deeaba93f8906328f1078e3df5708cd9ebe71691523f3292ff9022eb"
+    },
+    {
+      "path": "reports/bound_retry_validation.json",
+      "sha256": "3371f9feec87fea133277e378612d2ba85b14429548fc7d4c57ba25ee80b599c",
+      "report_excerpt": {
+        "status": "PASS_BUILD_AND_OFFLINE_TESTS",
+        "board_execution": "NOT_RUN",
+        "motion_performed": false,
+        "native_cases": 1878,
+        "native_improved": 7,
+        "native_regressed": 0,
+        "clock_mhz": 125
+      }
+    },
+    {
+      "path": "reports/bound_retry_native.json",
+      "sha256": "9c6ba0ab859bc2f25bb1903e1fe750b78c772a2d4fea7da244505d585795484d",
+      "report_excerpt": {
+        "motion_performed": false,
+        "cases": 1878,
+        "backend": "native finite-difference Jacobian reference; not board execution"
+      }
+    },
+    {
+      "path": "reports/github_publication_bound_retry_20261031.json",
+      "sha256": "e18e44a2abcabbc2cf69bd747604311f24912e68ec54c18956550181b44badbc",
+      "report_excerpt": {}
+    },
+    {
+      "path": "repro_2025_2/README.md",
+      "sha256": "a4f8a35b9dbc316d022fa9b715b2caec177eb865db7900c17a15ffebde907dd3"
+    },
+    {
+      "path": "repro_2025_2/reports/migration_validation.json",
+      "sha256": "4f83d4a210ea6098866dc790118d6f6ea07652dd296b35ed99e6d38638da76ac",
+      "report_excerpt": {
+        "status": "BUILD_AND_OFFLINE_VALIDATED",
+        "board_execution": "NOT_RUN",
+        "motion_performed": false,
+        "formal_baseline_switched": false,
+        "new_timing": {
+          "wns_ns": 0.382,
+          "whs_ns": 0.024,
+          "clock_mhz": 125
+        },
+        "validation": {
+          "hls_csim": "PASS",
+          "hls_rtl_cosim_transactions": 649,
+          "native_ik_cases": 1878,
+          "new_regressions": 0,
+          "host_protocol_tests": 29,
+          "gripper_and_failure_tests": "PASS",
+          "trajectory_control_chip_damping": "PASS",
+          "fan_and_xadc_rtl": "PASS",
+          "register_definitions_equal": 61
+        }
+      }
+    },
+    {
+      "path": "repro_2025_2/reports/build_status.json",
+      "sha256": "1a3eaf1a07d4b7b1738571c6d0ed93cb99ae23cd700462119e787db3f8163fe9",
+      "report_excerpt": {
+        "board_execution": "NOT_RUN",
+        "motion_performed": false
+      }
+    }
+  ]
+}
