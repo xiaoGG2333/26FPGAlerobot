@@ -1,0 +1,23 @@
+{
+ "frames": 1192854,
+ "seconds": 57751.74,
+ "avg_fps": 20.7,
+ "source": "0",
+ "frame_size": [
+  640,
+  480
+ ],
+ "thresh": 0.5,
+ "roi_frac": 0.55,
+ "roi_mode": "fixed",
+ "roi_c": 3.0,
+ "n_detect_fire": 425446,
+ "n_no_fire": 767408,
+ "cls_dist": {
+  "2": 254621,
+  "1": 39581,
+  "0": 131244
+ },
+ "conf_median": 0.44292260706424713,
+ "fire_rate": 0.357
+}

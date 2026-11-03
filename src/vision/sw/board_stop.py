@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT / 'sw'))
+sys.path.insert(0, str(ROOT.parents[1] / 'board' / 'vision'))
 import pose_link                                                  # noqa: E402
 
 link = pose_link.BoardLink('COM18', verbose=False)

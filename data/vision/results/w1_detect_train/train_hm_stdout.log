@@ -1,0 +1,81 @@
+{
+ "head": "softargmax",
+ "epochs": 40,
+ "batch": 64,
+ "lr": 0.003,
+ "workers": 2,
+ "uv_weight": 2.0,
+ "uv_beta": 0.02,
+ "hm_weight": 1.0,
+ "hm_sigma": 1.0,
+ "hm_loss": "mse",
+ "keep_center": true,
+ "img_root": "D:\\C_O_D_E\\2026\\FPGA_AMD\\model\\data\\cache256",
+ "n_train": 6235,
+ "n_val": 889,
+ "macs_M@144": 21.06,
+ "params_K": 27.9,
+ "device": "cuda",
+ "torch": "2.11.0+cu128",
+ "python": "3.10.22",
+ "started_at": "2026-10-14 21:08:14"
+}
+ep 01 loss 1.4067 conf 0.6011 uv 0.3255 | val median 29.95px (n=522) [0.5min]
+  -> 保存 ..\results\w1_detect_train\_run3.pt
+ep 02 loss 1.1467 conf 0.5710 uv 0.2760 | val median 26.63px (n=564) [0.8min]
+  -> 保存 ..\results\w1_detect_train\_run3.pt
+ep 03 loss 1.0653 conf 0.5460 uv 0.2538 | val median 19.11px (n=541) [1.0min]
+  -> 保存 ..\results\w1_detect_train\_run3.pt
+ep 04 loss 0.9945 conf 0.5088 uv 0.2385 | val median 18.64px (n=564) [1.3min]
+  -> 保存 ..\results\w1_detect_train\_run3.pt
+ep 05 loss 0.9431 conf 0.4790 uv 0.2287 | val median 13.01px (n=379) [1.6min]
+  -> 保存 ..\results\w1_detect_train\_run3.pt
+ep 06 loss 0.8741 conf 0.4488 uv 0.2099 | val median 11.42px (n=558) [1.8min]
+  -> 保存 ..\results\w1_detect_train\_run3.pt
+ep 07 loss 0.8430 conf 0.4223 uv 0.2080 | val median 13.87px (n=558) [2.1min]
+ep 08 loss 0.7939 conf 0.3945 uv 0.1973 | val median 12.70px (n=520) [2.3min]
+ep 09 loss 0.7700 conf 0.3789 uv 0.1935 | val median 15.90px (n=545) [2.6min]
+ep 10 loss 0.7297 conf 0.3515 uv 0.1874 | val median 10.79px (n=508) [2.8min]
+  -> 保存 ..\results\w1_detect_train\_run3.pt
+ep 11 loss 0.7095 conf 0.3407 uv 0.1826 | val median 6.35px (n=459) [3.1min]
+  -> 保存 ..\results\w1_detect_train\_run3.pt
+ep 12 loss 0.6693 conf 0.3240 uv 0.1707 | val median 6.49px (n=505) [3.3min]
+ep 13 loss 0.6685 conf 0.3104 uv 0.1774 | val median 7.32px (n=554) [3.6min]
+ep 14 loss 0.6372 conf 0.2975 uv 0.1682 | val median 9.07px (n=507) [3.9min]
+ep 15 loss 0.6372 conf 0.2988 uv 0.1677 | val median 6.03px (n=520) [4.1min]
+  -> 保存 ..\results\w1_detect_train\_run3.pt
+ep 16 loss 0.6042 conf 0.2771 uv 0.1622 | val median 6.74px (n=508) [4.4min]
+ep 17 loss 0.6021 conf 0.2798 uv 0.1597 | val median 5.77px (n=550) [4.6min]
+  -> 保存 ..\results\w1_detect_train\_run3.pt
+ep 18 loss 0.5787 conf 0.2562 uv 0.1599 | val median 6.06px (n=538) [4.9min]
+ep 19 loss 0.5566 conf 0.2438 uv 0.1551 | val median 5.66px (n=529) [5.2min]
+  -> 保存 ..\results\w1_detect_train\_run3.pt
+ep 20 loss 0.5495 conf 0.2371 uv 0.1549 | val median 5.16px (n=543) [5.4min]
+  -> 保存 ..\results\w1_detect_train\_run3.pt
+ep 21 loss 0.5464 conf 0.2364 uv 0.1537 | val median 5.44px (n=543) [5.7min]
+ep 22 loss 0.5417 conf 0.2320 uv 0.1536 | val median 5.04px (n=536) [5.9min]
+  -> 保存 ..\results\w1_detect_train\_run3.pt
+ep 23 loss 0.5350 conf 0.2351 uv 0.1487 | val median 5.24px (n=544) [6.2min]
+ep 24 loss 0.5132 conf 0.2162 uv 0.1473 | val median 4.87px (n=515) [6.5min]
+  -> 保存 ..\results\w1_detect_train\_run3.pt
+ep 25 loss 0.5085 conf 0.2129 uv 0.1466 | val median 4.77px (n=533) [6.7min]
+  -> 保存 ..\results\w1_detect_train\_run3.pt
+ep 26 loss 0.5127 conf 0.2150 uv 0.1476 | val median 5.02px (n=532) [7.0min]
+ep 27 loss 0.5026 conf 0.2089 uv 0.1457 | val median 4.46px (n=504) [7.2min]
+  -> 保存 ..\results\w1_detect_train\_run3.pt
+ep 28 loss 0.4993 conf 0.2035 uv 0.1467 | val median 4.74px (n=547) [7.5min]
+ep 29 loss 0.4835 conf 0.1927 uv 0.1443 | val median 4.94px (n=550) [7.7min]
+ep 30 loss 0.4925 conf 0.2006 uv 0.1448 | val median 4.79px (n=538) [8.0min]
+ep 31 loss 0.4775 conf 0.1931 uv 0.1410 | val median 4.43px (n=539) [8.3min]
+  -> 保存 ..\results\w1_detect_train\_run3.pt
+ep 32 loss 0.4718 conf 0.1849 uv 0.1423 | val median 4.59px (n=540) [8.5min]
+ep 33 loss 0.4722 conf 0.1846 uv 0.1427 | val median 4.64px (n=543) [8.8min]
+ep 34 loss 0.4653 conf 0.1837 uv 0.1397 | val median 4.47px (n=535) [9.1min]
+ep 35 loss 0.4673 conf 0.1844 uv 0.1403 | val median 4.50px (n=531) [9.3min]
+ep 36 loss 0.4696 conf 0.1874 uv 0.1400 | val median 4.61px (n=545) [9.6min]
+ep 37 loss 0.4638 conf 0.1833 uv 0.1391 | val median 4.41px (n=538) [9.8min]
+  -> 保存 ..\results\w1_detect_train\_run3.pt
+ep 38 loss 0.4645 conf 0.1835 uv 0.1394 | val median 4.58px (n=539) [10.1min]
+ep 39 loss 0.4604 conf 0.1767 uv 0.1407 | val median 4.58px (n=539) [10.4min]
+ep 40 loss 0.4568 conf 0.1785 uv 0.1380 | val median 4.60px (n=543) [10.6min]
+完成, best val median = 4.41 px (epoch 37)

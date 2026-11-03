@@ -1,0 +1,79 @@
+{
+ "head": "softargmax",
+ "epochs": 40,
+ "batch": 64,
+ "lr": 0.003,
+ "workers": 2,
+ "uv_weight": 2.0,
+ "uv_beta": 0.02,
+ "img_root": "D:\\C_O_D_E\\2026\\FPGA_AMD\\model\\data\\cache256",
+ "n_train": 6235,
+ "n_val": 889,
+ "macs_M@144": 21.06,
+ "params_K": 27.9,
+ "device": "cuda",
+ "torch": "2.11.0+cu128",
+ "python": "3.10.22",
+ "started_at": "2026-10-14 20:02:48"
+}
+ep 01 loss 1.1615 conf 0.5933 uv 0.2841 | val median 31.94px (n=564) [0.4min]
+  -> 保存 D:\C_O_D_E\2026\FPGA_AMD\model\frozen\detect_fp32.pt
+ep 02 loss 1.0597 conf 0.5561 uv 0.2518 | val median 25.80px (n=564) [0.6min]
+  -> 保存 D:\C_O_D_E\2026\FPGA_AMD\model\frozen\detect_fp32.pt
+ep 03 loss 0.9859 conf 0.5221 uv 0.2319 | val median 21.72px (n=564) [0.8min]
+  -> 保存 D:\C_O_D_E\2026\FPGA_AMD\model\frozen\detect_fp32.pt
+ep 04 loss 0.9243 conf 0.4867 uv 0.2188 | val median 21.34px (n=563) [1.0min]
+  -> 保存 D:\C_O_D_E\2026\FPGA_AMD\model\frozen\detect_fp32.pt
+ep 05 loss 0.8638 conf 0.4509 uv 0.2065 | val median 16.28px (n=472) [1.1min]
+  -> 保存 D:\C_O_D_E\2026\FPGA_AMD\model\frozen\detect_fp32.pt
+ep 06 loss 0.8207 conf 0.4282 uv 0.1963 | val median 14.31px (n=533) [1.3min]
+  -> 保存 D:\C_O_D_E\2026\FPGA_AMD\model\frozen\detect_fp32.pt
+ep 07 loss 0.7814 conf 0.4087 uv 0.1863 | val median 13.68px (n=528) [1.5min]
+  -> 保存 D:\C_O_D_E\2026\FPGA_AMD\model\frozen\detect_fp32.pt
+ep 08 loss 0.7501 conf 0.3902 uv 0.1800 | val median 12.93px (n=545) [1.7min]
+  -> 保存 D:\C_O_D_E\2026\FPGA_AMD\model\frozen\detect_fp32.pt
+ep 09 loss 0.7144 conf 0.3701 uv 0.1721 | val median 8.27px (n=527) [1.9min]
+  -> 保存 D:\C_O_D_E\2026\FPGA_AMD\model\frozen\detect_fp32.pt
+ep 10 loss 0.6917 conf 0.3538 uv 0.1689 | val median 8.72px (n=482) [2.0min]
+ep 11 loss 0.6751 conf 0.3445 uv 0.1653 | val median 7.39px (n=371) [2.2min]
+  -> 保存 D:\C_O_D_E\2026\FPGA_AMD\model\frozen\detect_fp32.pt
+ep 12 loss 0.6615 conf 0.3332 uv 0.1641 | val median 7.90px (n=530) [2.4min]
+ep 13 loss 0.6140 conf 0.3006 uv 0.1567 | val median 8.82px (n=523) [2.6min]
+ep 14 loss 0.5994 conf 0.2990 uv 0.1502 | val median 6.14px (n=527) [2.8min]
+  -> 保存 D:\C_O_D_E\2026\FPGA_AMD\model\frozen\detect_fp32.pt
+ep 15 loss 0.5898 conf 0.2876 uv 0.1511 | val median 6.63px (n=482) [3.0min]
+ep 16 loss 0.5707 conf 0.2703 uv 0.1502 | val median 5.58px (n=476) [3.2min]
+  -> 保存 D:\C_O_D_E\2026\FPGA_AMD\model\frozen\detect_fp32.pt
+ep 17 loss 0.5496 conf 0.2548 uv 0.1474 | val median 6.22px (n=535) [3.3min]
+ep 18 loss 0.5362 conf 0.2499 uv 0.1432 | val median 6.07px (n=546) [3.5min]
+ep 19 loss 0.5247 conf 0.2393 uv 0.1427 | val median 5.50px (n=522) [3.7min]
+  -> 保存 D:\C_O_D_E\2026\FPGA_AMD\model\frozen\detect_fp32.pt
+ep 20 loss 0.5154 conf 0.2365 uv 0.1395 | val median 5.58px (n=551) [3.9min]
+ep 21 loss 0.4981 conf 0.2240 uv 0.1370 | val median 5.65px (n=539) [4.1min]
+ep 22 loss 0.4897 conf 0.2188 uv 0.1354 | val median 5.49px (n=549) [4.3min]
+  -> 保存 D:\C_O_D_E\2026\FPGA_AMD\model\frozen\detect_fp32.pt
+ep 23 loss 0.4777 conf 0.2047 uv 0.1365 | val median 5.03px (n=546) [4.4min]
+  -> 保存 D:\C_O_D_E\2026\FPGA_AMD\model\frozen\detect_fp32.pt
+ep 24 loss 0.4752 conf 0.2028 uv 0.1362 | val median 5.79px (n=523) [4.6min]
+ep 25 loss 0.4768 conf 0.2085 uv 0.1341 | val median 4.96px (n=540) [4.8min]
+  -> 保存 D:\C_O_D_E\2026\FPGA_AMD\model\frozen\detect_fp32.pt
+ep 26 loss 0.4529 conf 0.1888 uv 0.1321 | val median 4.66px (n=530) [5.0min]
+  -> 保存 D:\C_O_D_E\2026\FPGA_AMD\model\frozen\detect_fp32.pt
+ep 27 loss 0.4450 conf 0.1847 uv 0.1301 | val median 4.52px (n=530) [5.2min]
+  -> 保存 D:\C_O_D_E\2026\FPGA_AMD\model\frozen\detect_fp32.pt
+ep 28 loss 0.4481 conf 0.1864 uv 0.1308 | val median 4.57px (n=542) [5.3min]
+ep 29 loss 0.4369 conf 0.1762 uv 0.1304 | val median 4.82px (n=545) [5.5min]
+ep 30 loss 0.4280 conf 0.1690 uv 0.1295 | val median 4.59px (n=535) [5.7min]
+ep 31 loss 0.4178 conf 0.1615 uv 0.1281 | val median 4.57px (n=542) [5.9min]
+ep 32 loss 0.4236 conf 0.1659 uv 0.1289 | val median 4.60px (n=540) [6.1min]
+ep 33 loss 0.4246 conf 0.1669 uv 0.1289 | val median 4.59px (n=546) [6.2min]
+ep 34 loss 0.4138 conf 0.1598 uv 0.1270 | val median 4.57px (n=533) [6.4min]
+ep 35 loss 0.4184 conf 0.1615 uv 0.1284 | val median 4.64px (n=539) [6.6min]
+ep 36 loss 0.4089 conf 0.1541 uv 0.1274 | val median 4.63px (n=542) [6.8min]
+ep 37 loss 0.4115 conf 0.1562 uv 0.1277 | val median 4.64px (n=538) [7.0min]
+ep 38 loss 0.4098 conf 0.1585 uv 0.1256 | val median 4.45px (n=541) [7.2min]
+  -> 保存 D:\C_O_D_E\2026\FPGA_AMD\model\frozen\detect_fp32.pt
+ep 39 loss 0.4043 conf 0.1497 uv 0.1273 | val median 4.44px (n=540) [7.3min]
+  -> 保存 D:\C_O_D_E\2026\FPGA_AMD\model\frozen\detect_fp32.pt
+ep 40 loss 0.4049 conf 0.1511 uv 0.1269 | val median 4.56px (n=540) [7.5min]
+完成, best val median = 4.44 px (epoch 39)

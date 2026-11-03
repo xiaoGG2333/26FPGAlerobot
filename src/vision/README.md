@@ -35,3 +35,7 @@ python src/vision/sw/pose_map.py --source 0 --model ./hand_landmarker.task --no-
 ### 关键点网络 HLS 实验材料
 
 [IP 源码、权重和测试台](fpga/ip/kpt_net/README.md) · [冻结规格](../../report/vision/kpt_ip_spec.md) · [INT8 参考实现](tools/int8_ref.py)。这些材料来自视觉分支提交 `2f721b5`，对应独立 IP 实验。随附日志是原实验记录。
+
+### 视觉分支合并记录
+
+主分支已合入视觉分支提交 `2f721b5`。串口控制入口支持 `--hud min`，关键点训练、实时推理及视频缓存工具已同步。旧实验说明中的路径可通过[原路径与比赛目录对照表](../../report/vision/branch_paths.json)查找。历史采样、图片和实验记录见[data/vision/results](../../data/vision/results/)。

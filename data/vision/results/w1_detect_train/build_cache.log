@@ -1,0 +1,35 @@
+待处理 8162 张 -> D:\C_O_D_E\2026\FPGA_AMD\model\data\cache256
+  500/8162  ok 500 skip 0 fail 0  0.1 min  预计总 1.6 min
+  1000/8162  ok 1000 skip 0 fail 0  0.1 min  预计总 1.2 min
+  1500/8162  ok 1500 skip 0 fail 0  0.2 min  预计总 1.1 min
+  2000/8162  ok 2000 skip 0 fail 0  0.2 min  预计总 0.9 min
+  2500/8162  ok 2500 skip 0 fail 0  0.3 min  预计总 0.9 min
+  3000/8162  ok 3000 skip 0 fail 0  0.3 min  预计总 0.9 min
+  3500/8162  ok 3500 skip 0 fail 0  0.3 min  预计总 0.8 min
+  4000/8162  ok 4000 skip 0 fail 0  0.4 min  预计总 0.8 min
+  4500/8162  ok 4500 skip 0 fail 0  0.4 min  预计总 0.8 min
+  5000/8162  ok 5000 skip 0 fail 0  0.4 min  预计总 0.7 min
+  5500/8162  ok 5500 skip 0 fail 0  0.4 min  预计总 0.6 min
+  6000/8162  ok 6000 skip 0 fail 0  0.4 min  预计总 0.6 min
+  6500/8162  ok 6500 skip 0 fail 0  0.5 min  预计总 0.6 min
+  7000/8162  ok 7000 skip 0 fail 0  0.5 min  预计总 0.6 min
+  7500/8162  ok 7500 skip 0 fail 0  0.6 min  预计总 0.6 min
+  8000/8162  ok 8000 skip 0 fail 0  0.6 min  预计总 0.6 min
+  8162/8162  ok 8162 skip 0 fail 0  0.6 min  预计总 0.6 min
+{
+ "dst": "data/cache256",
+ "size_short_side": 256,
+ "jpeg_quality": 92,
+ "n_total": 8162,
+ "n_ok": 8162,
+ "n_skip": 0,
+ "n_fail": 0,
+ "source_bytes": 8811604248,
+ "cache_bytes": 194827941,
+ "elapsed_sec": 38.2,
+ "workers": 23,
+ "failed": [],
+ "built_at": "2026-10-14 19:30:59",
+ "env": "HAGRID_ROOT=data/cache256"
+}
+完成，用时 0.6 min，缓存 186 MB（原图 8403 MB）

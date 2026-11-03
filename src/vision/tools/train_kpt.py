@@ -140,10 +140,11 @@ class CacheDS(Dataset):
     """懒加载 mmap：memmap 对象被 pickle 进 worker 时会整块进内存（Windows spawn 必炸），
     故只存路径，在每个进程首次 __getitem__ 时各自 open。"""
 
-    def __init__(self, cache, idx, aug=False):
+    def __init__(self, cache, idx, aug=False, size=256):
         self.p = Path(cache)
         self.idx = list(idx)
         self.aug = aug
+        self.size = int(size)
         self._m = None
 
     def _open(self):
@@ -158,6 +159,8 @@ class CacheDS(Dataset):
         self._open()
         i = self.idx[k]
         img = np.asarray(self._m['imgs'][i], np.uint8)
+        if img.shape[0] != self.size:                 # 缓存是 256²，按 --size 重采样
+            img = cv2.resize(img, (self.size, self.size), interpolation=cv2.INTER_AREA)
         y = np.asarray(self._m['pts'][i], np.float32).reshape(42).copy()
         if self.aug:
             sz = img.shape[0]
@@ -214,6 +217,7 @@ def main():
     ap.add_argument('--hm-stride', type=int, choices=[8, 16], default=8)
     ap.add_argument('--sigma', type=float, default=1.2)
     ap.add_argument('--aug', action='store_true', help='旋转±15°/亮度对比/运动模糊')
+    ap.add_argument('--size', type=int, default=256, help='输入边长（缓存 256²，会重采样）')
     args = ap.parse_args()
 
     set_seed()
@@ -223,19 +227,19 @@ def main():
     train_idx = split['train'] + split.get('neg', [])
     random.shuffle(train_idx)
 
-    ds_tr = CacheDS(args.cache, train_idx, aug=args.aug)
-    ds_va = CacheDS(args.cache, split['val'])
+    ds_tr = CacheDS(args.cache, train_idx, aug=args.aug, size=args.size)
+    ds_va = CacheDS(args.cache, split['val'], size=args.size)
     dl_tr = DataLoader(ds_tr, batch_size=args.batch, shuffle=True,
                        num_workers=args.workers, pin_memory=True,
                        persistent_workers=args.workers > 0, drop_last=True)
     dl_va = DataLoader(ds_va, batch_size=128, shuffle=False, num_workers=2)
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    net = (HeatmapHead(stride=args.hm_stride, sigma=args.sigma) if args.head == 'heatmap'
-           else HandKptNet()).to(device)
+    net = (HeatmapHead(stride=args.hm_stride, sigma=args.sigma, in_size=args.size) if args.head == 'heatmap'
+           else HandKptNet(in_size=args.size)).to(device)
     n_par = sum(p.numel() for p in net.parameters())
-    n_mac = count_mac(net)
-    print(f'[模型] 参数 {n_par/1e6:.2f}M  MACs@256² {n_mac/1e6:.1f}M  设备 {device}', flush=True)
+    n_mac = count_mac(net, args.size)
+    print(f'[模型] 参数 {n_par/1e6:.2f}M  MACs@{args.size}² {n_mac/1e6:.1f}M  设备 {device}', flush=True)
 
     opt = torch.optim.AdamW(net.parameters(), lr=args.lr, weight_decay=1e-4)
     total_steps = max(1, len(dl_tr)) * args.epochs

@@ -1,0 +1,87 @@
+[int8] mode=sym 校准 1000 张/8 批，10 层 | 输入量化 SNR 最低 17.3 / 中位 24.7 dB | 最大 clip 比例 0.1000%
+已写入量化表 D:\C_O_D_E\2026\FPGA_AMD\results\w1_int8\classify_scales_sym.json
+{
+ "weights": "classify\\..\\..\\model\\frozen\\classify_fp32.pt",
+ "classes": [
+  "fist",
+  "palm",
+  "other"
+ ],
+ "n": 1000,
+ "val_acc": 0.912,
+ "per_class": {
+  "fist": {
+   "support": 259,
+   "recall": 0.8919,
+   "precision": 0.9094
+  },
+  "palm": {
+   "support": 305,
+   "recall": 0.9082,
+   "precision": 0.9264
+  },
+  "other": {
+   "support": 436,
+   "recall": 0.9266,
+   "precision": 0.9038
+  }
+ },
+ "confusion": {
+  "fist": {
+   "fist": 231,
+   "palm": 5,
+   "other": 23
+  },
+  "palm": {
+   "fist": 8,
+   "palm": 277,
+   "other": 20
+  },
+  "other": {
+   "fist": 15,
+   "palm": 17,
+   "other": 404
+  }
+ },
+ "other_motion_rate": 0.0734,
+ "other_by_source": {
+  "like": {
+   "n": 28,
+   "to_fist": 2,
+   "to_palm": 0,
+   "motion_rate": 0.0714
+  },
+  "ok": {
+   "n": 23,
+   "to_fist": 2,
+   "to_palm": 7,
+   "motion_rate": 0.3913
+  },
+  "peace": {
+   "n": 29,
+   "to_fist": 7,
+   "to_palm": 3,
+   "motion_rate": 0.3448
+  },
+  "no_gesture": {
+   "n": 325,
+   "to_fist": 4,
+   "to_palm": 7,
+   "motion_rate": 0.0338
+  },
+  "recorded_bg": {
+   "n": 31,
+   "to_fist": 0,
+   "to_palm": 0,
+   "motion_rate": 0.0
+  }
+ },
+ "gates": {
+  "acc_ge_90": true,
+  "other_motion_le_5pct": false,
+  "palm_recall_ge_90": true,
+  "fist_recall_ge_90": false
+ },
+ "int8": "sym"
+}
+已写入 D:\C_O_D_E\2026\FPGA_AMD\results\w1_int8\classify_eval_int8_sym.json
