@@ -6,3 +6,6 @@ venv/
 boot_coordinated/
 *.tmp
 
+
+/build/work/
+/results/
