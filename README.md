@@ -231,18 +231,17 @@ A delta_q = b
 
 以下包括算法文献、代码来源、工具文档与硬件资料。版权、许可证及已有来源说明继续随源码保留。
 
-1. E1pco. [Hardware-Accelerated System for IK Solution Based on LeRobot](https://github.com/E1pco/Hardware-Accelerated_System_for_IK_Solution_Based_on_LeRobot).
-2. AMD/Xilinx. [Vitis Libraries](https://github.com/Xilinx/Vitis_Libraries); [Vitis Solver Library 2024.2](https://docs.amd.com/r/2024.2-English/Vitis_Libraries/solver/benchmark.html_2). 本地许可：[src/third_party/license.txt](src/third_party/license.txt)。
-3. Sugihara, T. [Solvability-Unconcerned Inverse Kinematics by the Levenberg–Marquardt Method](https://ieeexplore.ieee.org/abstract/document/5784347/). IEEE Transactions on Robotics, 2011. DOI: 10.1109/TRO.2011.2148230.
-4. Marquardt, D. W. [An Algorithm for Least-Squares Estimation of Nonlinear Parameters](https://epubs.siam.org/doi/10.1137/0111030). Journal of the Society for Industrial and Applied Mathematics, 1963, 11(2): 431–441.
-5. Berscheid, L.; Kröger, T. [Jerk-limited Real-time Trajectory Generation with Arbitrary Target States](https://arxiv.org/abs/2105.04830). Robotics: Science and Systems, 2021.
-6. Berscheid, L.等. [Ruckig: Motion Generation for Robots and Machines](https://github.com/pantor/ruckig).
-7. AMD. [Vitis High-Level Synthesis User Guide (UG1399), 2025.2](https://docs.amd.com/r/2025.2-English/ug1399-vitis-hls).
-8. AMD. [7 Series FPGAs and Zynq-7000 SoC XADC User Guide (UG480)](https://docs.amd.com/r/en-US/ug480_7Series_XADC/Instantiating-the-XADC).
-9. JoyandAI. [LeRobot auto_calibrate.py](https://github.com/JoyandAI/lerobot/blob/072e8355fbb9a7b520915d44877aa876794efb31/src/lerobot/motors/auto_calibrate.py), commit `072e8355fbb9a7b520915d44877aa876794efb31`. [本地来源说明](board/host/vendor_calibration_provenance.md)、[Apache-2.0许可](board/host/vendor_calibration_license.txt)。
-10. Box2AI Robotics. [joycon-robotics](https://github.com/box2ai-robotics/joycon-robotics).
-11. pySerial贡献者. [pySerial Documentation](https://pyserial.readthedocs.io/en/latest/).
-12. python-evdev贡献者. [python-evdev Documentation](https://python-evdev.readthedocs.io/en/latest/).
-13. RK-ZYNQ7100-F厂商. 《ZYNQ7100-F V1.0原理图》《ZYNQ7100-F V1.0管脚定义》.
-14. 微雪. 《Bus Servo Adapter (A) v1.1 使用说明书》.
-15. 机械臂供应方. SO101 follower R12254604编码器标定参数.
+1. AMD/Xilinx. [Vitis Libraries](https://github.com/Xilinx/Vitis_Libraries); [Vitis Solver Library 2024.2](https://docs.amd.com/r/2024.2-English/Vitis_Libraries/solver/benchmark.html_2). 本地许可：[src/third_party/license.txt](src/third_party/license.txt)。
+2. Sugihara, T. [Solvability-Unconcerned Inverse Kinematics by the Levenberg–Marquardt Method](https://ieeexplore.ieee.org/abstract/document/5784347/). IEEE Transactions on Robotics, 2011. DOI: 10.1109/TRO.2011.2148230.
+3. Marquardt, D. W. [An Algorithm for Least-Squares Estimation of Nonlinear Parameters](https://epubs.siam.org/doi/10.1137/0111030). Journal of the Society for Industrial and Applied Mathematics, 1963, 11(2): 431–441.
+4. Berscheid, L.; Kröger, T. [Jerk-limited Real-time Trajectory Generation with Arbitrary Target States](https://arxiv.org/abs/2105.04830). Robotics: Science and Systems, 2021.
+5. Berscheid, L.等. [Ruckig: Motion Generation for Robots and Machines](https://github.com/pantor/ruckig).
+6. AMD. [Vitis High-Level Synthesis User Guide (UG1399), 2025.2](https://docs.amd.com/r/2025.2-English/ug1399-vitis-hls).
+7. AMD. [7 Series FPGAs and Zynq-7000 SoC XADC User Guide (UG480)](https://docs.amd.com/r/en-US/ug480_7Series_XADC/Instantiating-the-XADC).
+8. JoyandAI. [LeRobot auto_calibrate.py](https://github.com/JoyandAI/lerobot/blob/072e8355fbb9a7b520915d44877aa876794efb31/src/lerobot/motors/auto_calibrate.py), commit `072e8355fbb9a7b520915d44877aa876794efb31`. [本地来源说明](board/host/vendor_calibration_provenance.md)、[Apache-2.0许可](board/host/vendor_calibration_license.txt)。
+9. Box2AI Robotics. [joycon-robotics](https://github.com/box2ai-robotics/joycon-robotics).
+10. pySerial贡献者. [pySerial Documentation](https://pyserial.readthedocs.io/en/latest/).
+11. python-evdev贡献者. [python-evdev Documentation](https://python-evdev.readthedocs.io/en/latest/).
+12. RK-ZYNQ7100-F厂商. 《ZYNQ7100-F V1.0原理图》《ZYNQ7100-F V1.0管脚定义》.
+13. 微雪. 《Bus Servo Adapter (A) v1.1 使用说明书》.
+14. 机械臂供应方. SO101 follower R12254604编码器标定参数.
