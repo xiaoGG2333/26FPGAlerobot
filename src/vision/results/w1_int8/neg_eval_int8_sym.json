@@ -1,0 +1,98 @@
+{
+ "tag": "fp32_frozen_sym",
+ "weights": "frozen\\detect_fp32.pt",
+ "int8": "sym",
+ "positives_val": {
+  "n": 539,
+  "conf_median": 0.9793,
+  "conf_max": 1.0,
+  "fire_rate@0.2": 1.0,
+  "fire_rate@0.3": 1.0,
+  "fire_rate@0.5": 1.0,
+  "fire_rate@0.7": 0.9462,
+  "fire_rate@0.9": 0.7848,
+  "err_median_px": 5.495,
+  "err_p90_px": 51.528,
+  "err_frac_le_8px": 0.5881,
+  "n_pos_total": 564,
+  "recall@0.5": 0.9557,
+  "positives_all_samples": {
+   "n": 564,
+   "conf_median": 0.9764,
+   "conf_max": 1.0,
+   "fire_rate@0.2": 0.984,
+   "fire_rate@0.3": 0.9805,
+   "fire_rate@0.5": 0.9557,
+   "fire_rate@0.7": 0.9043,
+   "fire_rate@0.9": 0.75,
+   "err_median_px": 5.765,
+   "err_p90_px": 53.436,
+   "err_frac_le_8px": 0.578
+  }
+ },
+ "negatives": {
+  "hagrid_no_gesture": {
+   "n": 325,
+   "conf_median": 0.0957,
+   "conf_max": 0.9926,
+   "fire_rate@0.2": 0.3723,
+   "fire_rate@0.3": 0.2985,
+   "fire_rate@0.5": 0.2092,
+   "fire_rate@0.7": 0.1108,
+   "fire_rate@0.9": 0.04
+  },
+  "recorded_in_domain": {
+   "L1_open_light": {
+    "n": 41,
+    "conf_median": 0.0496,
+    "conf_max": 0.2407,
+    "fire_rate@0.2": 0.0244,
+    "fire_rate@0.3": 0.0,
+    "fire_rate@0.5": 0.0,
+    "fire_rate@0.7": 0.0,
+    "fire_rate@0.9": 0.0
+   },
+   "robot_arm1": {
+    "n": 33,
+    "conf_median": 0.0123,
+    "conf_max": 0.0337,
+    "fire_rate@0.2": 0.0,
+    "fire_rate@0.3": 0.0,
+    "fire_rate@0.5": 0.0,
+    "fire_rate@0.7": 0.0,
+    "fire_rate@0.9": 0.0
+   },
+   "robot_arm2": {
+    "n": 19,
+    "conf_median": 0.0063,
+    "conf_max": 0.0179,
+    "fire_rate@0.2": 0.0,
+    "fire_rate@0.3": 0.0,
+    "fire_rate@0.5": 0.0,
+    "fire_rate@0.7": 0.0,
+    "fire_rate@0.9": 0.0
+   },
+   "ALL": {
+    "n": 93,
+    "conf_median": 0.0171,
+    "conf_max": 0.2407,
+    "fire_rate@0.2": 0.0108,
+    "fire_rate@0.3": 0.0,
+    "fire_rate@0.5": 0.0,
+    "fire_rate@0.7": 0.0,
+    "fire_rate@0.9": 0.0
+   }
+  },
+  "all_negatives": {
+   "n": 418,
+   "conf_median": 0.0549,
+   "conf_max": 0.9926,
+   "fire_rate@0.2": 0.2919,
+   "fire_rate@0.3": 0.2321,
+   "fire_rate@0.5": 0.1627,
+   "fire_rate@0.7": 0.0861,
+   "fire_rate@0.9": 0.0311
+  }
+ },
+ "note": "fire_rate = 该源 conf 超过阈值的比例（负样本上即误触发率）"
+}

@@ -1,0 +1,57 @@
+{
+ "classes": [
+  "fist",
+  "palm",
+  "other"
+ ],
+ "n_classes": 3,
+ "epochs": 40,
+ "batch": 128,
+ "lr": 0.003,
+ "workers": 2,
+ "img_root": "D:\\C_O_D_E\\2026\\FPGA_AMD\\model\\data\\cache256",
+ "recorded_other_root": "data\\recorded_neg\\frames",
+ "include_recorded_other": true,
+ "n_train": 7040,
+ "n_val": 1000,
+ "train_by_class": {
+  "fist": 2254,
+  "palm": 2200,
+  "other": 2586
+ },
+ "train_by_source": {
+  "fist": 2254,
+  "palm": 2200,
+  "like": 219,
+  "ok": 235,
+  "peace": 231,
+  "no_gesture": 1839,
+  "recorded_bg": 62
+ },
+ "val_by_class": {
+  "fist": 259,
+  "palm": 305,
+  "other": 436
+ },
+ "val_by_source": {
+  "fist": 259,
+  "palm": 305,
+  "like": 28,
+  "ok": 23,
+  "peace": 29,
+  "no_gesture": 325,
+  "recorded_bg": 31
+ },
+ "skip_no_bbox_train": 0,
+ "skip_no_bbox_val": 0,
+ "macs_M@80": 4.781,
+ "params_K": 15.7,
+ "device": "cuda",
+ "torch": "2.11.0+cu128",
+ "python": "3.10.22",
+ "started_at": "2026-10-14 23:31:16",
+ "finished_at": "2026-10-14 23:37:35",
+ "total_sec": 379.6,
+ "best_epoch": 28,
+ "best_val_acc": 0.92
+}

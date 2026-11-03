@@ -1,0 +1,97 @@
+{
+ "tag": "neg1_poolbug",
+ "weights": "..\\results\\w1_detect_neg\\_neg1_poolbug.pt",
+ "positives_val": {
+  "n": 547,
+  "conf_median": 0.995,
+  "conf_max": 1.0,
+  "fire_rate@0.2": 1.0,
+  "fire_rate@0.3": 1.0,
+  "fire_rate@0.5": 1.0,
+  "fire_rate@0.7": 0.9653,
+  "fire_rate@0.9": 0.8739,
+  "err_median_px": 4.367,
+  "err_p90_px": 58.879,
+  "err_frac_le_8px": 0.6435,
+  "n_pos_total": 564,
+  "recall@0.5": 0.9699,
+  "positives_all_samples": {
+   "n": 564,
+   "conf_median": 0.9947,
+   "conf_max": 1.0,
+   "fire_rate@0.2": 0.9911,
+   "fire_rate@0.3": 0.9894,
+   "fire_rate@0.5": 0.9699,
+   "fire_rate@0.7": 0.9362,
+   "fire_rate@0.9": 0.8475,
+   "err_median_px": 4.567,
+   "err_p90_px": 58.325,
+   "err_frac_le_8px": 0.6348
+  }
+ },
+ "negatives": {
+  "hagrid_no_gesture": {
+   "n": 325,
+   "conf_median": 0.0446,
+   "conf_max": 0.9973,
+   "fire_rate@0.2": 0.3169,
+   "fire_rate@0.3": 0.2708,
+   "fire_rate@0.5": 0.1908,
+   "fire_rate@0.7": 0.1138,
+   "fire_rate@0.9": 0.0338
+  },
+  "recorded_in_domain": {
+   "L1_open_light": {
+    "n": 41,
+    "conf_median": 0.8259,
+    "conf_max": 0.9609,
+    "fire_rate@0.2": 1.0,
+    "fire_rate@0.3": 1.0,
+    "fire_rate@0.5": 1.0,
+    "fire_rate@0.7": 0.7561,
+    "fire_rate@0.9": 0.1463
+   },
+   "robot_arm1": {
+    "n": 33,
+    "conf_median": 0.5763,
+    "conf_max": 0.9407,
+    "fire_rate@0.2": 0.9394,
+    "fire_rate@0.3": 0.8788,
+    "fire_rate@0.5": 0.5758,
+    "fire_rate@0.7": 0.303,
+    "fire_rate@0.9": 0.0606
+   },
+   "robot_arm2": {
+    "n": 19,
+    "conf_median": 0.4435,
+    "conf_max": 0.7452,
+    "fire_rate@0.2": 0.8947,
+    "fire_rate@0.3": 0.8947,
+    "fire_rate@0.5": 0.3158,
+    "fire_rate@0.7": 0.0526,
+    "fire_rate@0.9": 0.0
+   },
+   "ALL": {
+    "n": 93,
+    "conf_median": 0.6548,
+    "conf_max": 0.9609,
+    "fire_rate@0.2": 0.957,
+    "fire_rate@0.3": 0.9355,
+    "fire_rate@0.5": 0.7097,
+    "fire_rate@0.7": 0.4516,
+    "fire_rate@0.9": 0.086
+   }
+  },
+  "all_negatives": {
+   "n": 418,
+   "conf_median": 0.1282,
+   "conf_max": 0.9973,
+   "fire_rate@0.2": 0.4593,
+   "fire_rate@0.3": 0.4187,
+   "fire_rate@0.5": 0.3062,
+   "fire_rate@0.7": 0.189,
+   "fire_rate@0.9": 0.0455
+  }
+ },
+ "note": "fire_rate = 该源 conf 超过阈值的比例（负样本上即误触发率）"
+}

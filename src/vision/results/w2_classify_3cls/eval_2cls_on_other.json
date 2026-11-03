@@ -1,0 +1,60 @@
+{
+ "weights": "..\\..\\results\\w2_classify_3cls\\baseline_2cls\\classify_fp32.pt",
+ "model": "2类(旧: fist/palm)",
+ "binary_acc_on_fist_palm_val": 0.9007,
+ "binary_val_n": 564,
+ "other_motion_rate": 1.0,
+ "other_n": 436,
+ "by_source": {
+  "fist": {
+   "n": 259,
+   "to_fist": 241,
+   "to_palm": 18,
+   "correct": 241,
+   "motion_rate": 1.0
+  },
+  "palm": {
+   "n": 305,
+   "to_fist": 38,
+   "to_palm": 267,
+   "correct": 267,
+   "motion_rate": 1.0
+  },
+  "like": {
+   "n": 28,
+   "to_fist": 17,
+   "to_palm": 11,
+   "correct": 0,
+   "motion_rate": 1.0
+  },
+  "ok": {
+   "n": 23,
+   "to_fist": 6,
+   "to_palm": 17,
+   "correct": 0,
+   "motion_rate": 1.0
+  },
+  "peace": {
+   "n": 29,
+   "to_fist": 18,
+   "to_palm": 11,
+   "correct": 0,
+   "motion_rate": 1.0
+  },
+  "no_gesture": {
+   "n": 325,
+   "to_fist": 209,
+   "to_palm": 116,
+   "correct": 0,
+   "motion_rate": 1.0
+  },
+  "recorded_bg": {
+   "n": 31,
+   "to_fist": 8,
+   "to_palm": 23,
+   "correct": 0,
+   "motion_rate": 1.0
+  }
+ },
+ "note": "旧模型无\"其它\"类 → 其它手势上只能输出 fist/palm, 即夹爪一定会动"
+}

@@ -1,0 +1,15 @@
+{
+ "val_acc": 0.9308510638297872,
+ "pass_90": true,
+ "confusion": {
+  "fist": {
+   "fist": 241,
+   "palm": 18
+  },
+  "palm": {
+   "fist": 21,
+   "palm": 284
+  }
+ },
+ "n": 564
+}

@@ -1,6 +1,6 @@
 # Zynq7100 SO101 机械臂硬件逆运动学控制系统
 
-本项目用 RK-ZYNQ7100-F 驱动一台 SO101 右臂。操作者通过 Xbox 指定末端位置与腕旋转，板上 ARM 调用 FPGA 逆解核算出五个关节角，再协调五轴运动。夹爪可独立开闭。仓库另提供摄像头手势输入分支。
+本项目用 RK-ZYNQ7100-F 驱动一台 SO101 右臂。操作者通过 Xbox 指定末端位置与腕旋转，板上 ARM 调用 FPGA 逆解核算出五个关节角，再协调五轴运动。夹爪可独立开闭。仓库同时提供摄像头手势输入源码。
 
 [项目能力与架构](#项目能力与架构) · [逆解性能对比](#逆解性能对比) · [从零复现](#从零复现) · [视觉手势遥操作](#视觉手势遥操作) · [IP 核接口](#ip核接口) · [参考文献](#参考文献与第三方来源)
 
@@ -167,7 +167,7 @@ python -u board/host/xbox_control.py --port /dev/ttyUSB1 --xbox-device /dev/inpu
 
 ## 视觉手势遥操作
 
-仓库另有手势输入分支。摄像头和 MediaPipe Hand Landmarker 在主机上提取单手 21 个关键点，主机将手的运动转换成末端目标。板端握手检查 RK7100、位置加腕旋转逆解等固件标记。Xbox 和视觉是两种上位机入口，使用视觉时只运行一个串口控制程序。[手势分支源码（固定版本）](https://github.com/xiaoGG2333/26FPGAlerobot/tree/0dbaedff3310657b16b7ed6c8b7b16077f2296db/rk7020_so101_hand_teleop_20261102)
+主机摄像头采集手部图像，MediaPipe 提取 21 个关键点，主机生成末端位置和腕旋转目标，再通过串口交给 RK7100 求解。Xbox 与视觉共用板端控制协议，两种输入程序应分别运行。[视觉工程与复现步骤](src/vision/README.md)
 
 | 手部输入 | 控制量 |
 |---|---|
@@ -176,7 +176,7 @@ python -u board/host/xbox_control.py --port /dev/ttyUSB1 --xbox-device /dev/inpu
 | 手部转动 | 按标定配置生成腕旋转 roll；7100 位置控制任务仍允许末端俯仰自由 |
 | 伸出五指、握拳 | 分别请求张开、闭合 ID6；实际夹爪使用独立的 GRIP1 方向命令 |
 
-**复现入口。** 在上述分支的视觉子目录准备 OpenCV、MediaPipe、NumPy 和模型文件 `model/data/external/mediapipe/hand_landmarker.task`。先运行 `python sw/pose_map.py --source 0 --no-window --max-frames 60`，在 `results/w3_pose/` 查看姿态日志。这一步只需要摄像头。板端协议见 `sw/pose_link.py`，串口联调入口为 `sw/pose2arm.py`；默认端口 COM18，需按实际设备指定。视觉分支与本地 7100 工程的实物联调需单独验收。
+**复现入口。** 从仓库根目录运行 `python sim/vision/test_kin.py` 做离线运动学自检。准备视觉环境和模型后，运行 `python src/vision/sw/pose_map.py --source 0 --no-window --max-frames 60` 做摄像头预览。板端入口为 [pose2arm.py](board/vision/pose2arm.py)，串口协议见 [pose_link.py](board/vision/pose_link.py)。[小型 CNN 量化与 HLS 验证技能](skill/tiny-net-hls/skill.md) 单独说明模型部署方法。
 
 **夹爪保持的已知问题。** 此版本默认映射在伸出 1–4 指或手离开画面时会保留先前夹爪值，后台还会重发最近的开闭方向。因此从握拳切换到中性手势后，夹爪可能继续闭合。实物联调前应先验证中性、丢手和视频停帧均会撤销旧方向，可先用 `--no-grip` 单独检查五轴。
 

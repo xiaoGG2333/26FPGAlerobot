@@ -1,0 +1,101 @@
+{
+ "weights": "..\\results\\w1_detect_train\\softargmax_hm\\detect_fp32.pt",
+ "n_pos": 564,
+ "conf_recall@0.5": 0.9592198581560284,
+ "pred_median_px": 4.730258941650391,
+ "pred_p90_px": 58.073516845703125,
+ "err_percentiles_px": {
+  "50": 4.73,
+  "75": 20.56,
+  "90": 58.07,
+  "95": 96.59,
+  "99": 123.33,
+  "100": 183.23
+ },
+ "frac_err_gt_8px": 0.38120567375886527,
+ "frac_err_gt_20px": 0.25177304964539005,
+ "frac_err_gt_40px": 0.15425531914893617,
+ "gt_std_px": [
+  31.74281120300293,
+  31.354265213012695
+ ],
+ "pearson_r": [
+  0.7731848719805692,
+  0.5302921099067104
+ ],
+ "pred_std_px": [
+  29.871675491333008,
+  21.924110412597656
+ ],
+ "tail_analysis": {
+  "bbox_area_median_ok(<=8px)": 0.02024,
+  "bbox_area_median_bad(>40px)": 0.00981,
+  "n_ok": 349,
+  "n_bad": 87,
+  "conf_median_ok": 0.9975,
+  "conf_median_bad": 0.9816
+ },
+ "gt_out_of_crop": {
+  "frac": 0.0479,
+  "oob_stats": {
+   "n": 27,
+   "median_px": 106.74,
+   "p90_px": 139.27,
+   "frac_gt_8px": 1.0
+  },
+  "in_crop_stats": {
+   "n": 537,
+   "median_px": 4.36,
+   "p90_px": 42.82,
+   "frac_gt_8px": 0.35
+  },
+  "share_of_gt8px_that_is_oob": 0.126
+ },
+ "size_conditioned": {
+  "hand_linear_size>=0.0": {
+   "n": 537,
+   "median_px": 4.36,
+   "p90_px": 42.82,
+   "frac_gt_8px": 0.35
+  },
+  "hand_linear_size>=0.1": {
+   "n": 371,
+   "median_px": 3.49,
+   "p90_px": 31.23,
+   "frac_gt_8px": 0.245
+  },
+  "hand_linear_size>=0.15": {
+   "n": 198,
+   "median_px": 3.93,
+   "p90_px": 15.37,
+   "frac_gt_8px": 0.202
+  },
+  "hand_linear_size>=0.2": {
+   "n": 104,
+   "median_px": 4.65,
+   "p90_px": 19.24,
+   "frac_gt_8px": 0.25
+  }
+ },
+ "baseline_mean_center_median_px": 36.81521224975586,
+ "calibrated_linear_median_px": 13.899627649315134,
+ "calibration_coef": [
+  [
+   0.8213946584273019,
+   0.17024245657164194
+  ],
+  [
+   0.07624364267287263,
+   0.7574657804343047
+  ],
+  [
+   0.009620681304481196,
+   0.04664132173108515
+  ]
+ ],
+ "linear_probe_on_GAP_median_px": 34.21163311338583,
+ "linear_probe_n_train_val": [
+  2000,
+  500
+ ]
+}

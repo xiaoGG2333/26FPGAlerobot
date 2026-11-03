@@ -9,3 +9,5 @@
 | [regression/](regression/) | 原工程离线回归输入及参考记录。 |
 
 来源为既有视频实验的 board_benchmark_20261103 与 python_vs_board_20261103 两组记录。此次目录整理未重跑板端实验。
+
+视觉分支的历史参考记录为 [五通道数值检查](vision/trace5_channels.json) 和 [板端参考数据](vision/board_oracle.csv)。

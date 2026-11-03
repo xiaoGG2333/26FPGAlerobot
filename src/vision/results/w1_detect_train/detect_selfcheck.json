@@ -1,0 +1,245 @@
+{
+ "weights": "D:\\C_O_D_E\\2026\\FPGA_AMD\\model\\frozen\\detect_fp32.pt",
+ "n_pos": 564,
+ "err_median_px": 4.73,
+ "frac_bad_gt8px": 0.381,
+ "frac_bad_gt40px": 0.154,
+ "entropy_score": {
+  "n_bad": 87,
+  "median_a_good": 1.583,
+  "median_a_bad": 2.245,
+  "pearson_r_with_err": 0.199,
+  "flag_table": [
+   {
+    "thr_pct": 50,
+    "flag_rate": 0.5,
+    "recall_bad": 0.609,
+    "precision_bad": 0.188
+   },
+   {
+    "thr_pct": 70,
+    "flag_rate": 0.3,
+    "recall_bad": 0.506,
+    "precision_bad": 0.26
+   },
+   {
+    "thr_pct": 80,
+    "flag_rate": 0.2,
+    "recall_bad": 0.379,
+    "precision_bad": 0.292
+   },
+   {
+    "thr_pct": 90,
+    "flag_rate": 0.101,
+    "recall_bad": 0.287,
+    "precision_bad": 0.439
+   },
+   {
+    "thr_pct": 95,
+    "flag_rate": 0.051,
+    "recall_bad": 0.126,
+    "precision_bad": 0.379
+   }
+  ]
+ },
+ "inv_maxp_score": {
+  "n_bad": 87,
+  "median_a_good": -0.601,
+  "median_a_bad": -0.492,
+  "pearson_r_with_err": 0.145,
+  "flag_table": [
+   {
+    "thr_pct": 50,
+    "flag_rate": 0.5,
+    "recall_bad": 0.621,
+    "precision_bad": 0.191
+   },
+   {
+    "thr_pct": 70,
+    "flag_rate": 0.3,
+    "recall_bad": 0.437,
+    "precision_bad": 0.225
+   },
+   {
+    "thr_pct": 80,
+    "flag_rate": 0.2,
+    "recall_bad": 0.333,
+    "precision_bad": 0.257
+   },
+   {
+    "thr_pct": 90,
+    "flag_rate": 0.101,
+    "recall_bad": 0.184,
+    "precision_bad": 0.281
+   },
+   {
+    "thr_pct": 95,
+    "flag_rate": 0.051,
+    "recall_bad": 0.115,
+    "precision_bad": 0.345
+   }
+  ]
+ },
+ "inv_conf_score": {
+  "n_bad": 87,
+  "median_a_good": -0.994,
+  "median_a_bad": -0.982,
+  "pearson_r_with_err": 0.082,
+  "flag_table": [
+   {
+    "thr_pct": 50,
+    "flag_rate": 0.5,
+    "recall_bad": 0.644,
+    "precision_bad": 0.199
+   },
+   {
+    "thr_pct": 70,
+    "flag_rate": 0.3,
+    "recall_bad": 0.414,
+    "precision_bad": 0.213
+   },
+   {
+    "thr_pct": 80,
+    "flag_rate": 0.2,
+    "recall_bad": 0.322,
+    "precision_bad": 0.248
+   },
+   {
+    "thr_pct": 90,
+    "flag_rate": 0.101,
+    "recall_bad": 0.149,
+    "precision_bad": 0.228
+   },
+   {
+    "thr_pct": 95,
+    "flag_rate": 0.051,
+    "recall_bad": 0.069,
+    "precision_bad": 0.207
+   }
+  ]
+ },
+ "ring_mass_score": {
+  "n_bad": 87,
+  "median_a_good": 0.0,
+  "median_a_bad": 0.0,
+  "pearson_r_with_err": 0.089,
+  "flag_table": [
+   {
+    "thr_pct": 50,
+    "flag_rate": 0.5,
+    "recall_bad": 0.678,
+    "precision_bad": 0.209
+   },
+   {
+    "thr_pct": 70,
+    "flag_rate": 0.3,
+    "recall_bad": 0.448,
+    "precision_bad": 0.231
+   },
+   {
+    "thr_pct": 80,
+    "flag_rate": 0.2,
+    "recall_bad": 0.345,
+    "precision_bad": 0.265
+   },
+   {
+    "thr_pct": 90,
+    "flag_rate": 0.101,
+    "recall_bad": 0.195,
+    "precision_bad": 0.298
+   },
+   {
+    "thr_pct": 95,
+    "flag_rate": 0.051,
+    "recall_bad": 0.126,
+    "precision_bad": 0.379
+   }
+  ]
+ },
+ "border_pred_score": {
+  "n_bad": 87,
+  "median_a_good": -0.277,
+  "median_a_bad": -0.318,
+  "pearson_r_with_err": -0.136,
+  "flag_table": [
+   {
+    "thr_pct": 50,
+    "flag_rate": 0.5,
+    "recall_bad": 0.356,
+    "precision_bad": 0.11
+   },
+   {
+    "thr_pct": 70,
+    "flag_rate": 0.3,
+    "recall_bad": 0.264,
+    "precision_bad": 0.136
+   },
+   {
+    "thr_pct": 80,
+    "flag_rate": 0.2,
+    "recall_bad": 0.092,
+    "precision_bad": 0.071
+   },
+   {
+    "thr_pct": 90,
+    "flag_rate": 0.101,
+    "recall_bad": 0.046,
+    "precision_bad": 0.07
+   },
+   {
+    "thr_pct": 95,
+    "flag_rate": 0.051,
+    "recall_bad": 0.023,
+    "precision_bad": 0.069
+   }
+  ]
+ },
+ "oob_specific": {
+  "n_oob": 27,
+  "entropy_recall_on_oob": 0.222,
+  "ring_recall_on_oob": 0.37,
+  "border_recall_on_oob": 0.111,
+  "oob_ring_med": 0.0,
+  "in_ring_med": 0.0,
+  "oob_bpred_med": 0.301,
+  "in_bpred_med": 0.285
+ },
+ "oob_share": 0.048,
+ "oob_entropy_med": 1.493,
+ "in_entropy_med": 1.639,
+ "temporal_tau8": {
+  "n_pairs_close": 97,
+  "img_diff_med": 0.55,
+  "pred_jump_med_px": 13.18,
+  "flag_rate": 0.753,
+  "recall_bad_endpoint": 0.833,
+  "precision_bad_endpoint": 0.274
+ },
+ "temporal_tau20": {
+  "n_pairs_close": 97,
+  "img_diff_med": 0.55,
+  "pred_jump_med_px": 13.18,
+  "flag_rate": 0.381,
+  "recall_bad_endpoint": 0.625,
+  "precision_bad_endpoint": 0.405
+ },
+ "cost": {
+  "heatmap_cells": 1296,
+  "existing_softmax_ops": 3888,
+  "entropy_extra_ops": 3888,
+  "maxp_extra_ops": 1296,
+  "entropy_vs_detect_MACs_pct": 0.0185,
+  "entropy_pl_us_1cell_per_cycle": 13.0,
+  "entropy_pl_us_4cycle_per_cell": 51.8,
+  "entropy_pl_pct_of_33ms_budget": 0.157,
+  "entropy_a9_ms": 0.039,
+  "entropy_a9_pct_of_66ms_budget": 0.059,
+  "temporal_extra_ops": 10,
+  "temporal_vs_detect_MACs_pct": 4.7e-05,
+  "temporal_latency_frames": 1,
+  "ring_border_extra_ops": 2,
+  "ring_border_vs_detect_MACs_pct": 9.5e-06,
+  "note": "PL 侧 log2 用 LUT(256x16bit=512B BRAM) 或 CORDIC；时序一致性只需 4 个寄存器"
+ },
+ "host_seconds": 29.1
+}
