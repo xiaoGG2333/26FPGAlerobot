@@ -1,6 +1,6 @@
 # Zynq7100 SO101 机械臂硬件逆运动学控制系统
 
-本项目用 RK-ZYNQ7100-F 驱动一台 SO101 右臂。操作者通过 Xbox 指定末端位置与腕旋转，板上 ARM 调用 FPGA 逆解核算出五个关节角，再协调五轴运动。夹爪可独立开闭。仓库同时提供摄像头手势输入源码。
+本项目用 RK-ZYNQ7100-F 驱动一台 SO101 右臂。操作者可通过 Xbox 或摄像头手势指定末端位置与腕旋转，板上 ARM 调用 FPGA 逆解核算出五个关节角，再协调五轴运动。夹爪可独立开闭。
 
 [项目能力与架构](#项目能力与架构) · [逆解性能对比](#逆解性能对比) · [从零复现](#从零复现) · [视觉手势遥操作](#视觉手势遥操作) · [IP 核接口](#ip核接口) · [参考文献](#参考文献与第三方来源)
 
@@ -167,18 +167,29 @@ python -u board/host/xbox_control.py --port /dev/ttyUSB1 --xbox-device /dev/inpu
 
 ## 视觉手势遥操作
 
-主机摄像头采集手部图像，MediaPipe 提取 21 个关键点，主机生成末端位置和腕旋转目标，再通过串口交给 RK7100 求解。Xbox 与视觉共用板端控制协议，两种输入程序应分别运行。[视觉工程与复现步骤](src/vision/README.md)
+摄像头是另一种遥操作输入。电脑用 MediaPipe 提取单手 21 个关键点，将手相对标定姿态的位移和转动换算成末端目标。RK7100 接收 `POSE1`，由 ARM 组织迭代、PL 加速单步逆解，再驱动五轴。夹爪由独立的 `GRIP1` 指令控制。Xbox 与视觉程序共用调试串口，每次只运行其中一个。[视觉源码](src/vision/README.md) · [串口控制入口](board/vision/pose2arm.py)
 
-| 手部输入 | 控制量 |
+| 手部动作 | 机械臂响应 |
 |---|---|
-| 掌心在画面内左右、上下平移 | 相对标定零位生成 Y、Z 目标 |
-| 手部表观长度相对标定值变化 | 估计前后位移，生成 X 目标；单目距离估计会受手的朝向影响 |
-| 手部转动 | 按标定配置生成腕旋转 roll；7100 位置控制任务仍允许末端俯仰自由 |
-| 伸出五指、握拳 | 分别请求张开、闭合 ID6；实际夹爪使用独立的 GRIP1 方向命令 |
+| 掌心在画面中左右、上下移动 | 分别改变基座坐标系下的 Y、Z 目标，方向由标定配置决定 |
+| 手靠近或远离镜头 | 改变 X 目标。串口入口默认使用 `palmrow`，根据腕点到四个掌指关节中心的画面距离估计远近，并对握拳造成的表观缩短做补偿 |
+| 转动手部 | 根据标定生成 ID5 的腕旋转目标；肩、肘和腕俯仰共同配合定位 |
+| 张开五指 / 握拳 | 分别请求 ID6 张开 / 闭合。默认映射下，伸出 1–4 指或手离开画面可能延续此前的开闭方向 |
 
-**复现入口。** 从仓库根目录运行 `python sim/vision/test_kin.py` 做离线运动学自检。准备视觉环境和模型后，运行 `python src/vision/sw/pose_map.py --source 0 --no-window --max-frames 60` 做摄像头预览。板端入口为 [pose2arm.py](board/vision/pose2arm.py)，串口协议见 [pose_link.py](board/vision/pose_link.py)。[小型 CNN 量化与 HLS 验证技能](skill/tiny-net-hls/skill.md) 单独说明模型部署方法。
+### 从预览到实物联调
 
-**夹爪保持的已知问题。** 此版本默认映射在伸出 1–4 指或手离开画面时会保留先前夹爪值，后台还会重发最近的开闭方向。因此从握拳切换到中性手势后，夹爪可能继续闭合。实物联调前应先验证中性、丢手和视频停帧均会撤销旧方向，可先用 `--no-grip` 单独检查五轴。
+以下命令均在仓库根目录运行。按[环境说明](src/vision/README.md)安装依赖，将 Hand Landmarker 模型保存为 `./hand_landmarker.task`。示例使用摄像头 0；接板时将 `/dev/ttyUSB1` 替换为实际 DEBUG 串口。
+
+| 步骤 | 命令 | 观察内容 |
+|---|---|---|
+| 1. 摄像头预览 | `python src/vision/sw/pose_view.py --source 0 --model ./hand_landmarker.task` | 在预览窗口观察手部运动和屏幕读数，检查相机选择和方向 |
+| 2. 三维仿真 | `python sim/vision/live_sim.py --source 0 --model ./hand_landmarker.task` | 移动手掌，观察线框机械臂的末端和腕部响应，无需连接板卡 |
+| 3. 板端只求解 | `python board/vision/pose2arm.py --source 0 --model ./hand_landmarker.task --port /dev/ttyUSB1 --hud min` | 核对固件握手和逆解回包；默认不使能机械臂 |
+| 4. 五轴实物联调 | 在上一步命令末尾加 `--arm --no-grip` | 此步会使能五轴。先核对实物移动方向和幅度；夹爪单独验证，尤其要检查握拳后松手、丢手时能否停止闭合 |
+
+无摄像头时可运行 `python sim/vision/verify_channels.py --rate`。已执行的 360 帧数值测试中，POSE1 格式检查和仿真逆解均通过。相机跟踪效果、夹爪行为和整机响应需分别做实物验证。
+
+仓库另含[小型关键点网络 HLS 源码、权重与测试台](src/vision/fpga/ip/kpt_net/README.md)和[量化验证技能](skill/tiny-net-hls/skill.md)。该 IP 是独立实验；上述遥操作入口使用主机 MediaPipe，比赛位流中的 PL 加速器负责逆解。
 
 ## IP核接口
 
