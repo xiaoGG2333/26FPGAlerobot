@@ -176,16 +176,56 @@ python -u board/host/xbox_control.py --port /dev/ttyUSB1 --xbox-device /dev/inpu
 | 转动手部 | 根据标定生成 ID5 的腕旋转目标；肩、肘和腕俯仰共同配合定位 |
 | 张开五指 / 握拳 | 分别请求 ID6 张开 / 闭合。默认映射下，伸出 1–4 指或手离开画面可能延续此前的开闭方向 |
 
+### Ubuntu 环境与视觉依赖
+
+在能访问摄像头的 Ubuntu 主机或虚拟机上，从仓库根目录执行以下命令。使用 VMware 时，先将摄像头分配给 Ubuntu；与 RK7100 联调时，再将 DEBUG USB 串口分配给同一台虚拟机。
+
+```bash
+python3 -m venv ~/venvs/so101-vision
+source ~/venvs/so101-vision/bin/activate
+python -m pip install numpy opencv-contrib-python mediapipe pyserial pillow
+python -m pip check
+python -c "import cv2, numpy, serial; from mediapipe.tasks.python import vision, BaseOptions; print('Vision imports OK')"
+```
+
+NumPy 负责数值计算，OpenCV 负责采集和显示，MediaPipe Tasks 提取手部关键点，pySerial 负责板端通信。Pillow 用于界面文字绘制。窗口预览需要带 GUI 的 OpenCV。重新打开终端时，先回到仓库根目录，再执行上面的 `source` 命令。
+
+下载与启动参数对应的手部关键点模型，并检查 Ubuntu 实际识别的设备：
+
+```bash
+curl -fL --retry 2 -o hand_landmarker.task https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task
+ls -lh hand_landmarker.task
+ls /dev/video*
+python -m serial.tools.list_ports -v
+```
+
 ### 从预览到实物联调
 
-以下命令均在仓库根目录运行。按[环境说明](src/vision/README.md)安装依赖，将 Hand Landmarker 模型保存为 `./hand_landmarker.task`。示例使用摄像头 0；接板时将 `/dev/ttyUSB1` 替换为实际 DEBUG 串口。
+下列命令**一次运行一条**，退出当前程序后再进入下一步。示例使用摄像头 `0` 和 DEBUG 串口 `/dev/ttyUSB1`，请按实际枚举结果替换。
 
-| 步骤 | 命令 | 观察内容 |
-|---|---|---|
-| 1. 摄像头预览 | `python src/vision/sw/pose_view.py --source 0 --model ./hand_landmarker.task` | 在预览窗口观察手部运动和屏幕读数，检查相机选择和方向 |
-| 2. 三维仿真 | `python sim/vision/live_sim.py --source 0 --model ./hand_landmarker.task` | 移动手掌，观察线框机械臂的末端和腕部响应，无需连接板卡 |
-| 3. 板端只求解 | `python board/vision/pose2arm.py --source 0 --model ./hand_landmarker.task --port /dev/ttyUSB1 --hud min` | 核对固件握手和逆解回包；默认不使能机械臂 |
-| 4. 五轴实物联调 | 在上一步命令末尾加 `--arm --no-grip` | 此步会使能五轴。先核对实物移动方向和幅度；夹爪单独验证，尤其要检查握拳后松手、丢手时能否停止闭合 |
+**1. 摄像头预览。** 只连接摄像头，移动手掌，核对骨架、方向和屏幕读数。
+
+```bash
+python src/vision/sw/pose_view.py --source 0 --model ./hand_landmarker.task
+```
+
+**2. 三维仿真。** 观察线框机械臂的末端和腕部是否跟随手势。此步无需连接板卡。
+
+```bash
+python sim/vision/live_sim.py --source 0 --model ./hand_landmarker.task
+```
+
+**3. 板端求解预览。** 关闭占用同一串口的 Xbox 程序或串口助手，连接 RK7100，核对固件握手和求解回包。该命令不使能机械臂。
+
+```bash
+python board/vision/pose2arm.py --source 0 --model ./hand_landmarker.task --port /dev/ttyUSB1 --hud min
+```
+
+**4. 五轴实物控制。** 已核对方向并准备好现场支撑后运行。`--arm` 会使能五轴，`--no-grip` 使夹爪不参与本次测试。按 Ctrl+C 退出时检查串口的停止回复。
+
+```bash
+python board/vision/pose2arm.py --source 0 --model ./hand_landmarker.task --port /dev/ttyUSB1 --hud min --arm --no-grip
+```
 
 无摄像头时可运行 `python sim/vision/verify_channels.py --rate`。已执行的 360 帧数值测试中，POSE1 格式检查和仿真逆解均通过。相机跟踪效果、夹爪行为和整机响应需分别做实物验证。
 
