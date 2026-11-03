@@ -1,0 +1,695 @@
+
+****** Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source D:/FPGA/vivado/Vivado/2018.3/scripts/vivado_hls/hls.tcl -notrace
+INFO: [HLS 200-10] Running 'D:/FPGA/vivado/Vivado/2018.3/bin/unwrapped/win64.o/vivado_hls.exe'
+INFO: [HLS 200-10] For user 'YUBEN' on host 'yuuben' (Windows NT_amd64 version 6.2) on Tue Nov 03 17:22:49 +0800 2026
+INFO: [HLS 200-10] In directory 'D:/C_O_D_E/2026/FPGA_AMD/fpga/ip/kpt_net'
+
+===== 17:22:49 1/5 建工程 + 读源码 =====
+INFO: [HLS 200-10] Creating and opening project 'D:/C_O_D_E/2026/FPGA_AMD/fpga/ip/kpt_net/kpt_base_prj'.
+INFO: [HLS 200-10] Adding design file 'src/kpt_base.cpp' to the project
+
+===== 17:22:49 2/5 综合逐点层 kpt_base_pw（16->96 @96x96） =====
+INFO: [HLS 200-10] Creating and opening solution 'D:/C_O_D_E/2026/FPGA_AMD/fpga/ip/kpt_net/kpt_base_prj/pw'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+INFO: [HLS 200-10] Setting target device to 'xc7z100ffg900-2'
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 8ns.
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'src/kpt_base.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 102.133 ; gain = 17.227
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 102.133 ; gain = 17.227
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [XFORM 203-603] Inlining function 'k_pw' into 'kpt_base_pw' (src/kpt_base.cpp:160).
+INFO: [XFORM 203-603] Inlining function 'bias_at' into 'kpt_base_pw' (src/kpt_base.cpp:55->src/kpt_base.cpp:160).
+INFO: [XFORM 203-603] Inlining function 'mult_at' into 'kpt_base_pw' (src/kpt_base.cpp:56->src/kpt_base.cpp:160).
+INFO: [XFORM 203-603] Inlining function 'sh_at' into 'kpt_base_pw' (src/kpt_base.cpp:57->src/kpt_base.cpp:160).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_base_pw' (src/kpt_base.cpp:85->src/kpt_base.cpp:160).
+INFO: [XFORM 203-603] Inlining function 'rd32' into 'kpt_base_pw' (src/kpt_base.cpp:32->src/kpt_base.cpp:55->src/kpt_base.cpp:160).
+INFO: [XFORM 203-603] Inlining function 'rd32' into 'kpt_base_pw' (src/kpt_base.cpp:33->src/kpt_base.cpp:56->src/kpt_base.cpp:160).
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:01 ; elapsed = 00:00:10 . Memory (MB): peak = 104.207 ; gain = 19.301
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:01 ; elapsed = 00:00:10 . Memory (MB): peak = 104.527 ; gain = 19.621
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-1.2' (src/kpt_base.cpp:66) in function 'kpt_base_pw' for pipelining.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1' (src/kpt_base.cpp:52) in function 'kpt_base_pw' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.2.1' (src/kpt_base.cpp:70) in function 'kpt_base_pw' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-1.2.2' (src/kpt_base.cpp:76) in function 'kpt_base_pw': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.2.2.1' (src/kpt_base.cpp:78) in function 'kpt_base_pw' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.2.3' (src/kpt_base.cpp:83) in function 'kpt_base_pw' completely with a factor of 64.
+INFO: [XFORM 203-101] Partitioning array 'WT'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'BT'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'MT'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'ST'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc' (src/kpt_base.cpp:68) in dimension 1 completely.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:77:56) to (src/kpt_base.cpp:76:36) in function 'kpt_base_pw'... converting 129 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:85:45) to (src/kpt_base.cpp:85:45) in function 'kpt_base_pw'... converting 3 basic blocks.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:21 ; elapsed = 00:00:32 . Memory (MB): peak = 164.191 ; gain = 79.285
+WARNING: [XFORM 203-542] Cannot flatten a loop nest 'Loop-1.65' (src/kpt_base.cpp:66:19) in function 'kpt_base_pw' : 
+
+the outer loop is not a perfect loop because there is nontrivial logic before entering the inner loop.
+WARNING: [XFORM 203-542] Cannot flatten a loop nest 'Loop-1' (src/kpt_base.cpp:48:17) in function 'kpt_base_pw' : 
+
+more than one sub loop.
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:53 ; elapsed = 00:01:05 . Memory (MB): peak = 249.770 ; gain = 164.863
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'kpt_base_pw' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'kpt_base_pw' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.2'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.3'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.4'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.5'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.6'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.7'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.8'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.9'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.10'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.11'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.12'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.13'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.14'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.15'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.16'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.17'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.18'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.19'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.20'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.21'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.22'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.23'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.24'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.25'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.26'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.27'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.28'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.29'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.30'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.31'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.32'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.33'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.34'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.35'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.36'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.37'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.38'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.39'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.40'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.41'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.42'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.43'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.44'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.45'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.46'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.47'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.48'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.49'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.50'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.51'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.52'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.53'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.54'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.55'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.56'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.57'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.58'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.59'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.60'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.61'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.62'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.63'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.64'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+WARNING: [SCHED 204-65] Unable to satisfy pipeline directive: Loop contains subloop(s) not being unrolled or flattened.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 4761.77 seconds; current allocated memory: 859.442 MB.
+INFO: [HLS 200-434] Only 64 loops out of a total 67 loops have been pipelined in this design.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 132.546 seconds; current allocated memory: 964.877 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'kpt_base_pw' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'kpt_base_pw/gmem_w' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kpt_base_pw/gmem_in' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kpt_base_pw/gmem_out' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kpt_base_pw/w' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kpt_base_pw/src' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kpt_base_pw/dst' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'kpt_base_pw' to 's_axilite & ap_ctrl_hs'.
+WARNING: [RTGEN 206-101] Register 'ST_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_3' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_3' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_3' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_4' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_4' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_4' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_5' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_5' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_5' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_6' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_6' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_6' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_7' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_7' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_7' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_8' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_8' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_8' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_9' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_9' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_9' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_10' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_10' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_10' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_11' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_11' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_11' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_12' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_12' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_12' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_13' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_13' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_13' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_14' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_14' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_14' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_15' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_15' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_15' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_16' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_16' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_16' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_17' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_17' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_17' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_18' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_18' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_18' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_19' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_19' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_19' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_20' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_20' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_20' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_21' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_21' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_21' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_22' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_22' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_22' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_23' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_23' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_23' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_24' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_24' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_24' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_25' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_25' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_25' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_26' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_26' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_26' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_27' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_27' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_27' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_28' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_28' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_28' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_29' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_29' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_29' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_30' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_30' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_30' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_31' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_31' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_31' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_32' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_32' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_32' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_33' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_33' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_33' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_34' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_34' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_34' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_35' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_35' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_35' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_36' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_36' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_36' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_37' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_37' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_37' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_38' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_38' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_38' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_39' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_39' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_39' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_40' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_40' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_40' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_41' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_41' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_41' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_42' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_42' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_42' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_43' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_43' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_43' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_44' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_44' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_44' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_45' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_45' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_45' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_46' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_46' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_46' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_47' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_47' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_47' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_48' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_48' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_48' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_49' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_49' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_49' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_50' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_50' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_50' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_51' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_51' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_51' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_52' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_52' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_52' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_53' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_53' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_53' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_54' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_54' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_54' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_55' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_55' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_55' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_56' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_56' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_56' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_57' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_57' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_57' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_58' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_58' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_58' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_59' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_59' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_59' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_60' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_60' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_60' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_61' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_61' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_61' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_62' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_62' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_62' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_63' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_63' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_63' is power-on initialization.
+INFO: [RTGEN 206-100] Bundling port 'return', 'w', 'src' and 'dst' to AXI-Lite port ctrl.
+INFO: [SYN 201-210] Renamed object name 'kpt_base_pw_mul_32s_32s_64_2_1' to 'kpt_base_pw_mul_3bkb' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'kpt_base_pw_mac_muladd_9s_8s_32s_32_1_1' to 'kpt_base_pw_mac_mcud' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'kpt_base_pw_mac_mcud': 64 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'kpt_base_pw_mul_3bkb': 64 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'kpt_base_pw'.
+INFO: [HLS 200-111]  Elapsed time: 93.686 seconds; current allocated memory: 1.089 GB.
+INFO: [RTMG 210-282] Generating pipelined core: 'kpt_base_pw_mul_3bkb_MulnS_0'
+INFO: [RTMG 210-278] Implementing memory 'kpt_base_pw_WT_0_ram (RAM)' using block RAMs with power-on initialization.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 01:19:31 ; elapsed = 01:25:31 . Memory (MB): peak = 2365.180 ; gain = 2280.273
+INFO: [SYSC 207-301] Generating SystemC RTL for kpt_base_pw.
+INFO: [VHDL 208-304] Generating VHDL RTL for kpt_base_pw.
+INFO: [VLOG 209-307] Generating Verilog RTL for kpt_base_pw.
+  报告：kpt_base_prj/pw/syn/report/kpt_base_pw_csynth.rpt
+
+===== 18:48:19 3/5 综合逐通道层 kpt_base_dw（96ch @96x96 s2） =====
+INFO: [HLS 200-10] Creating and opening solution 'D:/C_O_D_E/2026/FPGA_AMD/fpga/ip/kpt_net/kpt_base_prj/dw'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 8ns.
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'src/kpt_base.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 01:19:32 ; elapsed = 01:25:38 . Memory (MB): peak = 2365.180 ; gain = 2280.273
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 01:19:32 ; elapsed = 01:25:38 . Memory (MB): peak = 2365.180 ; gain = 2280.273
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [XFORM 203-603] Inlining function 'k_dw' into 'kpt_base_dw' (src/kpt_base.cpp:172).
+INFO: [XFORM 203-603] Inlining function 'bias_at' into 'kpt_base_dw' (src/kpt_base.cpp:110->src/kpt_base.cpp:172).
+INFO: [XFORM 203-603] Inlining function 'mult_at' into 'kpt_base_dw' (src/kpt_base.cpp:111->src/kpt_base.cpp:172).
+INFO: [XFORM 203-603] Inlining function 'sh_at' into 'kpt_base_dw' (src/kpt_base.cpp:112->src/kpt_base.cpp:172).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_base_dw' (src/kpt_base.cpp:144->src/kpt_base.cpp:172).
+INFO: [XFORM 203-603] Inlining function 'rd32' into 'kpt_base_dw' (src/kpt_base.cpp:32->src/kpt_base.cpp:110->src/kpt_base.cpp:172).
+INFO: [XFORM 203-603] Inlining function 'rd32' into 'kpt_base_dw' (src/kpt_base.cpp:33->src/kpt_base.cpp:111->src/kpt_base.cpp:172).
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 01:19:32 ; elapsed = 01:25:39 . Memory (MB): peak = 2365.180 ; gain = 2280.273
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 01:19:32 ; elapsed = 01:25:39 . Memory (MB): peak = 2365.180 ; gain = 2280.273
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-1.2.1' (src/kpt_base.cpp:117) in function 'kpt_base_dw' for pipelining.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1' (src/kpt_base.cpp:107) in function 'kpt_base_dw' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.2.1.1' (src/kpt_base.cpp:121) in function 'kpt_base_dw' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.2.1.2' (src/kpt_base.cpp:125) in function 'kpt_base_dw' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.2.1.2.1' (src/kpt_base.cpp:128) in function 'kpt_base_dw' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.2.1.2.1.1' (src/kpt_base.cpp:132) in function 'kpt_base_dw' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.2.1.3' (src/kpt_base.cpp:140) in function 'kpt_base_dw' completely with a factor of 32.
+INFO: [XFORM 203-101] Partitioning array 'WD'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'BT'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'MT'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'ST'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc' (src/kpt_base.cpp:119) in dimension 1 completely.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/kpt_base.cpp:144:17) to (src/kpt_base.cpp:144:17) in function 'kpt_base_dw'... converting 3 basic blocks.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 01:19:57 ; elapsed = 01:26:07 . Memory (MB): peak = 2365.180 ; gain = 2280.273
+INFO: [XFORM 203-541] Flattening a loop nest 'Loop-1.33' (src/kpt_base.cpp:116:20) in function 'kpt_base_dw'.
+WARNING: [XFORM 203-542] Cannot flatten a loop nest 'Loop-1' (src/kpt_base.cpp:104:17) in function 'kpt_base_dw' : 
+
+more than one sub loop.
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 01:20:44 ; elapsed = 01:26:56 . Memory (MB): peak = 2365.180 ; gain = 2280.273
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'kpt_base_dw' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'kpt_base_dw' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1.33'.
+WARNING: [SCHED 204-69] Unable to schedule bus request on port 'gmem_in' (src/kpt_base.cpp:135->src/kpt_base.cpp:172) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [SCHED 204-61] Unable to satisfy pipeline directive: Unable to pipeline the region.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 1072.56 seconds; current allocated memory: 578.443 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 160.351 seconds; current allocated memory: 727.416 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'kpt_base_dw' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'kpt_base_dw/gmem_w' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kpt_base_dw/gmem_in' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kpt_base_dw/gmem_out' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kpt_base_dw/w' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kpt_base_dw/src' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'kpt_base_dw/dst' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'kpt_base_dw' to 's_axilite & ap_ctrl_hs'.
+WARNING: [RTGEN 206-101] Register 'ST_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_3' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_3' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_3' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_4' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_4' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_4' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_5' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_5' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_5' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_6' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_6' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_6' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_7' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_7' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_7' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_8' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_8' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_8' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_9' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_9' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_9' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_10' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_10' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_10' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_11' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_11' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_11' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_12' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_12' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_12' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_13' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_13' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_13' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_14' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_14' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_14' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_15' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_15' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_15' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_16' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_16' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_16' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_17' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_17' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_17' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_18' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_18' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_18' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_19' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_19' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_19' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_20' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_20' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_20' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_21' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_21' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_21' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_22' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_22' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_22' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_23' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_23' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_23' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_24' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_24' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_24' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_25' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_25' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_25' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_26' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_26' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_26' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_27' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_27' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_27' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_28' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_28' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_28' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_29' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_29' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_29' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_30' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_30' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_30' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ST_31' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'MT_31' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'BT_31' is power-on initialization.
+INFO: [RTGEN 206-100] Bundling port 'return', 'w', 'src' and 'dst' to AXI-Lite port ctrl.
+INFO: [SYN 201-210] Renamed object name 'kpt_base_dw_mul_32s_32s_64_2_1' to 'kpt_base_dw_mul_3bkb' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'kpt_base_dw_mac_muladd_8s_8ns_32ns_32_1_1' to 'kpt_base_dw_mac_mcud' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'kpt_base_dw_mac_muladd_8ns_8s_32ns_32_1_1' to 'kpt_base_dw_mac_mdEe' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'kpt_base_dw_mac_mcud': 192 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'kpt_base_dw_mac_mdEe': 96 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'kpt_base_dw_mul_3bkb': 32 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'kpt_base_dw'.
+INFO: [HLS 200-111]  Elapsed time: 113.712 seconds; current allocated memory: 844.955 MB.
+INFO: [RTMG 210-282] Generating pipelined core: 'kpt_base_dw_mul_3bkb_MulnS_0'
+INFO: [RTMG 210-278] Implementing memory 'kpt_base_dw_WD_0_ram (RAM)' using distributed RAMs with power-on initialization.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 01:39:56 ; elapsed = 01:48:03 . Memory (MB): peak = 2365.180 ; gain = 2280.273
+INFO: [SYSC 207-301] Generating SystemC RTL for kpt_base_dw.
+INFO: [VHDL 208-304] Generating VHDL RTL for kpt_base_dw.
+INFO: [VLOG 209-307] Generating Verilog RTL for kpt_base_dw.
+  报告：kpt_base_prj/dw/syn/report/kpt_base_dw_csynth.rpt
+
+===== 19:10:51 4/5 完成 =====
+
+===== 19:10:51 5/5 结束 =====
+ERROR: [HLS 200-70] There is an error calling 'vivado_hls'; try '-help'.
+INFO: [HLS 200-112] Total elapsed time: 6483.85 seconds; peak allocated memory: 1.089 GB.
+INFO: [Common 17-206] Exiting vivado_hls at Tue Nov  3 19:10:52 2026...

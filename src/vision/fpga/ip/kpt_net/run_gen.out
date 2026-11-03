@@ -1,0 +1,684 @@
+[15:24:43.35] start synthesis plan B
+
+****** Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source D:/FPGA/vivado/Vivado/2018.3/scripts/vivado_hls/hls.tcl -notrace
+INFO: [HLS 200-10] Running 'D:/FPGA/vivado/Vivado/2018.3/bin/unwrapped/win64.o/vivado_hls.exe'
+INFO: [HLS 200-10] For user 'YUBEN' on host 'yuuben' (Windows NT_amd64 version 6.2) on Tue Nov 03 15:24:46 +0800 2026
+INFO: [HLS 200-10] In directory 'D:/C_O_D_E/2026/FPGA_AMD/fpga/ip/kpt_net'
+
+===== 15:24:46 1/6 建工程 + 读源码 =====
+INFO: [HLS 200-10] Creating and opening project 'D:/C_O_D_E/2026/FPGA_AMD/fpga/ip/kpt_net/kpt_net_gen_prj'.
+INFO: [HLS 200-10] Adding design file 'src/kpt_hls_gen_top.cpp' to the project
+INFO: [HLS 200-10] Adding design file 'src/kpt_hls_gen.cpp' to the project
+
+===== 15:24:46 2/6 建 solution + 器件/时钟约束（xc7z100ffg900-2 @ 8ns） =====
+INFO: [HLS 200-10] Creating and opening solution 'D:/C_O_D_E/2026/FPGA_AMD/fpga/ip/kpt_net/kpt_net_gen_prj/solution1'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+INFO: [HLS 200-10] Setting target device to 'xc7z100ffg900-2'
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 8ns.
+INFO: [XFORM 203-1171] Pipeline the innermost loop with trip count more than 1 or its parent loop when its trip count is less than or equal 1.
+
+===== 15:24:46 3/6 C 综合开始（调度→绑定→RTL 生成，最慢的一段） =====
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'src/kpt_hls_gen.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'src/kpt_hls_gen_top.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 102.496 ; gain = 17.578
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 102.496 ; gain = 17.578
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [XFORM 203-603] Inlining function 'kptg::kpt_body' into 'kptg::forward_gen' (src/kpt_hls_gen.cpp:323).
+INFO: [XFORM 203-603] Inlining function 'kptg::forward_gen' into 'kpt_net_entry' (src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_c3' into 'kpt_net_entry' (data\kpt_net_gen.h:8->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_dw' into 'kpt_net_entry' (data\kpt_net_gen.h:9->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:10->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_copy' into 'kpt_net_entry' (data\kpt_net_gen.h:11->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:12->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_dw' into 'kpt_net_entry' (data\kpt_net_gen.h:13->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:14->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_copy' into 'kpt_net_entry' (data\kpt_net_gen.h:15->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:16->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_dw' into 'kpt_net_entry' (data\kpt_net_gen.h:17->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:18->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_add' into 'kpt_net_entry' (data\kpt_net_gen.h:19->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_copy' into 'kpt_net_entry' (data\kpt_net_gen.h:20->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:21->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_dw' into 'kpt_net_entry' (data\kpt_net_gen.h:22->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:23->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_copy' into 'kpt_net_entry' (data\kpt_net_gen.h:24->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:25->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_dw' into 'kpt_net_entry' (data\kpt_net_gen.h:26->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:27->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_add' into 'kpt_net_entry' (data\kpt_net_gen.h:28->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_copy' into 'kpt_net_entry' (data\kpt_net_gen.h:29->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:30->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_dw' into 'kpt_net_entry' (data\kpt_net_gen.h:31->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:32->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_add' into 'kpt_net_entry' (data\kpt_net_gen.h:33->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_copy' into 'kpt_net_entry' (data\kpt_net_gen.h:34->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:35->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_dw' into 'kpt_net_entry' (data\kpt_net_gen.h:36->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:37->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_copy' into 'kpt_net_entry' (data\kpt_net_gen.h:38->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:39->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_dw' into 'kpt_net_entry' (data\kpt_net_gen.h:40->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:41->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_add' into 'kpt_net_entry' (data\kpt_net_gen.h:42->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_copy' into 'kpt_net_entry' (data\kpt_net_gen.h:43->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:44->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_dw' into 'kpt_net_entry' (data\kpt_net_gen.h:45->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:46->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_add' into 'kpt_net_entry' (data\kpt_net_gen.h:47->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_copy' into 'kpt_net_entry' (data\kpt_net_gen.h:48->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:49->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_dw' into 'kpt_net_entry' (data\kpt_net_gen.h:50->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:51->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_add' into 'kpt_net_entry' (data\kpt_net_gen.h:52->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_copy' into 'kpt_net_entry' (data\kpt_net_gen.h:53->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:54->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_dw' into 'kpt_net_entry' (data\kpt_net_gen.h:55->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:56->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_copy' into 'kpt_net_entry' (data\kpt_net_gen.h:57->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:58->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_dw' into 'kpt_net_entry' (data\kpt_net_gen.h:59->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:60->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_add' into 'kpt_net_entry' (data\kpt_net_gen.h:61->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_copy' into 'kpt_net_entry' (data\kpt_net_gen.h:62->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:63->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_dw' into 'kpt_net_entry' (data\kpt_net_gen.h:64->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:65->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_add' into 'kpt_net_entry' (data\kpt_net_gen.h:66->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_pw' into 'kpt_net_entry' (data\kpt_net_gen.h:67->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_hm' into 'kpt_net_entry' (data\kpt_net_gen.h:68->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_gap' into 'kpt_net_entry' (data\kpt_net_gen.h:69->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_fc' into 'kpt_net_entry' (data\kpt_net_gen.h:70->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_fc' into 'kpt_net_entry' (data\kpt_net_gen.h:71->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::k_fc' into 'kpt_net_entry' (data\kpt_net_gen.h:72->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:195->data\kpt_net_gen.h:8->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:196->data\kpt_net_gen.h:8->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:197->data\kpt_net_gen.h:8->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:229->data\kpt_net_gen.h:8->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:9->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:9->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:143->data\kpt_net_gen.h:9->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:175->data\kpt_net_gen.h:9->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:10->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:10->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:10->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:10->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:12->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:12->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:12->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:12->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:13->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:13->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:143->data\kpt_net_gen.h:13->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:175->data\kpt_net_gen.h:13->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:14->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:14->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:14->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:14->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:16->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:16->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:16->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:16->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:17->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:17->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:143->data\kpt_net_gen.h:17->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:175->data\kpt_net_gen.h:17->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:18->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:18->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:18->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:18->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:21->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:21->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:21->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:21->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:22->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:22->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:143->data\kpt_net_gen.h:22->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:175->data\kpt_net_gen.h:22->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:23->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:23->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:23->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:23->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:25->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:25->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:25->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:25->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:26->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:26->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:143->data\kpt_net_gen.h:26->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:175->data\kpt_net_gen.h:26->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:27->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:27->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:27->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:27->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:30->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:30->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:30->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:30->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:31->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:31->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:143->data\kpt_net_gen.h:31->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:175->data\kpt_net_gen.h:31->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:32->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:32->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:32->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:32->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:35->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:35->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:35->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:35->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:36->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:36->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:143->data\kpt_net_gen.h:36->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:175->data\kpt_net_gen.h:36->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:37->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:37->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:37->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:37->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:39->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:39->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:39->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:39->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:40->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:40->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:143->data\kpt_net_gen.h:40->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:175->data\kpt_net_gen.h:40->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:41->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:41->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:41->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:41->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:44->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:44->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:44->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:44->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:45->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:45->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:143->data\kpt_net_gen.h:45->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:175->data\kpt_net_gen.h:45->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:46->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:46->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:46->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:46->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:49->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:49->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:49->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:49->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:50->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:50->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:143->data\kpt_net_gen.h:50->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:175->data\kpt_net_gen.h:50->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:51->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:51->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:51->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:51->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:54->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:54->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:54->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:54->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:55->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:55->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:143->data\kpt_net_gen.h:55->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:175->data\kpt_net_gen.h:55->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:56->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:56->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:56->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:56->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:58->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:58->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:58->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:58->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:59->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:59->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:143->data\kpt_net_gen.h:59->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:175->data\kpt_net_gen.h:59->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:60->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:60->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:60->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:60->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:63->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:63->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:63->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:63->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:64->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:64->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:143->data\kpt_net_gen.h:64->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:175->data\kpt_net_gen.h:64->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:65->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:65->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:65->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:65->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:67->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:67->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:91->data\kpt_net_gen.h:67->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:116->data\kpt_net_gen.h:67->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:275->data\kpt_net_gen.h:70->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:283->data\kpt_net_gen.h:70->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:283->data\kpt_net_gen.h:70->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:283->data\kpt_net_gen.h:70->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:275->data\kpt_net_gen.h:71->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:283->data\kpt_net_gen.h:71->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:283->data\kpt_net_gen.h:71->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:283->data\kpt_net_gen.h:71->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::bias_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:275->data\kpt_net_gen.h:72->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::mult_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:283->data\kpt_net_gen.h:72->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::sh_at' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:283->data\kpt_net_gen.h:72->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kpt::requant' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:283->data\kpt_net_gen.h:72->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:195->data\kpt_net_gen.h:8->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:196->data\kpt_net_gen.h:8->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:9->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:9->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:10->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:10->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:12->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:12->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:13->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:13->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:14->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:14->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:16->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:16->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:17->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:17->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:18->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:18->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:21->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:21->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:22->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:22->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:23->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:23->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:25->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:25->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:26->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:26->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:27->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:27->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:30->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:30->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:31->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:31->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:32->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:32->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:35->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:35->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:36->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:36->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:37->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:37->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:39->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:39->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:40->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:40->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:41->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:41->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:44->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:44->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:45->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:45->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:46->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:46->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:49->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:49->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:50->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:50->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:51->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:51->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:54->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:54->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:55->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:55->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:56->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:56->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:58->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:58->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:59->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:59->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:60->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:60->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:63->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:63->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:141->data\kpt_net_gen.h:64->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:142->data\kpt_net_gen.h:64->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:65->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:65->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:89->data\kpt_net_gen.h:67->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:90->data\kpt_net_gen.h:67->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:275->data\kpt_net_gen.h:70->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:283->data\kpt_net_gen.h:70->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:275->data\kpt_net_gen.h:71->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:283->data\kpt_net_gen.h:71->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:59->src/kpt_hls_gen.cpp:275->data\kpt_net_gen.h:72->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'kptg::rd32' into 'kpt_net_entry' (src/kpt_hls_gen.cpp:62->src/kpt_hls_gen.cpp:283->data\kpt_net_gen.h:72->src/kpt_hls_gen.cpp:323->src/kpt_hls_gen_top.cpp:25).
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:20 ; elapsed = 00:00:35 . Memory (MB): peak = 201.270 ; gain = 116.352
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:32 ; elapsed = 00:00:48 . Memory (MB): peak = 223.953 ; gain = 139.035
+INFO: [XFORM 203-510] Pipelining loop 'Loop-2.1.1' (src/kpt_hls_gen.cpp:321) in function 'kpt_net_entry' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-5.1.1' (src/kpt_hls_gen.cpp:144) in function 'kpt_net_entry' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-9.1.1' (src/kpt_hls_gen.cpp:144) in function 'kpt_net_entry' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-13.1.1' (src/kpt_hls_gen.cpp:144) in function 'kpt_net_entry' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-18.1.1' (src/kpt_hls_gen.cpp:144) in function 'kpt_net_entry' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-22.1.1' (src/kpt_hls_gen.cpp:144) in function 'kpt_net_entry' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-27.1.1' (src/kpt_hls_gen.cpp:144) in function 'kpt_net_entry' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-32.1.1' (src/kpt_hls_gen.cpp:144) in function 'kpt_net_entry' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-36.1.1' (src/kpt_hls_gen.cpp:144) in function 'kpt_net_entry' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-41.1.1' (src/kpt_hls_gen.cpp:144) in function 'kpt_net_entry' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-46.1.1' (src/kpt_hls_gen.cpp:144) in function 'kpt_net_entry' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-51.1.1' (src/kpt_hls_gen.cpp:144) in function 'kpt_net_entry' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-55.1.1' (src/kpt_hls_gen.cpp:144) in function 'kpt_net_entry' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-60.1.1' (src/kpt_hls_gen.cpp:144) in function 'kpt_net_entry' automatically.
+WARNING: [XFORM 203-505] Ignore pipeline pragma in Loop whose tripcount is only 1 (src/kpt_hls_gen.cpp:276) in function 'kpt_net_entry'.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-3.1' (src/kpt_hls_gen.cpp:200) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-4.2.1' (src/kpt_hls_gen.cpp:148) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-5.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-7.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-8.2.1' (src/kpt_hls_gen.cpp:148) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-9.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-11.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-12.2.1' (src/kpt_hls_gen.cpp:148) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-13.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-16.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-17.2.1' (src/kpt_hls_gen.cpp:148) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-18.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-20.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-21.2.1' (src/kpt_hls_gen.cpp:148) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-22.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-25.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-26.2.1' (src/kpt_hls_gen.cpp:148) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-27.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-30.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-31.2.1' (src/kpt_hls_gen.cpp:148) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-32.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-34.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-35.2.1' (src/kpt_hls_gen.cpp:148) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-36.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-39.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-40.2.1' (src/kpt_hls_gen.cpp:148) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-41.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-44.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-45.2.1' (src/kpt_hls_gen.cpp:148) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-46.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-49.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-50.2.1' (src/kpt_hls_gen.cpp:148) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-51.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-53.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-54.2.1' (src/kpt_hls_gen.cpp:148) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-55.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-58.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-59.2.1' (src/kpt_hls_gen.cpp:148) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-60.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-62.2' (src/kpt_hls_gen.cpp:97) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-65' (src/kpt_hls_gen.cpp:274) in function 'kpt_net_entry' for pipelining.
+INFO: [XFORM 203-502] Unrolling small iteration loop 'Loop-67' (src/kpt_hls_gen.cpp:274) in function 'kpt_net_entry' automatically.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-68' (src/kpt_hls_gen.cpp:274) in function 'kpt_net_entry' for pipelining.
+INFO: [HLS 200-489] Unrolling loop 'Loop-2' (src/kpt_hls_gen.cpp:192) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-3.1.1' (src/kpt_hls_gen.cpp:204) in function 'kpt_net_entry' completely with a factor of 32.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-3.1.2' (src/kpt_hls_gen.cpp:210) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-3.1.2.1' (src/kpt_hls_gen.cpp:211) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-3.1.2.1.1' (src/kpt_hls_gen.cpp:214) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-3.1.2.1.1.1' (src/kpt_hls_gen.cpp:218) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-3.1.3' (src/kpt_hls_gen.cpp:226) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-4.1' (src/kpt_hls_gen.cpp:138) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-4.2.1.1' (src/kpt_hls_gen.cpp:152) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-4.2.1.2' (src/kpt_hls_gen.cpp:156) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-4.2.1.2.1' (src/kpt_hls_gen.cpp:159) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-4.2.1.2.1.1' (src/kpt_hls_gen.cpp:163) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-4.2.1.3' (src/kpt_hls_gen.cpp:171) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-5.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-5.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-5.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-5.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-5.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-7.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-7.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-7.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-7.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-7.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-8.1' (src/kpt_hls_gen.cpp:138) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-8.2.1.1' (src/kpt_hls_gen.cpp:152) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-8.2.1.2' (src/kpt_hls_gen.cpp:156) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-8.2.1.2.1' (src/kpt_hls_gen.cpp:159) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-8.2.1.2.1.1' (src/kpt_hls_gen.cpp:163) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-8.2.1.3' (src/kpt_hls_gen.cpp:171) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-9.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-9.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-9.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-9.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-9.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-11.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-11.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-11.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-11.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-11.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-12.1' (src/kpt_hls_gen.cpp:138) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-12.2.1.1' (src/kpt_hls_gen.cpp:152) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-12.2.1.2' (src/kpt_hls_gen.cpp:156) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-12.2.1.2.1' (src/kpt_hls_gen.cpp:159) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-12.2.1.2.1.1' (src/kpt_hls_gen.cpp:163) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-12.2.1.3' (src/kpt_hls_gen.cpp:171) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-13.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-13.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-13.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-13.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-13.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-16.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-16.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-16.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-16.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-16.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-17.1' (src/kpt_hls_gen.cpp:138) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-17.2.1.1' (src/kpt_hls_gen.cpp:152) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-17.2.1.2' (src/kpt_hls_gen.cpp:156) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-17.2.1.2.1' (src/kpt_hls_gen.cpp:159) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-17.2.1.2.1.1' (src/kpt_hls_gen.cpp:163) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-17.2.1.3' (src/kpt_hls_gen.cpp:171) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-18.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-18.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-18.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-18.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-18.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-20.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-20.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-20.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-20.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-20.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-21.1' (src/kpt_hls_gen.cpp:138) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-21.2.1.1' (src/kpt_hls_gen.cpp:152) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-21.2.1.2' (src/kpt_hls_gen.cpp:156) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-21.2.1.2.1' (src/kpt_hls_gen.cpp:159) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-21.2.1.2.1.1' (src/kpt_hls_gen.cpp:163) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-21.2.1.3' (src/kpt_hls_gen.cpp:171) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-22.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-22.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-22.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-22.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-22.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-25.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-25.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-25.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-25.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-25.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-26.1' (src/kpt_hls_gen.cpp:138) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-26.2.1.1' (src/kpt_hls_gen.cpp:152) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-26.2.1.2' (src/kpt_hls_gen.cpp:156) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-26.2.1.2.1' (src/kpt_hls_gen.cpp:159) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-26.2.1.2.1.1' (src/kpt_hls_gen.cpp:163) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-26.2.1.3' (src/kpt_hls_gen.cpp:171) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-27.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-27.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-27.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-27.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-27.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-30.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-30.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-30.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-30.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-30.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-31.1' (src/kpt_hls_gen.cpp:138) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-31.2.1.1' (src/kpt_hls_gen.cpp:152) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-31.2.1.2' (src/kpt_hls_gen.cpp:156) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-31.2.1.2.1' (src/kpt_hls_gen.cpp:159) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-31.2.1.2.1.1' (src/kpt_hls_gen.cpp:163) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-31.2.1.3' (src/kpt_hls_gen.cpp:171) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-32.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-32.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-32.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-32.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-32.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-34.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-34.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-34.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-34.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-34.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-35.1' (src/kpt_hls_gen.cpp:138) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-35.2.1.1' (src/kpt_hls_gen.cpp:152) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-35.2.1.2' (src/kpt_hls_gen.cpp:156) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-35.2.1.2.1' (src/kpt_hls_gen.cpp:159) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-35.2.1.2.1.1' (src/kpt_hls_gen.cpp:163) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-35.2.1.3' (src/kpt_hls_gen.cpp:171) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-36.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-36.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-36.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-36.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-36.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-39.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-39.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-39.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-39.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-39.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-40.1' (src/kpt_hls_gen.cpp:138) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-40.2.1.1' (src/kpt_hls_gen.cpp:152) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-40.2.1.2' (src/kpt_hls_gen.cpp:156) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-40.2.1.2.1' (src/kpt_hls_gen.cpp:159) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-40.2.1.2.1.1' (src/kpt_hls_gen.cpp:163) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-40.2.1.3' (src/kpt_hls_gen.cpp:171) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-41.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-41.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-41.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-41.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-41.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-44.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-44.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-44.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-44.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-44.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-45.1' (src/kpt_hls_gen.cpp:138) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-45.2.1.1' (src/kpt_hls_gen.cpp:152) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-45.2.1.2' (src/kpt_hls_gen.cpp:156) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-45.2.1.2.1' (src/kpt_hls_gen.cpp:159) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-45.2.1.2.1.1' (src/kpt_hls_gen.cpp:163) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-45.2.1.3' (src/kpt_hls_gen.cpp:171) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-46.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-46.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-46.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-46.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-46.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-49.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-49.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-49.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-49.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-49.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-50.1' (src/kpt_hls_gen.cpp:138) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-50.2.1.1' (src/kpt_hls_gen.cpp:152) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-50.2.1.2' (src/kpt_hls_gen.cpp:156) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-50.2.1.2.1' (src/kpt_hls_gen.cpp:159) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-50.2.1.2.1.1' (src/kpt_hls_gen.cpp:163) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-50.2.1.3' (src/kpt_hls_gen.cpp:171) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-51.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-51.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-51.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-51.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-51.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-53.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-53.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-53.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-53.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-53.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-54.1' (src/kpt_hls_gen.cpp:138) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-54.2.1.1' (src/kpt_hls_gen.cpp:152) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-54.2.1.2' (src/kpt_hls_gen.cpp:156) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-54.2.1.2.1' (src/kpt_hls_gen.cpp:159) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-54.2.1.2.1.1' (src/kpt_hls_gen.cpp:163) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-54.2.1.3' (src/kpt_hls_gen.cpp:171) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-55.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-55.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-55.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-55.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-55.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-58.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-58.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-58.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-58.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-58.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-59.1' (src/kpt_hls_gen.cpp:138) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-59.2.1.1' (src/kpt_hls_gen.cpp:152) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-59.2.1.2' (src/kpt_hls_gen.cpp:156) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-59.2.1.2.1' (src/kpt_hls_gen.cpp:159) in function 'kpt_net_entry' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-59.2.1.2.1.1' (src/kpt_hls_gen.cpp:163) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-59.2.1.3' (src/kpt_hls_gen.cpp:171) in function 'kpt_net_entry' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-60.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-60.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-60.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-60.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-60.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-62.1' (src/kpt_hls_gen.cpp:86) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-62.2.1' (src/kpt_hls_gen.cpp:101) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-62.2.2' (src/kpt_hls_gen.cpp:107) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-62.2.2.1' (src/kpt_hls_gen.cpp:109) in function 'kpt_net_entry' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-62.2.3' (src/kpt_hls_gen.cpp:114) in function 'kpt_net_entry' completely with a factor of 64.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-65.1' (src/kpt_hls_gen.cpp:279) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [HLS 200-489] Unrolling loop 'Loop-67' (src/kpt_hls_gen.cpp:274) in function 'kpt_net_entry' completely with a factor of 1.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-68.1' (src/kpt_hls_gen.cpp:279) in function 'kpt_net_entry': cannot completely unroll a loop with a variable trip count.
+INFO: [XFORM 203-101] Partitioning array 'kptg::BT'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'kptg::MT'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'kptg::ST'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc' (src/kpt_hls_gen.cpp:202) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'kptg::WD'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.1' (src/kpt_hls_gen.cpp:150) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'kptg::WT'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.2' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.3' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.4' (src/kpt_hls_gen.cpp:150) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.5' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.6' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.7' (src/kpt_hls_gen.cpp:150) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.8' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.9' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.10' (src/kpt_hls_gen.cpp:150) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.11' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.12' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.13' (src/kpt_hls_gen.cpp:150) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.14' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.15' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.16' (src/kpt_hls_gen.cpp:150) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.17' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.18' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.19' (src/kpt_hls_gen.cpp:150) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.20' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.21' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.22' (src/kpt_hls_gen.cpp:150) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.23' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.24' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.25' (src/kpt_hls_gen.cpp:150) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.26' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.27' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.28' (src/kpt_hls_gen.cpp:150) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.29' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.30' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.31' (src/kpt_hls_gen.cpp:150) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.32' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.33' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.34' (src/kpt_hls_gen.cpp:150) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.35' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.36' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.37' (src/kpt_hls_gen.cpp:150) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.38' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'acc.39' (src/kpt_hls_gen.cpp:99) in dimension 1 completely.
+INFO: [XFORM 203-102] Automatically partitioning small array 'kptg::gen_FC_P' completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'kptg::gen_FC_H' completely based on array size.
+INFO: [XFORM 203-101] Partitioning array 'kptg::gen_FC_P' in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'kptg::gen_FC_H' in dimension 1 completely.

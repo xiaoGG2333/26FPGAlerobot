@@ -31,3 +31,7 @@ python src/vision/sw/pose_map.py --source 0 --model ./hand_landmarker.task --no-
 整理由[视觉分支固定提交](https://github.com/xiaoGG2333/26FPGAlerobot/tree/0dbaedff3310657b16b7ed6c8b7b16077f2296db/rk7020_so101_hand_teleop_20261102)提供的代码。训练及历史实验脚本中以 `model/`、`tools/`、`results/` 开头的命令，以本目录为工作目录。完整训练集、采集视频与历史实验的外部输入需按对应脚本准备。原始分支仍可查阅实验记录。
 
 当前摄像头遥操作使用主机 MediaPipe。小型 CNN 的冻结权重、INT8 实验和技能包属于独立的模型开发路径。RK7100 比赛工程的 PL 加速器用于逆运动学；本次整理没有将视觉网络写入该位流。`fpga/diag_fw/` 是原分支的诊断代码，独立于比赛固件构建。
+
+### 关键点网络 HLS 实验材料
+
+[IP 源码、权重和测试台](fpga/ip/kpt_net/README.md) · [冻结规格](../../report/vision/kpt_ip_spec.md) · [INT8 参考实现](tools/int8_ref.py)。这些材料来自视觉分支提交 `2f721b5`，对应独立 IP 实验。随附日志是原实验记录。
