@@ -1,0 +1,13 @@
+{
+  "targets": 234,
+  "matched_success": 187,
+  "status_mismatches": 0,
+  "python_ms": 1.6309,
+  "board_ms": 0.14858099569115113,
+  "ratio": 10.97650471659297,
+  "python": "3.12.7",
+  "numpy": "1.26.4",
+  "cpu": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+  "board": "RK7100 Cortex-A9 + PL",
+  "repeats": 3
+}

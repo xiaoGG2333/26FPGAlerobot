@@ -43,39 +43,52 @@ PL 时钟为125 MHz，包含两个相同求解 IP；单个目标的完整迭代�
 
 横轴是允许的迭代次数，纵轴是全部目标中已收敛的比例。两条曲线几乎重合，最终均有 **187 / 234** 个目标收敛（79.9%）。
 
-![Python 与 RK7100 的累计收敛率随迭代次数的变化](docs/images/ik-performance/01_convergence.png)
+![Python 与 RK7100 的累计收敛率随迭代次数的变化](report/images/ik-performance/01_convergence.png)
 
 ### 2. 等效串行吞吐量
 
 将每轮全部 234 次请求除以该轮累计求解时间，再取三轮中位数。包含失败请求时，电脑端为 **141 次/秒**，板端为 **1,212 次/秒**。
 
-![包含失败请求的等效串行吞吐量，电脑 141 次每秒，RK7100 为 1212 次每秒](docs/images/ik-performance/02_rate.png)
+![包含失败请求的等效串行吞吐量，电脑 141 次每秒，RK7100 为 1212 次每秒](report/images/ik-performance/02_rate.png)
 
 ### 3. 完整逆解耗时
 
 对共同收敛且需要迭代的 187 个目标，先取各目标三轮耗时的中位数，再取目标间中位数。电脑端为 **1.631 ms**，板端为 **0.149 ms**。此处统计一次目标从开始求解到获得关节解所需的完整迭代。
 
-![单目标完整逆解耗时中位数，电脑 1.631 毫秒，RK7100 为 0.149 毫秒](docs/images/ik-performance/03_latency.png)
+![单目标完整逆解耗时中位数，电脑 1.631 毫秒，RK7100 为 0.149 毫秒](report/images/ik-performance/03_latency.png)
 
 ## 从零复现
 
-以下命令以 [Vivado/Vitis 2025.2 工程目录](rk7100_so101_native2025_2_20261101_candidate/) 为工作目录。Windows 推荐路径为 `D:\VivadoProjects\RK7100_So_101`，Ubuntu 示例目录为 `~/rk7100_so101`。Windows 根路径需无空格且长度不超过44字符。
+| 根目录 | 实际内容 |
+|---|---|
+| [src/](src/) | PS 固件、PL 逆解源码、RTL、硬件配置和依赖源码 |
+| [sim/](sim/) | HLS 测试台、回归脚本及历史参考 |
+| [build/](build/) | 构建入口、工具配置、校验清单及既有综合实现报告 |
+| [board/](board/) | Ubuntu 主机程序、只读核验、基线启动文件和板端实测输出 |
+| [data/](data/README.md) | 视频实验输入、配对结果及回归数据 |
+| [skill/](skill/) | 工程验证技能包 |
+| [report/](report/README.md) | [作品设计报告](report/design_report.docx)、[大模型协作记录](report/llm_collaboration_record.docx)、性能图 |
+
+构建入口按 `build/layout.json` 从上述目录生成工具使用的 `build/work/` 工作副本，保留原有 include、寄存器校验和文件名约定。修改源码时编辑上表中的文件。新运行的日志和报告位于 `build/work/logs/` 和 `build/work/reports/`。归档启动镜像为 `board/boot/boot.bin`，使用该镜像时以 `BOOT.BIN` 为文件名复制到 SD 卡。
+
+
+以下命令在仓库根目录运行。Windows 推荐路径为 `D:\VivadoProjects\so101_contest`，Ubuntu 示例目录为 `~/rk7100_so101`。Windows 请用无空格短路径，含 `build/work` 的绝对路径长度不得超过 44 个字符。
 
 | 步骤 | 准备或操作 | 文件与调用入口 | 完成判据 |
 |---|---|---|---|
 | 1. 硬件准备 | RK-ZYNQ7100-F及散热风扇、SO101右臂/ST3215、总线适配器、适配舵机的12V电源、SD卡、DEBUG USB线、Xbox与Ubuntu电脑/虚拟机 | 按下方硬件连接表接线 | 电平、共地、供电及接口方向正确 |
-| 2. 安装工具 | Windows安装Vivado/Vitis 2025.2、Zynq-7000器件支持、对应许可证、Python3；补充C回归需要本地GCC | 修改`config/toolchain.json`的`amd_root`、`native_gcc` | 工具入口存在且版本匹配 |
-| 3. 获取源码 | 将完整工程源码置于上述短路径 | `sources/`、`firmware/`、`hardware/`、`rtl/`、`third_party/`、`manifests/` | 保留固定依赖源码及许可证 |
-| 4. 完整构建 | 在新的源码副本中执行完整入口；无需已有XPR、BSP或FSBL | `python scripts/build_all.py` | `reports/build_status.json`各阶段退出码为0，生成`board/boot/BOOT.BIN` |
-| 5. 补充离线验证 | 检查数值、主机协议、轨迹和温控 | `python scripts/verify_software.py`；`python scripts/run_opt_native.py`；两项RTL仿真脚本见下表 | 对应报告通过；离线通过不替代实物验收 |
-| 6. SD启动 | 备份现有启动文件，断电更新SD启动分区根目录的`BOOT.BIN`，选择SD启动后上电 | 使用本次构建的`board/boot/BOOT.BIN`及`SHA256.json` | 板端串口回复匹配能力标记 |
-| 7. Ubuntu准备 | 传入同一版本主机源码，准备独立Python环境和USB设备访问权限 | 安装`config/host_requirements_lock.txt`；运行端口和Xbox枚举命令 | 找到实际串口与Xbox事件设备 |
-| 8. 只读检查 | 查询身份、芯片温度、风扇和六轴舵机反馈 | `python scripts/verify_board.py --port /dev/ttyUSB1 --servos --out results/board_readonly.json` | 收到有效反馈；不发送运动或扭矩命令 |
+| 2. 安装工具 | Windows安装Vivado/Vitis 2025.2、Zynq-7000器件支持、对应许可证、Python3；补充C回归需要本地GCC | 修改`build/config/toolchain.json`的`amd_root`、`native_gcc` | 工具入口存在且版本匹配 |
+| 3. 获取源码 | 将完整工程源码置于上述短路径 | `src/hls/`、`src/ps/`、`src/hardware/`、`src/rtl/`、`src/third_party/`、`build/manifests/` | 保留固定依赖源码及许可证 |
+| 4. 完整构建 | 在新的源码副本中执行完整入口；无需已有XPR、BSP或FSBL | `python build/build_all.py` | `build/work/reports/build_status.json`各阶段退出码为0，生成`build/work/board/boot/BOOT.BIN` |
+| 5. 补充离线验证 | 检查数值、主机协议、轨迹和温控 | `python build/build_all.py --run verify_software`；`python build/build_all.py --run run_opt_native`；两项RTL仿真脚本见下表 | 对应报告通过；离线通过不替代实物验收 |
+| 6. SD启动 | 备份现有启动文件，断电更新SD启动分区根目录的`BOOT.BIN`，选择SD启动后上电 | 使用本次构建的`build/work/board/boot/BOOT.BIN`及`SHA256.json` | 板端串口回复匹配能力标记 |
+| 7. Ubuntu准备 | 传入同一版本主机源码，准备独立Python环境和USB设备访问权限 | 安装`build/config/host_requirements_lock.txt`；运行端口和Xbox枚举命令 | 找到实际串口与Xbox事件设备 |
+| 8. 只读检查 | 查询身份、芯片温度、风扇和六轴舵机反馈 | `python board/verify_board.py --port /dev/ttyUSB1 --servos --out results/board_readonly.json` | 收到有效反馈；不发送运动或扭矩命令 |
 | 9. 求解预览 | 接入Xbox，生成目标并查看板端计算结果 | 下方“预览命令” | 输出目标/求解结果，显示预览且不驱动 |
 | 10. 实物控制 | 在实际接线和支撑条件确认后启动 | 下方“运动命令” | Enter启用；五轴和夹爪响应；Ctrl+C返回停止确认 |
-| 11. 结果检查 | 比较求解状态、目标与实际计数；归档日志 | `results/*.csv`、`reports/`、`skill/zynq-so101-validation/` | 区分计算成功、目标接受和物理到达 |
+| 11. 结果检查 | 比较求解状态、目标与实际计数；归档日志 | `results/*.csv`、`build/work/reports/`、`skill/zynq-so101-validation/` | 区分计算成功、目标接受和物理到达 |
 
-构建顺序为：源码/工具检查 → HLS C仿真 → HLS综合 → RTL协同仿真 → IP打包 → 寄存器检查 → Vivado新建与实现 → 硬件配置检查 → 平台/BSP → ARM/FSBL编译及BOOT打包。构建和离线测试不连接板卡、不启动电机。失败后查看`logs/`，已有前置产物时可使用 `python scripts/build_all.py --from-stage hardware` 恢复；阶段恢复不等于一次完整的从零复现。
+构建顺序为：源码/工具检查 → HLS C仿真 → HLS综合 → RTL协同仿真 → IP打包 → 寄存器检查 → Vivado新建与实现 → 硬件配置检查 → 平台/BSP → ARM/FSBL编译及BOOT打包。构建和离线测试不连接板卡、不启动电机。失败后查看`build/work/logs/`，已有前置产物时可使用 `python build/build_all.py --from-stage hardware` 恢复；阶段恢复不等于一次完整的从零复现。
 
 ### 硬件连接
 
@@ -94,25 +107,25 @@ PL 时钟为125 MHz，包含两个相同求解 IP；单个目标的完整迭代�
 
 | 文件/目录 | 调用方法或职责 |
 |---|---|
-| `config/toolchain.json` | 配置工具安装根目录、器件、8ns周期及本地GCC |
-| `scripts/build_all.py` | 完整构建入口，读取工具配置；首次构建从该入口运行 |
-| `scripts/build_hardware.tcl`、`hardware/design_1.tcl` | 由构建入口调用，创建Vivado工程及Block Design |
-| `scripts/build_platform.py`、`scripts/build_boot.py` | 由构建入口调用，建立平台/BSP并生成配套启动文件 |
-| `sources/xf_solver_lm_so101.cpp`、`sources/lm_solver_so101.hpp` | HLS顶层、单步LM数据通路；由HLS工具编译，不直接用Python运行 |
-| `sources/geometry_regression.cpp` | HLS几何与单步求解测试台，由构建入口执行 |
-| `firmware/main.c`、`firmware/ik_iteration.c` | ARM主程序、硬件调用和完整迭代；随BOOT构建 |
-| `firmware/online_curve.h`、`firmware/arm_control.c` | 在线轨迹、五轴同步和反馈控制 |
-| `firmware/servo_mapping.h` | 五轴零点、方向、编码器与模型角度范围；更换装配后需独立核验 |
-| `host/gripper_config.json` | 夹爪闭合/张开端点、开合速率及速度参数 |
-| `host/xbox_input.py --list` | 在Ubuntu枚举Xbox输入设备：`python host/xbox_input.py --list` |
-| `host/xbox_control.py` | 主控制入口；命令参数示例见下方 |
-| `scripts/verify_board.py` | 板端只读串口检查，需显式指定实际串口 |
-| `scripts/verify_software.py`、`scripts/run_opt_native.py` | 软件数值、协议与控制回归 |
-| `scripts/run_thermal_sim.ps1`、`scripts/run_xadc_sim.ps1` | PowerShell执行：`powershell -NoProfile -ExecutionPolicy Bypass -File scripts/run_thermal_sim.ps1`，另一项替换文件名 |
-| `manifests/` | 源码、依赖、接口及兼容性校验依据 |
-| `build/v/ik.xpr` | 构建生成的Vivado工程，可打开查看电路结构 |
-| `build/hardware_export/` | 生成的位流、XSA/HWH、时序、资源及DRC报告 |
-| `board/boot/` | 生成的FSBL、ARM ELF、BOOT.BIN与SHA256清单 |
+| `build/config/toolchain.json` | 配置工具安装根目录、器件、8ns周期及本地GCC |
+| `build/build_all.py` | 完整构建入口，读取工具配置；首次构建从该入口运行 |
+| `build/tools/build_hardware.tcl`、`src/hardware/design_1.tcl` | 由构建入口调用，创建Vivado工程及Block Design |
+| `build/tools/build_platform.py`、`build/tools/build_boot.py` | 由构建入口调用，建立平台/BSP并生成配套启动文件 |
+| `src/hls/xf_solver_lm_so101.cpp`、`src/hls/lm_solver_so101.hpp` | HLS顶层、单步LM数据通路；由HLS工具编译，不直接用Python运行 |
+| `sim/hls/geometry_regression.cpp` | HLS几何与单步求解测试台，由构建入口执行 |
+| `src/ps/main.c`、`src/ps/ik_iteration.c` | ARM主程序、硬件调用和完整迭代；随BOOT构建 |
+| `src/ps/online_curve.h`、`src/ps/arm_control.c` | 在线轨迹、五轴同步和反馈控制 |
+| `src/ps/servo_mapping.h` | 五轴零点、方向、编码器与模型角度范围；更换装配后需独立核验 |
+| `board/host/gripper_config.json` | 夹爪闭合/张开端点、开合速率及速度参数 |
+| `board/host/xbox_input.py --list` | 在Ubuntu枚举Xbox输入设备：`python board/host/xbox_input.py --list` |
+| `board/host/xbox_control.py` | 主控制入口；命令参数示例见下方 |
+| `board/verify_board.py` | 板端只读串口检查，需显式指定实际串口 |
+| `build/tools/verify_software.py`、`build/tools/run_opt_native.py` | 软件数值、协议与控制回归 |
+| `build/tools/run_thermal_sim.ps1`、`build/tools/run_xadc_sim.ps1` | PowerShell执行：`python build/build_all.py --run run_thermal_sim`，另一项使用 --run run_xadc_sim |
+| `build/manifests/` | 源码、依赖、接口及兼容性校验依据 |
+| `build/work/build/v/ik.xpr` | 构建生成的Vivado工程，可打开查看电路结构 |
+| `build/work/build/hardware_export/` | 生成的位流、XSA/HWH、时序、资源及DRC报告 |
+| `build/work/board/boot/` | 生成的FSBL、ARM ELF、BOOT.BIN与SHA256清单 |
 
 ### Ubuntu启动命令
 
@@ -122,21 +135,21 @@ PL 时钟为125 MHz，包含两个相同求解 IP；单个目标的完整迭代�
 cd ~/rk7100_so101
 python3 -m venv ~/venvs/rk7100-so101
 source ~/venvs/rk7100-so101/bin/activate
-python -m pip install -r config/host_requirements_lock.txt
+python -m pip install -r build/config/host_requirements_lock.txt
 python -m serial.tools.list_ports -v
-python host/xbox_input.py --list
+python board/host/xbox_input.py --list
 ```
 
 预览命令（不驱动舵机）：
 
 ```bash
-python -u host/xbox_control.py --port /dev/ttyUSB1 --xbox-device /dev/input/event6 --xbox-right-axes rxry --hz 5 --csv results/preview.csv
+python -u board/host/xbox_control.py --port /dev/ttyUSB1 --xbox-device /dev/input/event6 --xbox-right-axes rxry --hz 5 --csv results/preview.csv
 ```
 
 运动命令（会进入实物控制流程）：
 
 ```bash
-python -u host/xbox_control.py --port /dev/ttyUSB1 --xbox-device /dev/input/event6 --xbox-right-axes rxry --test-drive --manual-control --translation-speed 0.05 --hz 10 --gripper-control --gripper-config host/gripper_config.json --csv results/drive.csv
+python -u board/host/xbox_control.py --port /dev/ttyUSB1 --xbox-device /dev/input/event6 --xbox-right-axes rxry --test-drive --manual-control --translation-speed 0.05 --hz 10 --gripper-control --gripper-config board/host/gripper_config.json --csv results/drive.csv
 ```
 
 | 输入 | 动作 |
@@ -150,7 +163,7 @@ python -u host/xbox_control.py --port /dev/ttyUSB1 --xbox-device /dev/input/even
 
 目标平移配置上限为0.05m/s；正常五轴速度参数范围为200～2000计数/秒，轨迹加减速阶段的实际速度不等于该寄存器下限。松开摇杆后按既有流程完成最后有效目标并保持扭矩。普通目标拒绝保留上一有效目标并撤销未执行的输入累计；通信异常或心跳超时冻结新目标并保持扭矩。显式停止、程序退出、启动无有效保持目标及舵机温度异常按既有策略处理。
 
-舵机温度超过55℃持续大于1.5秒按既有策略关闭扭矩；芯片超过60℃持续大于1.5秒冻结新控制，降至55℃以下后人工恢复。正常温度不持续输出。模型与实物绝对对齐精度仍需独立验收；完整构建、离线测试和实板验收应分别记录。本目录的完整构建与实板验收不能由`reference/`中的归档报告代替。
+舵机温度超过55℃持续大于1.5秒按既有策略关闭扭矩；芯片超过60℃持续大于1.5秒冻结新控制，降至55℃以下后人工恢复。正常温度不持续输出。模型与实物绝对对齐精度仍需独立验收；完整构建、离线测试和实板验收应分别记录。本目录的完整构建与实板验收不能由`sim/reference/`中的归档报告代替。
 
 ## 视觉手势遥操作
 
@@ -171,7 +184,7 @@ python -u host/xbox_control.py --port /dev/ttyUSB1 --xbox-device /dev/input/even
 
 ### 总线与任务
 
-顶层为 `xf_solver_lm_so101`，使用32位AXI4-Lite寄存器接口，时钟125MHz。CORE0基地址`0x40000000`，CORE1基地址`0x40010000`。以下偏移均相对选定核的基地址，清单以[`manifests/registers_baseline.json`](rk7100_so101_native2025_2_20261101_candidate/manifests/registers_baseline.json)及本次HLS生成驱动头文件为准。
+顶层为 `xf_solver_lm_so101`，使用32位AXI4-Lite寄存器接口，时钟125MHz。CORE0基地址`0x40000000`，CORE1基地址`0x40010000`。以下偏移均相对选定核的基地址，清单以[`build/manifests/registers_baseline.json`](build/manifests/registers_baseline.json)及本次HLS生成驱动头文件为准。
 
 IP完成一步阻尼最小二乘求解：
 
@@ -210,7 +223,7 @@ A delta_q = b
 
 ## 轨迹与逆解实现说明
 
-轨迹参考Ruckig的在线状态更新、多轴同步及速度/加速度/加加速度约束思路，实际实现为[`firmware/online_curve.h`](rk7100_so101_native2025_2_20261101_candidate/firmware/online_curve.h)中的五次Bézier轨迹和公共时长搜索，使用Bernstein导数界检查连续轨迹。**本项目未直接集成Ruckig库，不宣称实现其时间最优算法。**
+轨迹参考Ruckig的在线状态更新、多轴同步及速度/加速度/加加速度约束思路，实际实现为[`src/ps/online_curve.h`](src/ps/online_curve.h)中的五次Bézier轨迹和公共时长搜索，使用Bernstein导数界检查连续轨迹。**本项目未直接集成Ruckig库，不宣称实现其时间最优算法。**
 
 逆解采用LM阻尼正规方程与Cholesky求解。ARM负责FK误差、阻尼试步验收、关节边界和有限初值重试；PL通过固定尺寸矩阵结构、数组分区与展开承担单步数值运算。125MHz与硬件结构是否带来整体提速，须在相同输入、精度和停止条件下对照测量；不引用上游加速倍数作为本工程实测结果。
 
@@ -219,14 +232,14 @@ A delta_q = b
 以下包括算法文献、代码来源、工具文档与硬件资料。版权、许可证及已有来源说明继续随源码保留。
 
 1. E1pco. [Hardware-Accelerated System for IK Solution Based on LeRobot](https://github.com/E1pco/Hardware-Accelerated_System_for_IK_Solution_Based_on_LeRobot).
-2. AMD/Xilinx. [Vitis Libraries](https://github.com/Xilinx/Vitis_Libraries); [Vitis Solver Library 2024.2](https://docs.amd.com/r/2024.2-English/Vitis_Libraries/solver/benchmark.html_2). 本地许可：[third_party/LICENSE.txt](third_party/LICENSE.txt)。
+2. AMD/Xilinx. [Vitis Libraries](https://github.com/Xilinx/Vitis_Libraries); [Vitis Solver Library 2024.2](https://docs.amd.com/r/2024.2-English/Vitis_Libraries/solver/benchmark.html_2). 本地许可：[src/third_party/license.txt](src/third_party/license.txt)。
 3. Sugihara, T. [Solvability-Unconcerned Inverse Kinematics by the Levenberg–Marquardt Method](https://ieeexplore.ieee.org/abstract/document/5784347/). IEEE Transactions on Robotics, 2011. DOI: 10.1109/TRO.2011.2148230.
 4. Marquardt, D. W. [An Algorithm for Least-Squares Estimation of Nonlinear Parameters](https://epubs.siam.org/doi/10.1137/0111030). Journal of the Society for Industrial and Applied Mathematics, 1963, 11(2): 431–441.
 5. Berscheid, L.; Kröger, T. [Jerk-limited Real-time Trajectory Generation with Arbitrary Target States](https://arxiv.org/abs/2105.04830). Robotics: Science and Systems, 2021.
 6. Berscheid, L.等. [Ruckig: Motion Generation for Robots and Machines](https://github.com/pantor/ruckig).
 7. AMD. [Vitis High-Level Synthesis User Guide (UG1399), 2025.2](https://docs.amd.com/r/2025.2-English/ug1399-vitis-hls).
 8. AMD. [7 Series FPGAs and Zynq-7000 SoC XADC User Guide (UG480)](https://docs.amd.com/r/en-US/ug480_7Series_XADC/Instantiating-the-XADC).
-9. JoyandAI. [LeRobot auto_calibrate.py](https://github.com/JoyandAI/lerobot/blob/072e8355fbb9a7b520915d44877aa876794efb31/src/lerobot/motors/auto_calibrate.py), commit `072e8355fbb9a7b520915d44877aa876794efb31`. [本地来源说明](host/vendor_calibration_PROVENANCE.md)、[Apache-2.0许可](host/vendor_calibration_LICENSE.txt)。
+9. JoyandAI. [LeRobot auto_calibrate.py](https://github.com/JoyandAI/lerobot/blob/072e8355fbb9a7b520915d44877aa876794efb31/src/lerobot/motors/auto_calibrate.py), commit `072e8355fbb9a7b520915d44877aa876794efb31`. [本地来源说明](board/host/vendor_calibration_provenance.md)、[Apache-2.0许可](board/host/vendor_calibration_license.txt)。
 10. Box2AI Robotics. [joycon-robotics](https://github.com/box2ai-robotics/joycon-robotics).
 11. pySerial贡献者. [pySerial Documentation](https://pyserial.readthedocs.io/en/latest/).
 12. python-evdev贡献者. [python-evdev Documentation](https://python-evdev.readthedocs.io/en/latest/).

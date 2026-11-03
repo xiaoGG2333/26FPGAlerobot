@@ -8,7 +8,7 @@ FPGA 逆解工程已进入实机验证。RK7020 已有双核逆解用例结果�
 
 ## 使用
 
-人工阅读从SKILL.md开始；支持本地Skill的工具可将整个zynq-so101-validation目录安装到其技能目录后调用 `$zynq-so101-validation`。本次只生成项目内技能包，未修改个人全局技能配置。
+人工阅读从 [skill.md](skill.md) 开始。安装到技能工具时，复制整个 zynq-so101-validation 目录，并将安装副本中的 skill.md 命名为工具要求的 SKILL.md，然后调用 `$zynq-so101-validation`。本次只生成项目内技能包，未修改个人全局技能配置。
 
 请求示例：
 - “使用这个Skill分析运行日志：目标在变化，实际计数不动；先不驱动。”
