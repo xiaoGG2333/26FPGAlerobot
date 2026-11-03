@@ -1,0 +1,41 @@
+
+****** Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source D:/FPGA/vivado/Vivado/2018.3/scripts/vivado_hls/hls.tcl -notrace
+INFO: [HLS 200-10] Running 'D:/FPGA/vivado/Vivado/2018.3/bin/unwrapped/win64.o/vivado_hls.exe'
+INFO: [HLS 200-10] For user 'YUBEN' on host 'yuuben' (Windows NT_amd64 version 6.2) on Tue Nov 03 12:32:24 +0800 2026
+INFO: [HLS 200-10] In directory 'D:/C_O_D_E/2026/FPGA_AMD/fpga/ip/kpt_net'
+INFO: [HLS 200-10] Opening and resetting project 'D:/C_O_D_E/2026/FPGA_AMD/fpga/ip/kpt_net/kpt_net_csim'.
+INFO: [HLS 200-10] Adding design file 'src/kpt_hls.cpp' to the project
+INFO: [HLS 200-10] Adding test bench file 'tb/tb_csim.cpp' to the project
+INFO: [HLS 200-10] Opening and resetting solution 'D:/C_O_D_E/2026/FPGA_AMD/fpga/ip/kpt_net/kpt_net_csim/solution1'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+INFO: [HLS 200-10] Setting target device to 'xc7z100ffg900-2'
+
+===== C 仿真开始 =====
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../tb/tb_csim.cpp in debug mode
+   Compiling ../../../../src/kpt_hls.cpp in debug mode
+   Generating csim.exe
+=== 层表自检（ApCC 能不能读到静态常量结构体数组）===
+  L00 kind=0 stride=2 cin=  3 cout= 24 x_zp= 128 y_zp=   0 xs=0.007843
+  L01 kind=2 stride=1 cin= 24 cout= 24 x_zp=   0 y_zp=   0 xs=0.023529
+  L04 kind=2 stride=2 cin= 96 cout= 96 x_zp=   0 y_zp=   0 xs=0.023529
+  L46 kind=3 stride=1 cin= 72 cout=  0 x_zp=   0 y_zp= 131 xs=0.073458
+  L51 kind=5 stride=1 cin=256 cout=  2 x_zp=   0 y_zp= 125 xs=0.023529
+=== 读入权重与输入 ===
+  读 ../../../../data/kpt_weights.bin   390048 字节
+  读 ../../../../build/input.bin        110592 字节
+=== 跑整网 ===
+  hm     : 21x12x12  min 22  max 247  mean 99.29
+  pres   : 242
+  hand   : [34,220]
+  （g++ 版正确结果示例：hm mean 约 130~160，pres 约 200~245）
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+===== C 仿真结束 =====
+INFO: [Common 17-206] Exiting vivado_hls at Tue Nov  3 12:32:27 2026...

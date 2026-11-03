@@ -114,6 +114,75 @@ def draw_hand(vis, res, g, W, H):
         cv2.circle(vis, (px, py), 4 if i in pm.TIP else 3, col, -1)
 
 
+_TEXT_CACHE = {}
+
+
+def _render_texts(texts, fs, S=3):
+    """把整块字先按 3 倍尺寸渲染再降采样，边缘干净、没有描边重影。
+
+    之前用 cv2.putText 直接画两遍（粗黑底 + 细彩心），0.55 字号下
+    黑底比笔画还宽，看起来就是重影；放大画再缩回来才是真抗锯齿。
+    """
+    key = (tuple(t for t, _ in texts), tuple(c for _, c in texts), round(fs, 3))
+    hit = _TEXT_CACHE.get(key)
+    if hit is not None:
+        return hit
+    FONT = cv2.FONT_HERSHEY_SIMPLEX
+    th = S                                    # 3x 画布上 3 px -> 缩回约 1 px
+    sizes = [cv2.getTextSize(t, FONT, fs * S, th) for t, _ in texts]
+    W = max(s[0][0] for s in sizes) + 6 * S
+    H = sum(s[0][1] + s[1] for s in sizes) + 4 * S
+    col = np.zeros((H, W, 3), np.uint8)
+    msk = np.zeros((H, W), np.uint8)
+    y = 2 * S
+    for (t, c), (sz, base) in zip(texts, sizes):
+        y += sz[1]
+        org = (3 * S, y)
+        cv2.putText(col, t, org, FONT, fs * S, (0, 0, 0), th + 2, cv2.LINE_AA)
+        cv2.putText(col, t, org, FONT, fs * S, c, th, cv2.LINE_AA)
+        cv2.putText(msk, t, org, FONT, fs * S, 255, th + 2, cv2.LINE_AA)
+        y += base + S
+    col = cv2.resize(col, (W // S, H // S), interpolation=cv2.INTER_AREA)
+    msk = cv2.resize(msk, (W // S, H // S), interpolation=cv2.INTER_AREA)
+    if len(_TEXT_CACHE) > 64:
+        _TEXT_CACHE.clear()
+    _TEXT_CACHE[key] = (col, msk)
+    return col, msk
+
+
+def blit_text(img, texts, corner='tl', pad=8, fs=0.55):
+    """按角位贴一组带黑描边的字，不铺底板。"""
+    col, msk = _render_texts(texts, fs)
+    h, w = msk.shape
+    x = pad if corner[1] == 'l' else max(0, img.shape[1] - w - pad)
+    y = pad if corner[0] == 't' else max(0, img.shape[0] - h - pad)
+    roi = img[y:y + h, x:x + w]
+    a = (msk.astype(np.float32) / 255.0)[..., None]
+    roi[:] = (roi.astype(np.float32) * (1.0 - a)
+              + col.astype(np.float32) * a).astype(np.uint8)
+    return w, h
+
+
+def draw_min_hud(vis, pose, sx, sy, sz, size_ratio, g, fps, W, H,
+                 corner='tl', frozen=False):
+    """极简叠层：骨架之外只有两行字，和 sw/pose_view.py 同一套数值定义。
+
+    相对 X/Y/Z = pose 与 arm_start.xyz 的差（mm）；ROLL = pose['roll']（度）。
+    """
+    l1 = 'X%+7.1f  Y%+7.1f  Z%+7.1f mm' % ((pose['x'] - sx) * 1000.0,
+                                            (pose['y'] - sy) * 1000.0,
+                                            (pose['z'] - sz) * 1000.0)
+    l2 = 'ROLL %+6.1f deg   size %.2f   %.0f fps' % (
+        math.degrees(pose['roll']), float(size_ratio), fps)
+    if g is None:
+        l2 = 'NO HAND   last: ' + l2
+    if frozen:
+        l2 = 'FROZEN   ' + l2
+    c2 = (140, 140, 140) if (g is None or frozen) else (120, 255, 120)
+    blit_text(vis, [(l1, (0, 255, 255)), (l2, c2)], corner=corner, pad=8, fs=0.55)
+    return vis
+
+
 class CjkChip:
     """中文提示位图缓存：同一句话只渲染一次（PIL 每帧渲染太慢）。"""
 
@@ -241,8 +310,22 @@ def main():
     ap.add_argument('--env-y', default='-0.15,0.15', help='y 允许区间 m')
     ap.add_argument('--env-z', default='0.18,0.36', help='z 允许区间 m')
     ap.add_argument('--env-roll', type=float, default=0.90, help='|roll| 上限 rad')
+    ap.add_argument('--fwd-measure', default='palmrow',
+                    choices=['palmrow', 'palm', 'palmw', 'world'],
+                    help='前后用哪个尺度：palmrow=腕到四个掌指关节中心（默认，不含手指）；'
+                         'palm=腕到中指根 p9（原算法）；palmw=食指根到小指根；'
+                         'world=palmrow 再乘米制掌长比值')
+    ap.add_argument('--roll-offset-deg', type=float, default=0.0,
+                    help='爪子初始朝向整体偏转角度（度，正负决定顺/逆时针）；'
+                         '叠加在包络夹紧之后，所以视觉 roll 量程不受影响')
     ap.add_argument('--max-frames', type=int, default=0)
     ap.add_argument('--no-window', action='store_true')
+    ap.add_argument('--hud', default='full', choices=['full', 'min'],
+                    help='full=原来那块中文面板；min=只留骨架+两行数值，几乎不挡画面')
+    ap.add_argument('--hud-corner', default='tl', choices=['tl', 'tr', 'bl', 'br'],
+                    help='min 模式下数值的位置')
+    ap.add_argument('--hud-scale', type=float, default=1.0,
+                    help='min 模式显示放大倍数（只放大窗口，不影响坐标）')
     ap.add_argument('--log', default=None, help='逐帧 jsonl（默认 results/w3_pose/arm_run_<ts>.jsonl）')
     ap.add_argument('--print-every', type=int, default=20)
     ap.add_argument('--seq0', type=int, default=100000,
@@ -261,12 +344,19 @@ def main():
                     help='跟臂一起启用夹爪 ID6（方向式：张掌=OPEN、握拳=CLOSE、其他=HOLD）')
     ap.add_argument('--no-grip', dest='grip', action='store_false', help='不碰夹爪')
     ap.add_argument('--grip-cap', type=int, default=300, help='夹爪扭矩上限 1~500（先温柔）')
-    ap.add_argument('--grip-speed', type=int, default=100, help='夹爪速度 1~100（默认拉满）')
-    ap.add_argument('--grip-rate', type=int, default=400, help='夹爪每步行程 1~400 counts（默认拉满）')
-    ap.add_argument('--grip-closed-deg', type=float, default=5.0, help='闭合位置（度）')
-    ap.add_argument('--grip-opened-deg', type=float, default=60.0, help='张开位置（度）')
-    ap.add_argument('--grip-closed', type=int, default=-1, help='闭合端点 counts（>=0 时覆盖角度）')
-    ap.add_argument('--grip-opened', type=int, default=-1, help='张开端点 counts（>=0 时覆盖角度）')
+    ap.add_argument('--grip-speed', type=int, default=100,
+                    help='夹爪舵机速度 1~100，固件 st_set_goal/grip_config 硬卡 100（已是上限）')
+    ap.add_argument('--grip-rate', type=int, default=400,
+                    help='夹爪行程率 counts/s。实测固件硬上限 400（送 2000 会 CONFIG rc=44），'
+                         '这一项就是固件能给的最快（走完全行程 716 counts 约 1.8 s）')
+    ap.add_argument('--grip-closed', type=int, default=2055,
+                    help='闭合端点 counts（2055=180.6°，2026-11-01 验证过的值）')
+    ap.add_argument('--grip-opened', type=int, default=2771,
+                    help='张开端点 counts（2771=243.5°，同上）')
+    ap.add_argument('--grip-closed-deg', type=float, default=5.0,
+                    help='闭合位置（度）——仅在 --grip-closed=-1 时生效')
+    ap.add_argument('--grip-opened-deg', type=float, default=60.0,
+                    help='张开位置（度）——仅在 --grip-opened=-1 时生效')
     ap.add_argument('--grip-ka', type=float, default=0.2,
                     help='夹爪 INPUT 保活间隔秒（固件 500 ms 不走就冻结）')
     ap.add_argument('--env-half', default='0.06,0.13,0.10,0.8',
@@ -489,6 +579,19 @@ def main():
     t0 = time.monotonic()          # 全程用同一时钟，别混 time.time()
     next_send = t0
     interval = 1.0 / max(1.0, args.hz)
+    ROLL_OFF = math.radians(args.roll_offset_deg)
+    if ROLL_OFF:
+        print('[roi] 爪子朝向偏置 %+.0f°（%.3f rad）' % (args.roll_offset_deg, ROLL_OFF))
+    L_REF = [float(calib['zero'].get('L_world0', 0.0))]
+    SIZE_DBG = [None, None]  # [0]=(palm,palmrow,palmw) [1]=(补偿后, n_ext, w)
+    MEAS_SET = [False]       # 只在首次探测帧对齐一次基准（采零位换掉 zero 后不再重复覆盖）
+    _FG_PALM, _FG_ROW, _FG_PW = (float(calib['zero'].get('fist_gain_palm', 0.852)),
+                                 float(calib['zero'].get('fist_gain_row', 0.877)),
+                                 float(calib['zero'].get('fist_gain_pw', 0.930)))
+    print('[前后] 握拳补偿 增益 palm=%.3f palmrow=%.3f palmw=%.3f（<1 表示握拳时估小了）'
+          % (_FG_PALM, _FG_ROW, _FG_PW))
+    if L_REF[0] > 0:
+        print('[前后] 沿用米制掌长基准 L_ref=%.4f m' % L_REF[0])
     fps_disp = 0.0
     freeze = False
     bad_run, err_run = 0, 0
@@ -547,6 +650,47 @@ def main():
                                             res.hand_world_landmarks[k],
                                             calib['extend']['margin_ratio'],
                                             1.0 if hd == 'Right' else -1.0)
+                    if g is not None:
+                        # ---- 前后用的尺度：全部是“不含手指”的掌部量 ----
+                        #   palm   : 腕 p0 -> 中指根 p9（原来的算法）
+                        #   palmrow: 腕 p0 -> 四个掌指关节 p5/p9/p13/p17 的中心（默认）
+                        #   palmw  : 食指根 p5 -> 小指根 p17
+                        lm = res.hand_landmarks[k]
+                        _p0 = (lm[0].x, lm[0].y)
+                        s_palm = math.dist(_p0, (lm[9].x, lm[9].y))
+                        s_row = math.dist(_p0, ((lm[5].x + lm[9].x + lm[13].x + lm[17].x) / 4.0,
+                                                (lm[5].y + lm[9].y + lm[13].y + lm[17].y) / 4.0))
+                        s_pw = math.dist((lm[5].x, lm[5].y), (lm[17].x, lm[17].y))
+                        SIZE_DBG[0] = (s_palm, s_row, s_pw)
+                        new_px = {'palmrow': s_row, 'palm': s_palm,
+                                  'palmw': s_pw, 'world': s_row}[args.fwd_measure]
+                        # ---- 握拳补偿：握得越紧，MediaPipe 把掌部估得越小 ----
+                        #   实测(20261103 会话)：palm 0.852 / palmrow 0.877 /
+                        #   palmw 0.930（握拳/张掌 中位比值），按 n_ext 线性插值除掉
+                        _ext = int(g.get('n_ext', 0))
+                        _w = max(0.0, min(1.0, (4.0 - _ext) / 4.0))
+                        _fg = {'palmrow': _FG_ROW, 'world': _FG_ROW,
+                               'palm': _FG_PALM, 'palmw': _FG_PW}[args.fwd_measure]
+                        new_px = new_px / (1.0 - (1.0 - _fg) * _w)
+                        SIZE_DBG[1] = (new_px, _ext, _w)
+                        if not MEAS_SET[0]:
+                            MEAS_SET[0] = True
+                            calib['zero']['hand_px0'] = new_px
+                            calib['zero']['size_measure'] = args.fwd_measure
+                            print('[前后] 尺度 %s 基准=%.4f（首次探测帧），'
+                                  '重新采零位后以采零结果为准' % (args.fwd_measure, new_px))
+                        g['hand_px'] = new_px
+                        lw = res.hand_world_landmarks[k]
+                        Lw = math.sqrt((lw[9].x - lw[0].x) ** 2
+                                       + (lw[9].y - lw[0].y) ** 2
+                                       + (lw[9].z - lw[0].z) ** 2)
+                        if Lw > 1e-6:
+                            if L_REF[0] <= 0.0:
+                                L_REF[0] = Lw
+                                calib['zero']['L_world0'] = Lw
+                                print('[前后] 米制掌长基准 L_ref=%.4f m' % Lw)
+                            if args.fwd_measure == 'world':
+                                g['hand_px'] = g['hand_px'] * (L_REF[0] / Lw)
 
             if g is not None:
                 if zero_buf is not None:
@@ -579,6 +723,12 @@ def main():
             if hit:
                 env_hits += 1
                 flags = list(flags) + ['包络']
+            if ROLL_OFF != 0.0:
+                # 爪子朝向整体偏转：叠在包络之后，视觉 roll 量程不变；
+                # 再夹到固件 q4 允许范围 [-2.9437, +2.8486]，否则板端会拒
+                pose = dict(pose, roll=max(-2.84, min(2.84, pose['roll'] + ROLL_OFF)),
+                            yaw=pose['yaw'])
+                flags = list(flags) + ['roll偏置']
 
             # 从实测位姿平滑渡到视觉目标，避免一上来就甩到包络里
             if seed is not None and args.blend > 0:
@@ -619,6 +769,12 @@ def main():
                         k: round(float(v), 4) for k, v in getattr(mapper, 'dbg', {}).items()
                         if k in ('u', 'v', 'd_roll_deg')},
                     'size_ratio': round(mapper.size_ratio, 4),
+                    'sizes': None if not SIZE_DBG[0] else {
+                        'palm': round(SIZE_DBG[0][0], 4),
+                        'palmrow': round(SIZE_DBG[0][1], 4),
+                        'palmw': round(SIZE_DBG[0][2], 4),
+                        'fix': None if not SIZE_DBG[1] else round(SIZE_DBG[1][0], 4),
+                        'next': None if not SIZE_DBG[1] else SIZE_DBG[1][1]},
                     'pose1': {k: round(float(v), 6) for k, v in pose.items()},
                     'pose1_line': line,
                 }, ensure_ascii=False) + '\n')
@@ -674,32 +830,42 @@ def main():
             vis = frame.copy()
             draw_hand(vis, res, g, W, H)
             _sx, _sy, _sz = [float(v) for v in calib['arm_start']['xyz']]
-            top_vals = [
-                '%+.1f' % ((pose['x'] - _sx) * 1000.0),
-                '%+.1f' % ((pose['y'] - _sy) * 1000.0),
-                '%+.1f' % ((pose['z'] - _sz) * 1000.0),
-                '%.3f' % mapper.size_ratio,
-                '%+.1f' % math.degrees(pose['roll']),
-                '%.2f %s' % (float(pose.get('gripper', 0.5)), grip_dir_last or '-'),
-                '%s / %s / %.3f' % (
-                    '-' if st_board['code'] is None else st_board['code'],
-                    '-' if st_board['iters'] is None else st_board['iters'],
-                    (st_board['pos'] or 0.0) * 1000.0),
-            ]
-            bot_vals = ['%.2f' % calib['pos']['gain_x_size'],
-                        '%.2f' % calib['pos']['gain_y'],
-                        '%.2f' % calib['pos']['gain_z_v'],
-                        '%.2f' % calib['smooth']['ema_pos'],
-                        '%.2f' % calib['smooth']['ema_angle']]
-            _flash = '已冻结（继续发上一帧目标）' if freeze else (
-                az.flash if now < az.flash_until else '')
-            hud.draw(vis, top_vals, bot_vals, flash=_flash)
-
             if n % 10 == 0 or n == 1:
                 fps_disp = n / max(1e-6, time.monotonic() - t0)
+            _flash = '已冻结（继续发上一帧目标）' if freeze else (
+                az.flash if now < az.flash_until else '')
+            if args.hud == 'min':
+                draw_min_hud(vis, pose, _sx, _sy, _sz, mapper.size_ratio, g,
+                             fps_disp, W, H, corner=args.hud_corner, frozen=freeze)
+                if _flash:
+                    blit_text(vis, [(_flash, (0, 220, 255))], corner='bl', pad=8,
+                              fs=0.55)
+            else:
+                top_vals = [
+                    '%+.1f' % ((pose['x'] - _sx) * 1000.0),
+                    '%+.1f' % ((pose['y'] - _sy) * 1000.0),
+                    '%+.1f' % ((pose['z'] - _sz) * 1000.0),
+                    '%.3f' % mapper.size_ratio,
+                    '%+.1f' % math.degrees(pose['roll']),
+                    '%.2f %s' % (float(pose.get('gripper', 0.5)), grip_dir_last or '-'),
+                    '%s / %s / %.3f' % (
+                        '-' if st_board['code'] is None else st_board['code'],
+                        '-' if st_board['iters'] is None else st_board['iters'],
+                        (st_board['pos'] or 0.0) * 1000.0),
+                ]
+                bot_vals = ['%.2f' % calib['pos']['gain_x_size'],
+                            '%.2f' % calib['pos']['gain_y'],
+                            '%.2f' % calib['pos']['gain_z_v'],
+                            '%.2f' % calib['smooth']['ema_pos'],
+                            '%.2f' % calib['smooth']['ema_angle']]
+                hud.draw(vis, top_vals, bot_vals, flash=_flash)
+
             tick('draw', _t)
             if not args.no_window:
                 _t = time.monotonic()
+                if args.hud_scale != 1.0:
+                    vis = cv2.resize(vis, None, fx=args.hud_scale, fy=args.hud_scale,
+                                     interpolation=cv2.INTER_NEAREST)
                 cv2.imshow(win, vis)
                 k = cv2.waitKey(1) & 0xFF
                 tick('show', _t)

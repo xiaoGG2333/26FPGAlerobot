@@ -8,11 +8,16 @@
   相邻抽帧只差 133ms，随机划分会让验证指标虚高，必须按块切
 - 额外存 frame.npy / t.npy（原帧号、秒），为后续时序一致性损失与视频回放留接口
 - ROI：教师 21 点外接方窗 x margin U(1.4, 1.9)，原生分辨率裁切后 INTER_AREA 到 256²
+- 可选 --neg-seg/--neg-count：从“确定没有手”的片子里抽负样本（presence=0），
+  坐标标签填 0，train_kpt 里已被 `m = pr > 0.5` 屏蔽，只参与 presence BCE
 
 用法（hand-pi）：
   D:/Anaconda3/envs/hand-pi/python.exe -u tools/self_video_cache.py \
       --video model/data/self/raw/WIN_20261102_21_17_08_Pro.mp4 \
       --out results/stage1/cache_self_v1 --stride 4 --skip-tail 5
+
+  第 2 支录像（手由近及远 + 5s 空手负样本，全部进训练）：
+  ... --seg 0,60 --stride 3 --neg-seg 60,65 --neg-count 200 --skip-tail 4 --train-all
 """
 import argparse
 import json
@@ -44,6 +49,11 @@ def parse():
     ap.add_argument('--split', default='0.75,0.875')
     ap.add_argument('--seed', type=int, default=31)
     ap.add_argument('--max-frames', type=int, default=0)
+    ap.add_argument('--seg', default='', help='正样本时间段 秒 "0,60"（空=整段）')
+    ap.add_argument('--neg-seg', default='', help='负样本时间段 秒 "60,65"')
+    ap.add_argument('--neg-count', type=int, default=0, help='负样本张数')
+    ap.add_argument('--train-all', action='store_true',
+                    help='不留 test；train=全部正样本，val 仅取前 64 张做监控信号')
     return ap.parse_args()
 
 
@@ -82,7 +92,11 @@ def main():
     H = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     dur = n_all / max(fps, 1e-6)
     n_keep = max(1, int(round((dur - a.skip_tail) * fps)))
-    n_expect = n_keep // a.stride
+    f_lo, f_hi = 0, n_keep
+    if a.seg:
+        s0, s1 = [float(x) for x in a.seg.split(',')]
+        f_lo, f_hi = int(s0 * fps), min(n_keep, int(s1 * fps))
+    n_expect = max(0, f_hi - f_lo) // a.stride
     print(f'[视频] {W}x{H} {fps:.3f}fps 总 {n_all} 帧 {dur:.1f}s -> '
           f'保留 {n_keep} 帧（掐尾 {a.skip_tail}s），每 {a.stride} 帧抽 1 -> 约 {n_expect} 张',
           flush=True)
@@ -102,7 +116,9 @@ def main():
         if not ok or i + 1 >= n_keep:
             break
         i += 1
-        if i % a.stride:
+        if i < f_lo or i >= f_hi:
+            continue
+        if (i - f_lo) % a.stride:
             continue
         cnt['seen'] += 1
         H_, W_ = frame.shape[:2]
@@ -147,6 +163,63 @@ def main():
         if a.max_frames and cnt['keep'] >= a.max_frames:
             break
     cap.release()
+    n_pos = len(imgs)                         # 正样本张数（负样本追加在其后）
+    sides_pos = [r[2] * W for r in roi]        # 正样本方窗边长（像素），给负样本对齐尺度
+    got = 0
+    # ---------- 负样本：从确认无手的片段抽 ----------
+    if a.neg_seg and a.neg_count > 0:
+        s0, s1 = [float(x) for x in a.neg_seg.split(',')]
+        g0, g1 = int(s0 * fps), min(n_keep, int(s1 * fps))
+        med_side = float(np.median(sides_pos)) if sides_pos else 500.0
+        plan = []
+        for _ in range(a.neg_count):
+            fid = rng.randrange(max(g0, 0), max(g1, g0 + 1))
+            side = med_side * rng.uniform(0.9, 1.35)
+            cx = rng.uniform(side / 2, max(side / 2 + 1, W - side / 2))
+            cy = rng.uniform(side / 2, max(side / 2 + 1, H - side / 2))
+            plan.append((fid, side, cx, cy))
+        plan.sort()
+        cap2 = cv2.VideoCapture(a.video)
+        cap2.set(cv2.CAP_PROP_POS_FRAMES, g0)      # 必须 seek，否则 cur 计数与实际读到的帧错位
+        cur = g0 - 1
+        ok = True
+        det_cache = {}
+        n_rej = 0
+        for fid, side, cx, cy in plan:
+            while cur < fid:
+                ok, fr = cap2.read()
+                cur += 1
+                if not ok:
+                    break
+            if not ok:
+                break
+            if fid not in det_cache:      # 负样本必须真没手：逐帧用 MediaPipe 兜底复核
+                dd = fr
+                if max(fr.shape[:2]) > DET_MAX:
+                    kk = DET_MAX / max(fr.shape[:2])
+                    dd = cv2.resize(fr, (int(fr.shape[1] * kk), int(fr.shape[0] * kk)))
+                rr = lm.detect(mp.Image(image_format=mp.ImageFormat.SRGB,
+                                        data=np.ascontiguousarray(cv2.cvtColor(dd, cv2.COLOR_BGR2RGB))))
+                det_cache[fid] = (len(rr.hand_landmarks) == 0)
+            if not det_cache[fid]:
+                n_rej += 1
+                continue
+            crop, box = crop_roi(fr, side, cx, cy, a.size)
+            if crop is None:
+                continue
+            x0, y0, sd = box
+            imgs.append(crop)
+            pts.append(np.full((21, 2), 0.5, np.float32))
+            hand.append(0)
+            scale.append(0.0)
+            roi.append((x0 / W, y0 / H, sd / W, sd / H))
+            fidx.append(int(fid))
+            got += 1
+            if got % 50 == 0:
+                print(f'  [负样本 {got}/{a.neg_count}]', flush=True)
+        cap2.release()
+        print(f'[负样本] {got} 张（帧 {g0}..{g1}，方窗中位数 {med_side:.0f}px，'
+              f'MediaPipe 复核拒掉 {n_rej}）', flush=True)
     pose_map.close_quietly(lm)
     print(f'[统计] {cnt}  用时 {time.time()-t0:.0f}s', flush=True)
 
@@ -155,14 +228,21 @@ def main():
     scale = np.array(scale, np.float32)
     P = np.stack(pts)
     fidx = np.array(fidx, np.int64)
-    # 时间连续块划分（不是随机划分）
-    f1, f2 = [float(x) for x in a.split.split(',')]
-    b1, b2 = int(N * f1), int(N * f2)
-    split_idx = {'train': list(range(0, b1)), 'val': list(range(b1, b2)),
-                 'test': list(range(b2, N)), 'neg': []}
+    pres = np.zeros(N, np.float32)
+    pres[:n_pos] = 1.0
+    # 划分：默认按时间连续块（不是随机划分）；--train-all 时全进训练，留 64 张做监控
+    if a.train_all:
+        v = min(64, n_pos)
+        split_idx = {'train': list(range(0, n_pos)), 'val': list(range(0, v)),
+                     'test': [], 'neg': list(range(n_pos, N))}
+    else:
+        f1, f2 = [float(x) for x in a.split.split(',')]
+        b1, b2 = int(n_pos * f1), int(n_pos * f2)
+        split_idx = {'train': list(range(0, b1)), 'val': list(range(b1, b2)),
+                     'test': list(range(b2, n_pos)), 'neg': list(range(n_pos, N))}
     np.save(out / 'imgs.npy', arr)
     np.save(out / 'pts.npy', P)
-    np.save(out / 'presence.npy', np.ones(N, np.float32))
+    np.save(out / 'presence.npy', pres)
     np.save(out / 'hand.npy', np.array(hand, np.int64))
     np.save(out / 'scale.npy', scale)
     np.save(out / 'roi.npy', np.array(roi, np.float32))
@@ -175,8 +255,9 @@ def main():
                       'dur_s': round(dur, 1), 'skip_tail_s': a.skip_tail,
                       'stride': a.stride, 'frames_kept': n_keep},
             'counts': {k: len(v) for k, v in split_idx.items()},
-            'filter_stats': cnt, 'split_mode': 'contiguous_time_block',
+            'filter_stats': cnt, 'split_mode': 'train_all' if a.train_all else 'contiguous_time_block',
             'margin': [a.margin_lo, a.margin_hi], 'min_score': a.min_score,
+            'seg': a.seg, 'neg_seg': a.neg_seg, 'n_neg': len(split_idx['neg']),
             'hand_pct': [round(float(x), 4) for x in np.percentile(scale, [5, 25, 50, 75, 95])],
             'created': time.strftime('%Y-%m-%d %H:%M:%S')}
     (out / 'meta.json').write_text(json.dumps(meta, ensure_ascii=False, indent=1), encoding='utf-8')
@@ -188,11 +269,14 @@ def main():
     tiles = []
     for k in sel:
         t = arr[k].copy()
-        q = P[k] * a.size
-        for u, v in pose_map.HAND_LINKS:
-            cv2.line(t, tuple(np.int32(q[u])), tuple(np.int32(q[v])), (0, 255, 0), 1, cv2.LINE_AA)
-        for j in range(21):
-            cv2.circle(t, tuple(np.int32(q[j])), 2, (0, 0, 255), -1)
+        if pres[k] > 0.5:
+            q = P[k] * a.size
+            for u, v in pose_map.HAND_LINKS:
+                cv2.line(t, tuple(np.int32(q[u])), tuple(np.int32(q[v])), (0, 255, 0), 1, cv2.LINE_AA)
+            for j in range(21):
+                cv2.circle(t, tuple(np.int32(q[j])), 2, (0, 0, 255), -1)
+        else:
+            cv2.putText(t, 'NEG', (10, 24), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2)
         tiles.append(t)
     rows = [np.hstack(tiles[i:i + 6]) for i in range(0, 12, 6)]
     cv2.imwrite(str(out / 'self_check.png'), np.vstack(rows))
